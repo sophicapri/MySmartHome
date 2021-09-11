@@ -1,26 +1,28 @@
 package com.example.mysmarthome.ui
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.mysmarthome.model.Device
-import com.example.mysmarthome.model.Light
-import com.example.mysmarthome.model.User
+import androidx.lifecycle.*
+import com.example.mysmarthome.data.local.datastore.UserPreferences
+import com.example.mysmarthome.model.*
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 // TODO: change compositeDisposable management
 @HiltViewModel
-class MainViewModel @Inject constructor(var deviceRepository: DeviceRepository) : ViewModel() {
+class MainViewModel @Inject constructor(
+    var deviceRepository: DeviceRepository,
+    var userPreferences: UserPreferences
+) : ViewModel() {
     private val devices = MutableLiveData<List<Device>>()
     private val user = MutableLiveData<User>()
     private val compositeDisposable = CompositeDisposable()
+    val userFirstConnection = userPreferences.firstConnection.asLiveData()
 
     init {
         getDataFromRemote()
@@ -32,7 +34,7 @@ class MainViewModel @Inject constructor(var deviceRepository: DeviceRepository) 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
-                    Log.d("MainViewModel", "getDataFromRemote: list = ${response.devices}")
+                    Log.d("MainViewModel", "getDataFromRemote: list = ${response.devices.filterIsInstance<Heater>()}")
                     devices.postValue(response.devices.filterIsInstance<Light>())
                     user.postValue(response.user)
                 }, {
@@ -48,5 +50,11 @@ class MainViewModel @Inject constructor(var deviceRepository: DeviceRepository) 
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
+    }
+
+    fun changeConnectionValue(value: Boolean) {
+        viewModelScope.launch {
+            userPreferences.changeConnectionValue(value)
+        }
     }
 }

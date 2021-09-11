@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+
         android:name=".MySmartHomeApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -16,14 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySmartHome"
         tools:targetApi="m">
-        <activity
-            android:name=".ui.MainActivity"
+        <activity android:name=".ui.SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
         </activity>
     </application>
 

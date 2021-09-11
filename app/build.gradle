@@ -42,16 +42,25 @@ android {
 // TODO : move all version reference to Project level build.gradle
 dependencies {
 
-    implementation "androidx.core:core-ktx:1.6.0"
+    implementation "androidx.core:core-ktx:$coreVersion"
     implementation "androidx.fragment:fragment-ktx:1.3.6"
     implementation 'androidx.activity:activity-ktx:1.3.1'
     implementation "androidx.appcompat:appcompat:$supportLibVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
-    // ViewModel
+    // Architecture components
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"
+    implementation "androidx.datastore:datastore-core:$dataStoreVersion"
+    implementation "androidx.datastore:datastore-preferences-core:$dataStoreVersion"
 
     // RxJava
     implementation "io.reactivex.rxjava3:rxkotlin:3.0.1"
@@ -61,7 +70,10 @@ dependencies {
     implementation "com.squareup.moshi:moshi:$moshiVersion"
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
     implementation "com.squareup.moshi:moshi-adapters:$moshiVersion"
-    //kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.8'
+
 
     // Retrofit
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
@@ -73,6 +85,10 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     testImplementation "junit:junit:4.13.2"
     androidTestImplementation "androidx.test.ext:junit:1.1.3"
