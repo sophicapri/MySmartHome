@@ -1,6 +1,9 @@
 package com.example.mysmarthome.model
 
-sealed class Device(val productType: ProductType){
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+open class Device(var productType: ProductType){
     companion object {
         const val LABEL_KEY = "productType"
     }

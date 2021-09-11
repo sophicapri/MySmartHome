@@ -52,3 +52,23 @@ C
 hooks/update.sample,c/3/c32851975c5b371508b35e07e4c67ed30ddfae39
 J
 app/MySmartHomeArch.drawio,1/7/17ebccbcce09348729285009673ed114d6ed7764
+F
+app/proguard-rules.pro,9/e/9e08934d811afe28fbc77aaa3c0d747b94348db9
+n
+>app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
+s
+Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
+l
+<app/src/main/java/com/example/mysmarthome/ui/MainFragment.kt,6/d/6d19dfffcefdff90b921fd467708cd18683317dc
+k
+;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+m
+=app/src/main/java/com/example/mysmarthome/model/DeviceMode.kt,a/6/a6875f0bb73dd32b17c6a35c6ba78be255fae339
+
+Qapp/src/main/java/com/example/mysmarthome/data/local/datastore/UserPreferences.kt,b/9/b94871e92d9637b10a15508321a8f7631af7bac8
+y
+Iapp/src/main/java/com/example/mysmarthome/repository/IDeviceRepository.kt,f/8/f8329cc540d64f3b5801afa725808cb15da7a937

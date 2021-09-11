@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.mysmarthome.data.local.datastore.UserPreferences
+import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.remote.ApiService
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.Module
@@ -20,7 +21,7 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideDeviceRepository(apiService: ApiService) = DeviceRepository(apiService)
+    fun provideDeviceRepository(apiService: ApiService, deviceDao: DeviceDao) = DeviceRepository(apiService, deviceDao)
 
     @Singleton
     @Provides

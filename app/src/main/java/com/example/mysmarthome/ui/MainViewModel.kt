@@ -16,10 +16,10 @@ import javax.inject.Inject
 // TODO: change compositeDisposable management
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    var deviceRepository: DeviceRepository,
-    var userPreferences: UserPreferences
+    private var deviceRepository: DeviceRepository,
+    private var userPreferences: UserPreferences
 ) : ViewModel() {
-    private val devices = MutableLiveData<List<Device>>()
+    private val remoteDevices = MutableLiveData<List<Device>>()
     private val user = MutableLiveData<User>()
     private val compositeDisposable = CompositeDisposable()
     val userFirstConnection = userPreferences.firstConnection.asLiveData()
@@ -35,8 +35,9 @@ class MainViewModel @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ response ->
                     Log.d("MainViewModel", "getDataFromRemote: list = ${response.devices.filterIsInstance<Heater>()}")
-                    devices.postValue(response.devices.filterIsInstance<Light>())
+                    remoteDevices.postValue(response.devices.filterIsInstance<Light>())
                     user.postValue(response.user)
+                    insertDevices(response.devices)
                 }, {
                     Log.e("MainViewModel", "getDataFromRemote: Error = ${it.stackTraceToString()}")
                 })
@@ -45,7 +46,53 @@ class MainViewModel @Inject constructor(
 
     fun getUser(): LiveData<User> = user
 
-    fun getDeviceLight(): LiveData<List<Device>> = devices
+    private fun insertDevices(devices: List<Device>){
+        val lights = devices.filterIsInstance<Light>()
+        val heaters = devices.filterIsInstance<Heater>()
+        val rollerShutters = devices.filterIsInstance<RollerShutter>()
+        insertLights(lights)
+        insertHeaters(heaters)
+        insertRollerShutters(rollerShutters)
+
+    }
+
+    private fun insertLights(lights: List<Light>) {
+        viewModelScope.launch {
+            deviceRepository.insertLights(lights)
+        }
+    }
+
+    private fun insertHeaters(heaters: List<Heater>) {
+        viewModelScope.launch {
+            deviceRepository.insertHeaters(heaters)
+        }
+    }
+
+    private fun insertRollerShutters(rollerShutters: List<RollerShutter>) {
+        viewModelScope.launch {
+            deviceRepository.insertRollerShutters(rollerShutters)
+        }
+    }
+
+    fun getDevicesFromLocal() : LiveData<List<Device>> {
+        val deviceMediatorLiveData = MediatorLiveData<List<Device>>()
+        deviceMediatorLiveData.addSource(deviceRepository.getLightListFromLocal()) { lightEntityList ->
+            if (lightEntityList != null) {
+                deviceMediatorLiveData.value = lightEntityList.map { it.toLight() }
+            }
+        }
+        deviceMediatorLiveData.addSource(deviceRepository.getHeaterListFromLocal()) { heaterEntityList ->
+            if (heaterEntityList != null) {
+                deviceMediatorLiveData.value = heaterEntityList.map { it.toHeater() }
+            }
+        }
+        deviceMediatorLiveData.addSource(deviceRepository.getRollerShutterListFromLocal()) { rollerShutterEntityList ->
+            if (rollerShutterEntityList != null) {
+                deviceMediatorLiveData.value = rollerShutterEntityList.map { it.toRollerShutter() }
+            }
+        }
+        return deviceMediatorLiveData
+    }
 
     override fun onCleared() {
         super.onCleared()
