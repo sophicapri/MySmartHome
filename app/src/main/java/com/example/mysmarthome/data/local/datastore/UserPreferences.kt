@@ -23,7 +23,7 @@ class UserPreferences(var context: Context) {
             Log.e("UserPreferences", "${exception.message}")
             //throw exception
         }
-    }.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: false }
+    }.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: true }
 
     suspend fun changeConnectionValue(value: Boolean){
         context.dataStore.edit {

@@ -29,5 +29,8 @@ class DeviceEntity(
     private fun toHeater() : Heater = Heater(id, deviceName, mode!!, temperature!!)
 
     private fun toRollerShutter() = RollerShutter(id, deviceName, position!!)
+}
 
+interface EntityMaker{
+    fun toDeviceEntity(): DeviceEntity
 }

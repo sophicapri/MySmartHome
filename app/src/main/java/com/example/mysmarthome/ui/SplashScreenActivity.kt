@@ -12,26 +12,32 @@ import dagger.hilt.android.AndroidEntryPoint
 //OPTIONAL TODO : Use SplashScreen API instead of a custom one
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<SplashScreenActivityVM>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        deleteDatabase(DATABASE_NAME)
-
-        viewModel.userFirstConnection.observe(this){
-            Log.d("MainActivity", "onCreate: firstConnection = $it ")
-            if (it == true) {
+       /* deleteDatabase(DATABASE_NAME)
+        viewModel.changeConnectionValue(true)
+*/
+        viewModel.userFirstConnection.observe(this){ firstConnection ->
+          //  Log.d("SplashScreen", "onCreate: firstConnection = $firstConnection")
+            if (firstConnection) {
                 viewModel.changeConnectionValue(false)
-                //viewModel.loadDataFromRemote()
-            }
-            viewModel.loadDataFromRemote()
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+                viewModel.loadDataFromRemote()
+                viewModel.dataRetrieved.observe(this){ dataRetrieved ->
+//                    Log.d("SplashScreen", "onCreate: dataRetrieved = $dataRetrieved")
+                    if(dataRetrieved)
+                        startMainActivity()
+                }
+            } else startMainActivity()
         }
-        //
+    }
+
+    private fun startMainActivity(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

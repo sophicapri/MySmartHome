@@ -1,6 +1,5 @@
 package com.example.mysmarthome.data.local.roomdatabase
 
-import android.bluetooth.BluetoothClass
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -11,7 +10,7 @@ import com.example.mysmarthome.model.*
 @Database(
     entities = [User::class, DeviceEntity::class], version = 1, exportSchema = false
 )
-@TypeConverters(Converters::class)
+@TypeConverters(TypeConverter::class)
 abstract class MySmartHomeDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun deviceDao(): DeviceDao

@@ -4,13 +4,7 @@ import androidx.room.TypeConverter
 import com.example.mysmarthome.model.*
 import com.google.gson.Gson
 
-/*
-*  I use Gson and not Moshi for simplicity just for this particular case, but it's probably
-*  best to stick with one tool.
-*
-*/
-
-class Converters {
+class TypeConverter {
 
     @TypeConverter
     fun addressToJson(address: Address?): String = Gson().toJson(address)

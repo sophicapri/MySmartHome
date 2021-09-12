@@ -6,8 +6,11 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
+import com.example.mysmarthome.data.local.roomdatabase.UserDao
 import com.example.mysmarthome.data.remote.ApiService
 import com.example.mysmarthome.repository.DeviceRepository
+import com.example.mysmarthome.repository.RemoteDataRepository
+import com.example.mysmarthome.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,7 +24,16 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideDeviceRepository(apiService: ApiService, deviceDao: DeviceDao) = DeviceRepository(apiService, deviceDao)
+    fun provideDeviceRepository(deviceDao: DeviceDao) = DeviceRepository(deviceDao)
+
+    @Singleton
+    @Provides
+    fun provideRemoteDataRepository(apiService: ApiService) = RemoteDataRepository(apiService)
+
+    @Singleton
+    @Provides
+    fun provideUserRepository(userDao: UserDao) = UserRepository(userDao)
+
 
     @Singleton
     @Provides

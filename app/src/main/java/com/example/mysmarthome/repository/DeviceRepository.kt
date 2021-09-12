@@ -1,32 +1,48 @@
 package com.example.mysmarthome.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Transformations
+import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.mysmarthome.data.local.roomdatabase.*
-import com.example.mysmarthome.data.remote.ApiService
 import com.example.mysmarthome.model.*
-import io.reactivex.rxjava3.core.Flowable
 
-class DeviceRepository(private val apiService: ApiService, val deviceDao: DeviceDao) : IDeviceRepository {
+class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
 
-    override fun getDataFromRemote(): Flowable<ApiResponse> = apiService.queryData()
-
-    suspend fun insertLights(lights: List<Light>){
+    override suspend fun insertLights(lights: List<Light>) {
         deviceDao.insertLights(lights.map { it.toDeviceEntity() })
     }
 
-    suspend fun insertHeaters(heater: List<Heater>){
+    override suspend fun insertHeaters(heater: List<Heater>) {
         deviceDao.insertHeaters(heater.map { it.toDeviceEntity() })
     }
 
-    suspend fun insertRollerShutters(rollerShutter: List<RollerShutter>){
+    override suspend fun insertRollerShutters(rollerShutter: List<RollerShutter>) {
         deviceDao.insertRollerShutters(rollerShutter.map { it.toDeviceEntity() })
     }
 
-    fun getDeviceListFromLocal(): LiveData<List<DeviceEntity>> {
-        return deviceDao.getDeviceList()
+    override fun getDeviceListFromLocal(): LiveData<List<Device>> {
+        return Transformations.map(deviceDao.getDeviceList()) { list ->
+            list.map { it.toDomainObj() }
+        }
     }
 
-    fun getFilteredList(): LiveData<List<DeviceEntity>> {
-        return deviceDao.getFilteredList()
+    override fun getFilteredList(query: SupportSQLiteQuery): LiveData<List<Device>> {
+        return Transformations.map(deviceDao.getFilteredList(query)) { list ->
+            list.map { it.toDomainObj() }
+        }
+    }
+
+    override fun getDeviceById(id: Int): LiveData<Device> {
+        return Transformations.map(deviceDao.getDeviceById(id)) { device ->
+            device.toDomainObj()
+        }
+    }
+
+    override suspend fun updateDevice(device: Device) {
+        when (device) {
+            is Light -> deviceDao.updateDevice(device.toDeviceEntity())
+            is Heater -> deviceDao.updateDevice(device.toDeviceEntity())
+            is RollerShutter -> deviceDao.updateDevice(device.toDeviceEntity())
+        }
     }
 }

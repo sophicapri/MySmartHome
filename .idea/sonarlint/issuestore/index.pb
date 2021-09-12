@@ -58,8 +58,6 @@ n
 >app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-l
-<app/src/main/java/com/example/mysmarthome/ui/MainFragment.kt,6/d/6d19dfffcefdff90b921fd467708cd18683317dc
 k
 ;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
 P
@@ -68,7 +66,3 @@ P
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 m
 =app/src/main/java/com/example/mysmarthome/model/DeviceMode.kt,a/6/a6875f0bb73dd32b17c6a35c6ba78be255fae339
-
-Qapp/src/main/java/com/example/mysmarthome/data/local/datastore/UserPreferences.kt,b/9/b94871e92d9637b10a15508321a8f7631af7bac8
-y
-Iapp/src/main/java/com/example/mysmarthome/repository/IDeviceRepository.kt,f/8/f8329cc540d64f3b5801afa725808cb15da7a937
