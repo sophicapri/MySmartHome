@@ -9,7 +9,7 @@ import androidx.room.TypeConverters
 import com.example.mysmarthome.model.*
 
 @Database(
-    entities = [User::class, LightEntity::class, HeaterEntity::class, RollerShutterEntity::class], version = 1, exportSchema = false
+    entities = [User::class, DeviceEntity::class], version = 1, exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class MySmartHomeDatabase : RoomDatabase() {

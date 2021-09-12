@@ -1,5 +1,6 @@
 package com.example.mysmarthome.model
 
+import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
 import com.example.mysmarthome.data.local.roomdatabase.HeaterEntity
 
 
@@ -8,9 +9,13 @@ data class Heater(
     val deviceName: String,
     var mode: DeviceMode,
     var temperature: Int
-) : Device(ProductType.HEATER){
+) : Device(ProductType.HEATER) {
 
-    fun toHeaterEntity() = HeaterEntity(id, deviceName, mode, temperature, productType)
+    fun toDeviceEntity() = DeviceEntity(
+        id = id, deviceName = deviceName,
+        mode = mode, temperature = temperature,
+        productType = productType, intensity = null, position = null
+    )
 
 }
 
