@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/deviceListFragment">
+
+    <fragment
+        android:id="@+id/deviceListFragment"
+        android:name="com.example.mysmarthome.ui.devicelist.DeviceListFragment"
+        android:label="DeviceListFragment"
+        tools:layout="@layout/device_list_fragment">
+        <action
+            android:id="@+id/action_deviceListFragment_to_heaterDetailFragment"
+            app:destination="@id/heaterDetailFragment" />
+        <action
+            android:id="@+id/action_deviceListFragment_to_rollerShutterDetailFragment"
+            app:destination="@id/rollerShutterDetailFragment" />
+        <action
+            android:id="@+id/action_deviceListFragment_to_lightDetailFragment"
+            app:destination="@id/lightDetailFragment" />
+        <action
+            android:id="@+id/action_deviceListFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/heaterDetailFragment"
+        android:name="com.example.mysmarthome.ui.device.heater.HeaterDetailFragment"
+        android:label="HeaterDetailFragment"
+        tools:layout="@layout/heater_detail_fragment"/>
+    <fragment
+        android:id="@+id/rollerShutterDetailFragment"
+        android:name="com.example.mysmarthome.ui.device.rollershutter.RollerShutterDetailFragment"
+        android:label="RollerShutterDetailFragment"
+        tools:layout="@layout/rollershutter_detail_fragment"/>
+    <fragment
+        android:id="@+id/lightDetailFragment"
+        android:name="com.example.mysmarthome.ui.device.light.LightDetailFragment"
+        android:label="LightDetailFragment"
+        tools:layout="@layout/light_detail_fragment"/>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.mysmarthome.ui.userprofile.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/userprofile_fragment"/>
+</navigation>

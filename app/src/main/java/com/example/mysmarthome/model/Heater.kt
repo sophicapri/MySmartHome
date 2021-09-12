@@ -5,11 +5,11 @@ import com.example.mysmarthome.data.local.roomdatabase.EntityMaker
 
 
 data class Heater(
-    val id: Int,
+    override val id: Int,
     val deviceName: String,
     var mode: DeviceMode,
     var temperature: Int
-) : Device(ProductType.HEATER), EntityMaker {
+) : Device(id, ProductType.HEATER), EntityMaker {
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName,

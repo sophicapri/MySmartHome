@@ -22,4 +22,6 @@ interface IDeviceRepository {
     fun getDeviceById(id: Int): LiveData<Device>
 
     suspend fun updateDevice(device: Device)
+
+    fun deleteDevices(devices: List<Device>)
 }

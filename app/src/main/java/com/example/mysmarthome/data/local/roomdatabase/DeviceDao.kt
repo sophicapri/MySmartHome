@@ -33,4 +33,7 @@ interface DeviceDao {
     @Query("SELECT * FROM deviceentity WHERE id = :id")
     fun getDeviceById(id: Int): LiveData<DeviceEntity>
 
+    @Delete
+    fun deleteDevices(devices: List<DeviceEntity>)
+
 }

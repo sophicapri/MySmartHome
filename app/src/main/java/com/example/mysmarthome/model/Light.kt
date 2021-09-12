@@ -4,11 +4,11 @@ import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
 import com.example.mysmarthome.data.local.roomdatabase.EntityMaker
 
 data class Light(
-    val id: Int,
+    override val id: Int,
     val deviceName: String,
     var mode: DeviceMode,
     var intensity: Int
-) : Device(ProductType.LIGHT), EntityMaker{
+) : Device(id, ProductType.LIGHT), EntityMaker{
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName,

@@ -1,5 +1,6 @@
 package com.example.mysmarthome.ui
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.mysmarthome.data.local.datastore.UserPreferences
@@ -14,8 +15,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// TODO: add Scheduler in constructor for Rx calls
+@SuppressLint("CustomSplashScreen")
 @HiltViewModel
-class SplashScreenActivityVM @Inject constructor(
+class SplashScreenVM @Inject constructor(
     private var userPreferences: UserPreferences,
     private var userRepository: UserRepository,
     private var deviceRepository: DeviceRepository,

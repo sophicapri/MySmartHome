@@ -45,4 +45,15 @@ class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
             is RollerShutter -> deviceDao.updateDevice(device.toDeviceEntity())
         }
     }
+
+    override fun deleteDevices(devices: List<Device>) {
+        val deviceEntityList = devices.map { device ->
+            when (device) {
+                is Light -> device.toDeviceEntity()
+                is Heater -> device.toDeviceEntity()
+                else -> (device as RollerShutter).toDeviceEntity()
+            }
+        }
+        deviceDao.deleteDevices(deviceEntityList)
+    }
 }

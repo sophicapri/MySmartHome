@@ -11,8 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepository): ViewModel() {
-
-    fun getDevices(): LiveData<List<Device>> = deviceRepository.getDeviceListFromLocal()
+    val devices = deviceRepository.getDeviceListFromLocal()
 
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {
         val query = SimpleSQLiteQuery(makeQuery(productTypes))

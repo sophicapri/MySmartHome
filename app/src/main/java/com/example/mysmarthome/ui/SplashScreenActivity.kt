@@ -1,5 +1,6 @@
 package com.example.mysmarthome.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,23 +11,25 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 //OPTIONAL TODO : Use SplashScreen API instead of a custom one
+@SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
-    private val viewModel by viewModels<SplashScreenActivityVM>()
+    private val viewModel by viewModels<SplashScreenVM>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
        /* deleteDatabase(DATABASE_NAME)
-        viewModel.changeConnectionValue(true)
-*/
+        viewModel.changeConnectionValue(true)*/
+
+
         viewModel.userFirstConnection.observe(this){ firstConnection ->
           //  Log.d("SplashScreen", "onCreate: firstConnection = $firstConnection")
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.loadDataFromRemote()
                 viewModel.dataRetrieved.observe(this){ dataRetrieved ->
-//                    Log.d("SplashScreen", "onCreate: dataRetrieved = $dataRetrieved")
+                    Log.d("SplashScreen", "onCreate: dataRetrieved = $dataRetrieved")
                     if(dataRetrieved)
                         startMainActivity()
                 }
