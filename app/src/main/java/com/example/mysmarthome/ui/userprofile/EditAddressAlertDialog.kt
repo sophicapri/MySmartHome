@@ -11,30 +11,26 @@ import com.example.mysmarthome.model.User
 class EditAddressAlertDialog(
     context: Context,
     var onAddressEditedListener: OnAddressEditedListener
-) : AlertDialog(context), DatePickerDialog.OnDateSetListener,
+) : AlertDialog(context),
     DialogInterface.OnShowListener,
     DialogInterface.OnDismissListener {
     private var _bindingFilter: EditAddressAlertDialogBinding? = null
     private val bindingFilter: EditAddressAlertDialogBinding
         get() = _bindingFilter!!
-    //val dialog:AlertDialog
+    val dialog:AlertDialog
 
- /*   init {
+    init {
         dialog = buildDialog()
     }
 
     private fun buildDialog(): AlertDialog {
-
-    }*/
+       // bindingFilter.
+    }
 
     fun updateAddress() {
 
-   /*     val address = User.Address()
-        onAddressEditedListener.onAddressEdited()*/
-    }
-
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-        TODO("Not yet implemented")
+        val address = User.Address()
+        onAddressEditedListener.onAddressEdited()
     }
 
     override fun onShow(p0: DialogInterface?) {

@@ -1,9 +1,11 @@
 package com.example.mysmarthome.ui.userprofile
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,7 +16,7 @@ import com.example.mysmarthome.model.User
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener {
+class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener, DatePickerDialog.OnDateSetListener {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<UserProfileVM>()
@@ -51,5 +53,9 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
     override fun onAddressEdited(address: User.Address) {
         user.address = address
         viewModel.updateUser(user)
+    }
+
+    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
+
     }
 }
