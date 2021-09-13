@@ -19,7 +19,7 @@ interface IDeviceRepository {
 
     fun getFilteredList(query: SupportSQLiteQuery): LiveData<List<Device>>
 
-    fun getDeviceById(id: Int): LiveData<Device>
+    //fun getDeviceById(id: Int): LiveData<Device>
 
     suspend fun updateDevice(device: Device)
 

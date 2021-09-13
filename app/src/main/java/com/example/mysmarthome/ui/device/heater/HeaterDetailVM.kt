@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HeaterDetailVM @Inject constructor(private var deviceRepository: DeviceRepository) : ViewModel() {
 
-    fun getHeaterById(id: Int) = deviceRepository.getDeviceById(id).map { it as Heater }
+   // fun getHeaterById(id: Int) = deviceRepository.getDeviceById(id).map { it as Heater }
 
     fun updateHeater(heater: Heater){
         viewModelScope.launch {

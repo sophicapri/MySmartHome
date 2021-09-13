@@ -32,11 +32,11 @@ class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
         }
     }
 
-    override fun getDeviceById(id: Int): LiveData<Device> {
+  /*  override fun getDeviceById(id: Int): LiveData<Device> {
         return Transformations.map(deviceDao.getDeviceById(id)) { device ->
             device.toDomainObj()
         }
-    }
+    }*/
 
     override suspend fun updateDevice(device: Device) {
         when (device) {

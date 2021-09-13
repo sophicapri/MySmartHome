@@ -18,6 +18,7 @@
         tools:targetApi="m">
         <activity android:name=".ui.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme"
+            android:configChanges="uiMode"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,13 @@
 
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="uiMode">
+        </activity>
+        <activity
+            android:name=".ui.userprofile.UserProfileActivity"
+            android:exported="true"
+            android:configChanges="uiMode">
         </activity>
     </application>
 

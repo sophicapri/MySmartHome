@@ -37,13 +37,8 @@ class UserPreferences(var context: Context) {
         }
     }
 
-    // OPTIONAL TODO: implement this method time
-    suspend fun changeLocale(){
-    }
-
     private object PreferencesKeys {
         val NIGHT_MODE_KEY = booleanPreferencesKey("dark_theme_enabled")
-        val LOCALE_KEY = stringPreferencesKey("language_selected")
         val FIRST_CONNECTION_KEY = booleanPreferencesKey("first_user_connection")
     }
 }

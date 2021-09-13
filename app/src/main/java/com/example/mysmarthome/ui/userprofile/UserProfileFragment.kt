@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.mysmarthome.databinding.UserProfileFragmentBinding
 
 class UserProfileFragment : Fragment() {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by viewModels<UserProfileVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,8 +31,11 @@ class UserProfileFragment : Fragment() {
             setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
         }
 
-
-
+        binding.changeTheme.setOnClickListener {
+            //AppCompatDelegate.MODE_NIGHT_YES
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileFragment())
+        }
     }
 
     override fun onDestroyView() {

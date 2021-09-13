@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RollerShutterDetailVM @Inject constructor(private var deviceRepository: DeviceRepository) : ViewModel() {
 
-    fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
+    //fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
 
     fun updateRollerShutter(heater: Heater){
         viewModelScope.launch {

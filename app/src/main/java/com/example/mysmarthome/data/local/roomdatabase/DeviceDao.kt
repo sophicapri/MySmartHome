@@ -30,10 +30,11 @@ interface DeviceDao {
     @RawQuery(observedEntities = [DeviceEntity::class])
     fun getFilteredList(query: SupportSQLiteQuery) : LiveData<List<DeviceEntity>>
 
-    @Query("SELECT * FROM deviceentity WHERE id = :id")
-    fun getDeviceById(id: Int): LiveData<DeviceEntity>
-
     @Delete
     suspend fun deleteDevices(devices: List<DeviceEntity>)
+
+    /* @Query("SELECT * FROM deviceentity WHERE id = :id")
+  fun getDeviceById(id: Int): LiveData<DeviceEntity>
+*/
 
 }

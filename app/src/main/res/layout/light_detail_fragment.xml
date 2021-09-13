@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bkg_device"
@@ -18,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            tools:title="Heater"
+            tools:title="Light"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"/>
 
         <ImageView
@@ -38,5 +39,20 @@
             android:layout_gravity="center"
             tools:text="Salon"/>
     </LinearLayout>
+
+    <com.google.android.material.slider.Slider
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:valueFrom="7"
+        android:valueTo="28"
+        tools:value="10"
+        android:stepSize="1"
+        app:tickVisible="false"
+        android:layout_marginStart="@dimen/margin_horizontal_slider"
+        android:layout_marginEnd="@dimen/margin_horizontal_slider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
