@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.mysmarthome.databinding.UserProfileFragmentBinding
 import com.example.mysmarthome.model.User
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.DateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener, DatePickerDialog.OnDateSetListener {
@@ -28,16 +30,23 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         savedInstanceState: Bundle?
     ): View {
         _binding = UserProfileFragmentBinding.inflate(inflater, container, false)
-        bindViews()
-        viewModel.user.observe(viewLifecycleOwner){ userDb -> user = userDb }
+        addListeners()
+        viewModel.user.observe(viewLifecycleOwner){ userDb ->
+            user = userDb
+            bindUserData()
+        }
         return binding.root
     }
 
-    private fun bindViews() {
+    private fun bindUserData() {
+        val df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault())
+        //binding.birthDate.text = df.format(birthDate)
+    }
+
+    private fun addListeners() {
         binding.toolbar.apply {
             setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
         }
-
         binding.changeTheme.setOnClickListener {
             //AppCompatDelegate.MODE_NIGHT_YES
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -55,7 +64,9 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         viewModel.updateUser(user)
     }
 
-    override fun onDateSet(p0: DatePicker?, p1: Int, p2: Int, p3: Int) {
-
+    override fun onDateSet(datePicker: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val birthDate: Date = GregorianCalendar(year, month, dayOfMonth).time
+        user.birthDate = birthDate.time
+        viewModel.updateUser(user)
     }
 }

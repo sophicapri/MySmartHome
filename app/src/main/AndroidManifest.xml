@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySmartHome"
         tools:targetApi="m">
-        <activity android:name=".ui.SplashScreenActivity"
+        <activity android:name=".ui.splashscreen.SplashScreenActivity"
             android:theme="@style/SplashScreenTheme"
             android:configChanges="uiMode"
             android:exported="true">

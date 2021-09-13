@@ -1,14 +1,12 @@
-package com.example.mysmarthome.ui
+package com.example.mysmarthome.ui.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase.Companion.DATABASE_NAME
+import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-
 
 //OPTIONAL TODO : Use SplashScreen API instead of a custom one
 @SuppressLint("CustomSplashScreen")

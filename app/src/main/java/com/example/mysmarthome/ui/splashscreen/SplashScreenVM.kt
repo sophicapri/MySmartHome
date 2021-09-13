@@ -1,4 +1,4 @@
-package com.example.mysmarthome.ui
+package com.example.mysmarthome.ui.splashscreen
 
 import android.annotation.SuppressLint
 import android.util.Log

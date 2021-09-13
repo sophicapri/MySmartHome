@@ -10,14 +10,14 @@ import com.example.mysmarthome.model.User
 
 class EditAddressAlertDialog(
     context: Context,
-    var onAddressEditedListener: OnAddressEditedListener
+    private var onAddressEditedListener: OnAddressEditedListener
 ) : AlertDialog(context),
     DialogInterface.OnShowListener,
     DialogInterface.OnDismissListener {
     private var _bindingFilter: EditAddressAlertDialogBinding? = null
     private val bindingFilter: EditAddressAlertDialogBinding
         get() = _bindingFilter!!
-    val dialog:AlertDialog
+  /*  val dialog:AlertDialog
 
     init {
         dialog = buildDialog()
@@ -32,7 +32,7 @@ class EditAddressAlertDialog(
         val address = User.Address()
         onAddressEditedListener.onAddressEdited()
     }
-
+*/
     override fun onShow(p0: DialogInterface?) {
         TODO("Not yet implemented")
     }
