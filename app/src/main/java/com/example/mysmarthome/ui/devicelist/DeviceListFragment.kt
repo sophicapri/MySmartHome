@@ -2,6 +2,7 @@ package com.example.mysmarthome.ui.devicelist
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,18 +64,22 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
         binding.apply {
             chipGroup.children.forEach {
                 (it as Chip).setOnCheckedChangeListener { _, _ ->
-                    if (it.isChecked)
+                    if (chipGroup.checkedChipIds.isNotEmpty())
                         displayFilteredList()
+                    else
+                        cancelFilter()
                 }
             }
         }
-        binding.cancelFilterBtn.setOnClickListener {
-            filterOn = false
+        binding.cancelFilterBtn.setOnClickListener { cancelFilter() }
+    }
+
+    private fun cancelFilter() {
+        filterOn = false
+        if (binding.chipGroup.checkedChipIds.isNotEmpty())
             binding.chipGroup.clearCheck()
-            binding.recyclerView.smoothScrollToPosition(0)
-            binding.cancelFilterBtn.visibility = View.GONE
-            displayDevices()
-        }
+        binding.cancelFilterBtn.visibility = View.GONE
+        displayDevices()
     }
 
     private fun displayFilteredList() {
@@ -96,6 +101,7 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
                 R.id.roller_shutter_filter -> productTypes.add(ProductType.ROLLER_SHUTTER)
             }
         }
+        Log.d(TAG, "getProductTypes: list = $productTypes")
         return productTypes
     }
 
