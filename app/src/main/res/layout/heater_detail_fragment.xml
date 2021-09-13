@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bkg_device"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            tools:title="Heater"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            >
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ImageView
+            android:layout_width="@dimen/detail_device_size"
+            android:layout_height="@dimen/detail_device_size"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_smart_bulb">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/area_name"
+            android:layout_margin="16dp"
+            style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:text="Chambre"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

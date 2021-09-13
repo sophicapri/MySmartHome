@@ -1,33 +1,19 @@
 package com.example.mysmarthome.ui.devicelist
 
-import android.content.res.Resources
-import android.graphics.ColorFilter
-import android.os.Build
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceItemBinding
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.Heater
 import com.example.mysmarthome.model.Light
 import com.example.mysmarthome.model.RollerShutter
-import android.widget.Toast
-
-import android.app.ListActivity
-
-import androidx.recyclerview.widget.ItemTouchHelper
 
 
-
-
-class DeviceListAdapter(var onDeviceLongClickListener: OnDeviceLongClickListener) : ListAdapter<Device, DeviceListAdapter.DeviceViewHolder>(DIFF_CALLBACK) {
-    var editMode = false
+class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
+    ListAdapter<Device, DeviceListAdapter.DeviceViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
         return DeviceViewHolder(
@@ -38,7 +24,7 @@ class DeviceListAdapter(var onDeviceLongClickListener: OnDeviceLongClickListener
     }
 
     override fun onBindViewHolder(holder: DeviceViewHolder, position: Int) {
-        val device: Device? = getItem(position)
+        val device = getItem(position)
         holder.bindTo(device)
     }
 
@@ -46,31 +32,32 @@ class DeviceListAdapter(var onDeviceLongClickListener: OnDeviceLongClickListener
     inner class DeviceViewHolder(private val binding: DeviceItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            binding.deviceContainer.setOnLongClickListener {
-                binding.deviceChecked.visibility = View.VISIBLE
-                binding.deviceContainer.setCardBackgroundColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.black
-                    )
-                )
-                onDeviceLongClickListener.onDeviceLongClick(layoutPosition)
-                editMode = true
-                true
+        fun bindTo(device: Device) {
+            itemView.setOnClickListener {
+                onDeviceClickListener.onDeviceClick(device)
+            }
+
+            when (device) {
+                is Light -> bindLight(device)
+                is Heater -> bindHeater(device)
+                is RollerShutter -> bindRollerShutter(device)
             }
         }
 
-        fun bindTo(device: Device?) {
-            binding.apply {
-                when (device) {
-                    is Light -> deviceText.text = device.deviceName
-                    is Heater -> deviceText.text = device.deviceName
-                    is RollerShutter -> deviceText.text = device.deviceName
-                }
-            }
+        private fun bindLight(light: Light) {
+            binding.deviceText.text = light.deviceName
+
+        }
+
+        private fun bindHeater(heater: Heater) {
+            binding.deviceText.text = heater.deviceName
+        }
+
+        private fun bindRollerShutter(rollerShutter: RollerShutter) {
+            binding.deviceText.text = rollerShutter.deviceName
         }
     }
+
 
     companion object {
         private val DIFF_CALLBACK = object :
@@ -89,6 +76,6 @@ class DeviceListAdapter(var onDeviceLongClickListener: OnDeviceLongClickListener
     }
 }
 
-interface OnDeviceLongClickListener {
-    fun onDeviceLongClick(position: Int)
+interface OnDeviceClickListener {
+    fun onDeviceClick(device: Device)
 }

@@ -2,25 +2,24 @@ package com.example.mysmarthome.ui.devicelist
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceListFragmentBinding
-import com.example.mysmarthome.model.Device
-import com.example.mysmarthome.model.ProductType
+import com.example.mysmarthome.model.*
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
+class DeviceListFragment : Fragment(), OnDeviceClickListener {
     private val viewModel by viewModels<DeviceListVM>()
     private var _binding: DeviceListFragmentBinding? = null
     private val binding get() = _binding!!
@@ -48,8 +47,33 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
         binding.apply {
             recyclerView.layoutManager = LinearLayoutManager(context)
             recyclerView.adapter = adapter
-            val itemTouchHelper = ItemTouchHelper(itemTouchCallback);
+            val itemTouchHelper = ItemTouchHelper(getItemTouchHelper())
             itemTouchHelper.attachToRecyclerView(recyclerView)
+        }
+    }
+
+    private fun getItemTouchHelper() = object :
+        ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT
+        ) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
+            val position = viewHolder.adapterPosition
+            val device: Device = adapter.currentList[position]
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage("Confirm deletion?")
+            builder.setPositiveButton("DELETE") { _, _ ->
+                viewModel.deleteDevices(listOf(device))
+            }.setNegativeButton("CANCEL") { _, _ ->
+                adapter.notifyItemChanged(position)
+            }.show()
         }
     }
 
@@ -74,14 +98,6 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
         binding.cancelFilterBtn.setOnClickListener { cancelFilter() }
     }
 
-    private fun cancelFilter() {
-        filterOn = false
-        if (binding.chipGroup.checkedChipIds.isNotEmpty())
-            binding.chipGroup.clearCheck()
-        binding.cancelFilterBtn.visibility = View.GONE
-        displayDevices()
-    }
-
     private fun displayFilteredList() {
         filterOn = true
         viewModel.getFilteredList(getProductTypes())
@@ -90,6 +106,15 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
                     adapter.submitList(it)
             }
     }
+
+    private fun cancelFilter() {
+        filterOn = false
+        if (binding.chipGroup.checkedChipIds.isNotEmpty())
+            binding.chipGroup.clearCheck()
+        binding.cancelFilterBtn.visibility = View.GONE
+        displayDevices()
+    }
+
 
     private fun getProductTypes(): ArrayList<ProductType> {
         val productTypes = ArrayList<ProductType>()
@@ -101,8 +126,15 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
                 R.id.roller_shutter_filter -> productTypes.add(ProductType.ROLLER_SHUTTER)
             }
         }
-        Log.d(TAG, "getProductTypes: list = $productTypes")
         return productTypes
+    }
+
+    override fun onDeviceClick(device: Device) {
+        when(device){
+            is Light -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToLightDetailFragment(device))
+            is Heater -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToHeaterDetailFragment(device))
+            is RollerShutter -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToRollerShutterDetailFragment(device))
+        }
     }
 
     override fun onDestroyView() {
@@ -110,34 +142,6 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
         _binding = null
     }
 
-    override fun onDeviceLongClick(position: Int) {
-
-    }
-
-    private var itemTouchCallback: ItemTouchHelper.SimpleCallback = object :
-        ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT
-        ) {
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-            val position = viewHolder.adapterPosition
-            val device: Device = adapter.currentList[position]
-            val builder = AlertDialog.Builder(context)
-            builder.setMessage("Confirm deletion?")
-            builder.setPositiveButton("DELETE") { _, _ ->
-                viewModel.deleteDevices(listOf(device))
-            }.setNegativeButton("CANCEL") { _, _ ->
-                adapter.notifyItemChanged(position)
-            }.show()
-        }
-    }
 
     companion object {
         private val TAG = "MainActivity"

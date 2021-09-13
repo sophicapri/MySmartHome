@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Light"
+                tools:text="Light"
                 app:layout_constraintBottom_toBottomOf="@+id/artist_image"
                 app:layout_constraintStart_toEndOf="@id/artist_image"
                 app:layout_constraintTop_toTopOf="@+id/artist_image"
@@ -42,19 +42,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
-
-            <ImageView
-                android:id="@+id/device_checked"
-                android:layout_width="113dp"
-                android:layout_height="133dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="8dp"
-                android:src="@color/purple_200"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="@+id/artist_image"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
