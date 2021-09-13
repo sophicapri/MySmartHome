@@ -46,7 +46,7 @@ class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
         }
     }
 
-    override fun deleteDevices(devices: List<Device>) {
+    override suspend fun deleteDevices(devices: List<Device>) {
         val deviceEntityList = devices.map { device ->
             when (device) {
                 is Light -> device.toDeviceEntity()

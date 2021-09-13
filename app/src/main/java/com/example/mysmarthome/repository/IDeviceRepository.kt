@@ -23,5 +23,5 @@ interface IDeviceRepository {
 
     suspend fun updateDevice(device: Device)
 
-    fun deleteDevices(devices: List<Device>)
+    suspend fun deleteDevices(devices: List<Device>)
 }

@@ -2,11 +2,13 @@ package com.example.mysmarthome.ui.devicelist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,5 +32,9 @@ class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepos
                 stringQuery += "OR productType LIKE '%${it.name}%'"
         }
         return stringQuery
+    }
+
+    fun deleteDevices(device: List<Device>) {
+        viewModelScope.launch {  deviceRepository.deleteDevices(device) }
     }
 }

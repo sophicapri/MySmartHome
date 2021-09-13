@@ -1,14 +1,20 @@
 package com.example.mysmarthome.ui.devicelist
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mysmarthome.databinding.DeviceListFragmentBinding
+import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,6 +24,7 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
     private var _binding: DeviceListFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: DeviceListAdapter
+    private var filterOn: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,22 +43,35 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
     }
 
     private fun setupRecyclerView() {
-        adapter = DeviceListAdapter()
-        binding.recyclerView.layoutManager = GridLayoutManager(context, 2)
-        binding.recyclerView.adapter = adapter
+        adapter = DeviceListAdapter(this)
+        binding.apply {
+            recyclerView.layoutManager = LinearLayoutManager(context)
+            recyclerView.adapter = adapter
+            val itemTouchHelper = ItemTouchHelper(itemTouchCallback);
+            itemTouchHelper.attachToRecyclerView(recyclerView)
+        }
     }
 
     private fun displayDevices() {
-        viewModel.devices.observe(viewLifecycleOwner, Observer(adapter::submitList))
+        viewModel.devices.observe(viewLifecycleOwner){
+            if (!filterOn)
+                adapter.submitList(it)
+        }
     }
 
     private fun addListeners() {
         binding.filterBtn.setOnClickListener {
+            filterOn = true
             viewModel.getFilteredList(listOf(ProductType.HEATER))
-                .observe(viewLifecycleOwner, Observer(adapter::submitList))
+                .observe(viewLifecycleOwner){
+                 if (filterOn)
+                     adapter.submitList(it)
+                }
         }
         binding.cancelFilterBtn.setOnClickListener {
+            filterOn = false
             displayDevices()
+            binding.recyclerView.smoothScrollToPosition(0)
         }
     }
 
@@ -60,11 +80,34 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
         _binding = null
     }
 
-    companion object {
-        private val TAG = "MainActivity"
+    override fun onDeviceLongClick(position: Int) {
+
     }
 
-    override fun onDeviceLongClick() {
-        //display edit mode views
+    private var itemTouchCallback: ItemTouchHelper.SimpleCallback = object :
+        ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT
+        ) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean { return false }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
+            val position = viewHolder.adapterPosition
+            val device: Device = adapter.currentList[position]
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage("Confirm deletion?")
+            builder.setPositiveButton("DELETE") { _, _ ->
+                viewModel.deleteDevices(listOf(device))
+            }.setNegativeButton("CANCEL") { _, _ ->
+                adapter.notifyItemChanged(position)
+              }.show()
+        }
+    }
+
+    companion object {
+        private val TAG = "MainActivity"
     }
 }

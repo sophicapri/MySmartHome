@@ -19,17 +19,15 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-       /* deleteDatabase(DATABASE_NAME)
-        viewModel.changeConnectionValue(true)*/
+        deleteDatabase(DATABASE_NAME)
+        viewModel.changeConnectionValue(true)
 
 
         viewModel.userFirstConnection.observe(this){ firstConnection ->
-          //  Log.d("SplashScreen", "onCreate: firstConnection = $firstConnection")
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.loadDataFromRemote()
                 viewModel.dataRetrieved.observe(this){ dataRetrieved ->
-                    Log.d("SplashScreen", "onCreate: dataRetrieved = $dataRetrieved")
                     if(dataRetrieved)
                         startMainActivity()
                 }
@@ -39,6 +37,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun startMainActivity(){
         val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)
         finish()
     }

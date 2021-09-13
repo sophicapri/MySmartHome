@@ -34,6 +34,6 @@ interface DeviceDao {
     fun getDeviceById(id: Int): LiveData<DeviceEntity>
 
     @Delete
-    fun deleteDevices(devices: List<DeviceEntity>)
+    suspend fun deleteDevices(devices: List<DeviceEntity>)
 
 }
