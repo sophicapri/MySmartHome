@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.mysmarthome.databinding.HeaterDetailFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HeaterDetailFragment : Fragment() {
 
     private var _binding : HeaterDetailFragmentBinding? = null

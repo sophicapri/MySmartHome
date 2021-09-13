@@ -43,8 +43,8 @@
     <com.google.android.material.slider.Slider
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:valueFrom="7"
-        android:valueTo="28"
+        android:valueFrom="0"
+        android:valueTo="100"
         tools:value="10"
         android:stepSize="1"
         app:tickVisible="false"

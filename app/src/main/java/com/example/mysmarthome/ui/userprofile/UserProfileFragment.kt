@@ -10,11 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mysmarthome.databinding.UserProfileFragmentBinding
+import com.example.mysmarthome.model.User
+import dagger.hilt.android.AndroidEntryPoint
 
-class UserProfileFragment : Fragment() {
+@AndroidEntryPoint
+class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<UserProfileVM>()
+    private lateinit var user : User
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +27,7 @@ class UserProfileFragment : Fragment() {
     ): View {
         _binding = UserProfileFragmentBinding.inflate(inflater, container, false)
         bindViews()
+        viewModel.user.observe(viewLifecycleOwner){ userDb -> user = userDb }
         return binding.root
     }
 
@@ -41,5 +46,10 @@ class UserProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onAddressEdited(address: User.Address) {
+        user.address = address
+        viewModel.updateUser(user)
     }
 }

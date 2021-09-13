@@ -19,10 +19,9 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-      /*  deleteDatabase(DATABASE_NAME)
+        deleteDatabase(DATABASE_NAME)
         viewModel.changeConnectionValue(true)
 
-*/
         viewModel.userFirstConnection.observe(this){ firstConnection ->
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)

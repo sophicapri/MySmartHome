@@ -64,13 +64,9 @@ n
 >app/src/main/java/com/example/mysmarthome/model/ProductType.kt,9/2/92e4e79a731204c9f2a82b4bb57f5128137e74dc
 n
 >app/src/main/java/com/example/mysmarthome/di/DatabaseModule.kt,8/8/88f5647e5f518437a3b62621f47b6fb0d80327a5
-g
-7app/src/main/java/com/example/mysmarthome/model/User.kt,6/5/65d78504644ea7298cb1603d42aac66e07ee9ea6
 ˆ
 Xapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/MySmartHomeDatabase.kt,a/1/a186ffb6d559df2c586f5d0f5ce15067d080c43e
 |
 Lapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/UserDao.kt,5/b/5bdf6b42a5919eef30fcf8db7eff38e1c7e9a637
-p
-@app/src/main/java/com/example/mysmarthome/di/RepositoryModule.kt,b/0/b0e95324e8190a0633085834244b98db45ae4404
 X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e

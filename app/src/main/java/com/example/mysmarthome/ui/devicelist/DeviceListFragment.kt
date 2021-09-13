@@ -19,7 +19,7 @@ import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DeviceListFragment : Fragment(), OnDeviceClickListener {
+class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
     private val viewModel by viewModels<DeviceListVM>()
     private var _binding: DeviceListFragmentBinding? = null
     private val binding get() = _binding!!

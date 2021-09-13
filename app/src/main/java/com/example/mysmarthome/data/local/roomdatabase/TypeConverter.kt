@@ -7,10 +7,10 @@ import com.google.gson.Gson
 class TypeConverter {
 
     @TypeConverter
-    fun addressToJson(address: Address?): String = Gson().toJson(address)
+    fun addressToJson(address: User.Address?): String = Gson().toJson(address)
 
     @TypeConverter
-    fun jsonToAddress(json: String): Address = Gson().fromJson(json, Address::class.java)
+    fun jsonToAddress(json: String): User.Address = Gson().fromJson(json, User.Address::class.java)
 
     @TypeConverter
     fun deviceModeToJson(deviceMode: DeviceMode?): String = Gson().toJson(deviceMode)

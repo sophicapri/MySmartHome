@@ -74,8 +74,8 @@ class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
             ) = oldItem == newItem
         }
     }
-}
 
-interface OnDeviceClickListener {
-    fun onDeviceClick(device: Device)
+    interface OnDeviceClickListener {
+        fun onDeviceClick(device: Device)
+    }
 }

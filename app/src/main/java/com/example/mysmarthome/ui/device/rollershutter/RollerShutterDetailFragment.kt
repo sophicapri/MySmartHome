@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.mysmarthome.databinding.RollerShutterDetailFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RollerShutterDetailFragment : Fragment() {
     private var _binding : RollerShutterDetailFragmentBinding? = null
     private val binding get() = _binding!!
