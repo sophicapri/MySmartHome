@@ -1,21 +1,21 @@
 package com.example.mysmarthome.ui.devicelist
 
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceListFragmentBinding
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
+import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -53,26 +53,50 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
     }
 
     private fun displayDevices() {
-        viewModel.devices.observe(viewLifecycleOwner){
+        viewModel.devices.observe(viewLifecycleOwner) {
             if (!filterOn)
                 adapter.submitList(it)
         }
     }
 
     private fun addListeners() {
-        binding.filterBtn.setOnClickListener {
-            filterOn = true
-            viewModel.getFilteredList(listOf(ProductType.HEATER))
-                .observe(viewLifecycleOwner){
-                 if (filterOn)
-                     adapter.submitList(it)
+        binding.apply {
+            chipGroup.children.forEach {
+                (it as Chip).setOnCheckedChangeListener { _, _ ->
+                    if (it.isChecked)
+                        displayFilteredList()
                 }
+            }
         }
         binding.cancelFilterBtn.setOnClickListener {
             filterOn = false
-            displayDevices()
+            binding.chipGroup.clearCheck()
             binding.recyclerView.smoothScrollToPosition(0)
+            binding.cancelFilterBtn.visibility = View.GONE
+            displayDevices()
         }
+    }
+
+    private fun displayFilteredList() {
+        filterOn = true
+        viewModel.getFilteredList(getProductTypes())
+            .observe(viewLifecycleOwner) {
+                if (filterOn)
+                    adapter.submitList(it)
+            }
+    }
+
+    private fun getProductTypes(): ArrayList<ProductType> {
+        val productTypes = ArrayList<ProductType>()
+        binding.chipGroup.checkedChipIds.forEach { id ->
+            binding.cancelFilterBtn.visibility = View.VISIBLE
+            when (id) {
+                R.id.light_filter -> productTypes.add(ProductType.LIGHT)
+                R.id.heater_filter -> productTypes.add(ProductType.HEATER)
+                R.id.roller_shutter_filter -> productTypes.add(ProductType.ROLLER_SHUTTER)
+            }
+        }
+        return productTypes
     }
 
     override fun onDestroyView() {
@@ -92,7 +116,9 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
             recyclerView: RecyclerView,
             viewHolder: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
-        ): Boolean { return false }
+        ): Boolean {
+            return false
+        }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
             val position = viewHolder.adapterPosition
@@ -103,7 +129,7 @@ class DeviceListFragment : Fragment(), OnDeviceLongClickListener {
                 viewModel.deleteDevices(listOf(device))
             }.setNegativeButton("CANCEL") { _, _ ->
                 adapter.notifyItemChanged(position)
-              }.show()
+            }.show()
         }
     }
 
