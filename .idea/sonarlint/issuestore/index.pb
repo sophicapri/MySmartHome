@@ -56,10 +56,6 @@ n
 >app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-k
-;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
-P
- app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 m
 =app/src/main/java/com/example/mysmarthome/model/DeviceMode.kt,a/6/a6875f0bb73dd32b17c6a35c6ba78be255fae339
 p

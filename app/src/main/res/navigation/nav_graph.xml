@@ -38,7 +38,7 @@
         android:id="@+id/rollerShutterDetailFragment"
         android:name="com.example.mysmarthome.ui.device.rollershutter.RollerShutterDetailFragment"
         android:label="RollerShutterDetailFragment"
-        tools:layout="@layout/rollershutter_detail_fragment">
+        tools:layout="@layout/roller_shutter_detail_fragment">
         <argument
             android:name="rollerShutter"
             app:argType="com.example.mysmarthome.model.RollerShutter"
@@ -58,5 +58,5 @@
         android:id="@+id/userProfileFragment"
         android:name="com.example.mysmarthome.ui.userprofile.UserProfileFragment"
         android:label="UserProfileFragment"
-        tools:layout="@layout/userprofile_fragment"/>
+        tools:layout="@layout/user_profile_fragment"/>
 </navigation>

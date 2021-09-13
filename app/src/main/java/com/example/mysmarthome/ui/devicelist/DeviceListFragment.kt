@@ -96,6 +96,7 @@ class DeviceListFragment : Fragment(), OnDeviceClickListener {
             }
         }
         binding.cancelFilterBtn.setOnClickListener { cancelFilter() }
+        binding.profileBtn.setOnClickListener { findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToUserProfileFragment()) }
     }
 
     private fun displayFilteredList() {

@@ -23,7 +23,7 @@
                 android:id="@+id/deviceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_text"
                 tools:text="Light"
                 app:layout_constraintBottom_toBottomOf="@+id/artist_image"
                 app:layout_constraintStart_toEndOf="@id/artist_image"
@@ -32,16 +32,16 @@
 
             <ImageView
                 android:id="@+id/artist_image"
-                android:layout_width="113dp"
-                android:layout_height="133dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="@dimen/list_device_ic_size"
+                android:layout_height="@dimen/list_device_ic_size"
+                android:layout_margin="20dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
+                tools:src="@drawable/ic_smart_bulb" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
