@@ -1,7 +1,6 @@
 package com.example.mysmarthome.ui.userprofile
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.model.User
 import com.example.mysmarthome.repository.UserRepository
@@ -13,13 +12,22 @@ import javax.inject.Inject
 class UserProfileVM @Inject constructor(
     private var userRepository: UserRepository,
     private var userPreferences: UserPreferences
-) : ViewModel(){
+) : ViewModel() {
 
     val user = userRepository.getUser()
+    val currentTheme = userPreferences.currentTheme.asLiveData()
 
-    fun updateUser(user: User){
+    fun updateUser(user: User) {
         viewModelScope.launch {
             userRepository.updateUser(user)
         }
+    }
+
+    fun toggleNightMode(): LiveData<Boolean> {
+        val themeChanged = MutableLiveData(false)
+        viewModelScope.launch {
+            themeChanged.value = userPreferences.toggleNightMode()
+        }
+        return themeChanged
     }
 }

@@ -2,6 +2,7 @@ package com.example.mysmarthome.ui.userprofile
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +14,18 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mysmarthome.databinding.UserProfileFragmentBinding
 import com.example.mysmarthome.model.User
+import com.google.android.material.switchmaterial.SwitchMaterial
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.DateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener, DatePickerDialog.OnDateSetListener {
+class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener,
+    DatePickerDialog.OnDateSetListener {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<UserProfileVM>()
-    private lateinit var user : User
+    private lateinit var user: User
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +34,7 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
     ): View {
         _binding = UserProfileFragmentBinding.inflate(inflater, container, false)
         addListeners()
-        viewModel.user.observe(viewLifecycleOwner){ userDb ->
+        viewModel.user.observe(viewLifecycleOwner) { userDb ->
             user = userDb
             bindUserData()
         }
@@ -41,6 +44,10 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
     private fun bindUserData() {
         val df = DateFormat.getDateInstance(DateFormat.SHORT, Locale.getDefault())
         //binding.birthDate.text = df.format(birthDate)
+
+        viewModel.currentTheme.observe(viewLifecycleOwner) {
+            binding.switchDarkMode.isChecked = it
+        }
     }
 
     private fun addListeners() {
@@ -48,10 +55,11 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
         }
 
-        binding.changeTheme.setOnClickListener {
-            //AppCompatDelegate.MODE_NIGHT_YES
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileFragment())
+        binding.switchDarkMode.setOnClickListener {
+            viewModel.toggleNightMode().observe(viewLifecycleOwner) { themeChanged ->
+                if (themeChanged)
+                    findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileFragment())
+            }
         }
     }
 
