@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">My Smart Home</string>
     <string name="profile">Profile</string>
-    <string name="position_roller_shutter">Position:</string>
+    <string name="position_roller_shutter">"Position: "</string>
     <string name="preferences">Preferences</string>
     <string name="address_title">Address</string>
     <string name="birthdate">Birthdate</string>
@@ -29,6 +29,16 @@
     <string name="temperature_title">"Temperature: "</string>
     <string name="degree_symbol">°</string>
     <string name="device_icon">Device Icon</string>
+    <string name="my_devices">My devices</string>
+    <string name="lights_title">LIGHTS</string>
+    <string name="heaters_title">HEATERS</string>
+    <string name="roller_shutters_title">ROLLER SHUTTERS</string>
+    <string name="heater_icon">Heater icon</string>
+    <string name="bulb_icon">Bulb icon</string>
+    <string name="roller_shutter_icon">Roller shutter icon</string>
+    <string name="identity_card_icon">Identity card icon</string>
+    <string name="calendar_icon">Calendar icon</string>
+    <string name="location_home_icon">Location home icon</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

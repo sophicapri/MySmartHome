@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="@color/teal_200"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="My devices" />
+        app:title="@string/my_devices" />
 
     <ImageView
         android:id="@+id/profile_btn"
@@ -55,7 +55,7 @@
                 android:id="@+id/cancel_filter_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/margin_cancel_filter"
                 android:src="@drawable/ic_cancel_outlined"
                 android:visibility="gone"
                 app:tint="@color/icon_color"
@@ -67,7 +67,7 @@
                 android:id="@+id/chip_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_filter_chip_group"
                 app:layout_constraintVertical_bias="0.7"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,25 +80,23 @@
                     android:layout_height="wrap_content"
                     android:checkable="true"
                     android:focusable="true"
-                    android:text="LIGHTS" />
+                    android:text="@string/lights_title" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/heater_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:checkable="true"
                     android:focusable="true"
-                    android:text="HEATERS" />
+                    android:text="@string/heaters_title" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/roller_shutter_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
                     android:checkable="true"
                     android:focusable="true"
-                    android:text="ROLLER SHUTTERS" />
+                    android:text="@string/roller_shutters_title" />
             </com.google.android.material.chip.ChipGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>

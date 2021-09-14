@@ -6,4 +6,17 @@
     <dimen name="margin_horizontal_slider">24dp</dimen>
     <dimen name="margin_profile_icon">16dp</dimen>
     <dimen name="margin_switch">20dp</dimen>
+    <dimen name="margin_icon_device_list">10dp</dimen>
+    <dimen name="corner_radius_cardview">20dp</dimen>
+    <dimen name="margin_subtext_device_list">12dp</dimen>
+    <dimen name="subtext_value">5dp</dimen>
+    <dimen name="margin_cancel_filter">12dp</dimen>
+    <dimen name="margin_filter_chip_group">10dp</dimen>
+    <dimen name="default_margin_end">24dp</dimen>
+    <dimen name="device_value_margin">8dp</dimen>
+    <dimen name="margin_profile_bkg">24dp</dimen>
+    <dimen name="margin_ic_card">16dp</dimen>
+    <dimen name="margin_ic_calendar">32dp</dimen>
+    <dimen name="margin_ic_address">32dp</dimen>
+    <dimen name="margin_address_container">24dp</dimen>
 </resources>

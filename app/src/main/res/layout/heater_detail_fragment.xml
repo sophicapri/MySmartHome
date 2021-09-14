@@ -30,7 +30,8 @@
             android:layout_width="@dimen/detail_device_ic_size"
             android:layout_height="@dimen/detail_device_ic_size"
             android:layout_gravity="center"
-            android:src="@drawable/ic_heater" />
+            android:src="@drawable/ic_heater"
+            android:contentDescription="@string/heater_icon" />
 
         <TextView
             android:id="@+id/area_name"
@@ -82,7 +83,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:inputType="numberDecimal"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintStart_toEndOf="@+id/textView"
