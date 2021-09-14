@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">My Smart Home</string>
+    <string name="profile">Profil</string>
+    <string name="position_roller_shutter" translatable="false">Position:</string>
+    <string name="preferences">Préférences</string>
+    <string name="address_title">Adresse</string>
+    <string name="birthdate">Date de naissance</string>
+    <string name="name">Nom</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="save">Enregistrer</string>
+    <string name="first_name_title">Prénom</string>
+    <string name="last_name_title">Nom de famille</string>
+    <string name="edit_name_title">Modifier votre nom</string>
+    <string name="edit_address_title">Modifier votre adresse</string>
+    <string name="street_number_title">Numéro du rue</string>
+    <string name="street_title">Rue</string>
+    <string name="postal_code_title">Code postal</string>
+    <string name="city_title">Ville</string>
+    <string name="country_title">Pays</string>
+    <string name="empty_field">Veuillez remplir ce champ</string>
+    <string name="intensity_title">Intensité</string>
+    <string name="device_mode_title">Mode</string>
+    <string name="temperature_title">"Température: "</string>
+    <string name="device_icon">Icone appareil</string>
+    <string name="my_devices">Mes appareils</string>
+    <string name="lights_title">LAMPES</string>
+    <string name="heaters_title">RADIATEURS</string>
+    <string name="roller_shutters_title">VOLETS ROULANTS</string>
+    <string name="heater_icon">Icone radiateur</string>
+    <string name="bulb_icon">Icone ampoule</string>
+    <string name="roller_shutter_icon">Icone volet roulant</string>
+    <string name="identity_card_icon">Icone carte d\'identité</string>
+    <string name="calendar_icon">Icone calendrier</string>
+    <string name="location_home_icon">Icone maison</string>
+    <string name="profile_icon">Icone profil</string>
+    <string name="cancel_filter_button">Bouton annuler filtre</string>
+</resources>

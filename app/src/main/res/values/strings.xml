@@ -6,8 +6,8 @@
     <string name="address_title">Address</string>
     <string name="birthdate">Birthdate</string>
     <string name="name">Name</string>
-    <string name="user_name">"%1$s %2$s"</string>
-    <string name="address">%1$s %2$s %3$s %4$s %5$s</string>
+    <string name="user_name" translatable="false">"%1$s %2$s"</string>
+    <string name="address" translatable="false">%1$s %2$s %3$s %4$s %5$s</string>
     <string name="dark_mode">Dark mode</string>
     <integer name="max_value_heater">28</integer>
     <integer name="min_value_heater">7</integer>
@@ -20,8 +20,8 @@
     <string name="save">Save</string>
     <string name="first_name_title">First name</string>
     <string name="last_name_title">Last name</string>
-    <string name="edit_name_title">Edit name</string>
-    <string name="edit_address_title">Edit address</string>
+    <string name="edit_name_title">Edit your name</string>
+    <string name="edit_address_title">Edit your address</string>
     <string name="street_number_title">Street number</string>
     <string name="street_title">Street</string>
     <string name="postal_code_title">Postal code</string>
@@ -29,10 +29,10 @@
     <string name="country_title">Country</string>
     <string name="empty_field">This field cannot be empty</string>
     <string name="intensity_title">"Intensity: "</string>
-    <string name="percentage_symbol">%</string>
+    <string name="percentage_symbol" translatable="false">%</string>
     <string name="device_mode_title">Mode</string>
     <string name="temperature_title">"Temperature: "</string>
-    <string name="degree_symbol">°</string>
+    <string name="degree_symbol" translatable="false">°</string>
     <string name="device_icon">Device Icon</string>
     <string name="my_devices">My devices</string>
     <string name="lights_title">LIGHTS</string>
@@ -44,7 +44,7 @@
     <string name="identity_card_icon">Identity card icon</string>
     <string name="calendar_icon">Calendar icon</string>
     <string name="location_home_icon">Location home icon</string>
-    <string name="profile_icon">Profile</string>
+    <string name="profile_icon">Profil icon</string>
     <string name="cancel_filter_button">Cancel filter button</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
