@@ -1,6 +1,7 @@
 package com.example.mysmarthome.ui.userprofile
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -82,12 +83,28 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             nameContainer.setOnClickListener {
                 EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()
             }
-            birthdateContainer.setOnClickListener { }
+            birthdateContainer.setOnClickListener { showDatePickerDialog() }
             addressContainer.setOnClickListener {
-                EditAddressAlertDialog(requireContext(),
-                    user.address, this@UserProfileFragment).dialog.show()
+                EditAddressAlertDialog(
+                    requireContext(),
+                    user.address, this@UserProfileFragment
+                ).dialog.show()
             }
         }
+    }
+
+    // It would be best to show the birthdate in the datePickerDialog. Didn't have time to find out
+    // know how to do it
+    private fun showDatePickerDialog() {
+        Locale.getDefault()
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            this, Calendar.getInstance()[Calendar.YEAR],
+            Calendar.getInstance()[Calendar.MONTH],
+            Calendar.getInstance()[Calendar.DAY_OF_MONTH]
+        )
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 1000
+        datePickerDialog.show()
     }
 
     override fun onNameEdited(user: User) {
