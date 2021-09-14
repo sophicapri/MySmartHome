@@ -5,14 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.mysmarthome.databinding.RollerShutterDetailFragmentBinding
+import com.example.mysmarthome.model.DeviceMode
+import com.example.mysmarthome.model.RollerShutter
+import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RollerShutterDetailFragment : Fragment() {
     private var _binding : RollerShutterDetailFragmentBinding? = null
     private val binding get() = _binding!!
+    private lateinit var rollerShutter : RollerShutter
+    private val viewModel by viewModels<RollerShutterDetailVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,16 +32,34 @@ class RollerShutterDetailFragment : Fragment() {
     }
 
     private fun bindViews() {
-        val rollerShutter = RollerShutterDetailFragmentArgs.fromBundle(requireArguments()).rollerShutter
-        binding.areaName.text = rollerShutter.deviceName
-        binding.toolbar.apply {
-            setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
-            title = rollerShutter.productType.value
+        rollerShutter = RollerShutterDetailFragmentArgs.fromBundle(requireArguments()).rollerShutter
+        binding.apply {
+            areaName.text = rollerShutter.deviceName
+            positionValue.text = rollerShutter.position.toString()
+            positionSlider.value = rollerShutter.position.toFloat()
+            toolbar.apply {
+                setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
+                title = rollerShutter.productType.value
+            }
         }
     }
 
     private fun addListeners() {
-        TODO("Not yet implemented")
+        binding.apply {
+            positionSlider.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+                override fun onStartTrackingTouch(slider: Slider) {
+                }
+
+                override fun onStopTrackingTouch(slider: Slider) {
+                    rollerShutter.position = slider.value.toInt()
+                    viewModel.updateRollerShutter(rollerShutter)
+                }
+            })
+
+            positionSlider.addOnChangeListener { _, value, _ ->
+                positionValue.text = value.toInt().toString()
+            }
+        }
     }
 
 

@@ -15,9 +15,9 @@ class RollerShutterDetailVM @Inject constructor(private var deviceRepository: De
 
     //fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
 
-    fun updateRollerShutter(heater: Heater){
+    fun updateRollerShutter(rollerShutter: RollerShutter){
         viewModelScope.launch {
-            deviceRepository.updateDevice(heater)
+            deviceRepository.updateDevice(rollerShutter)
         }
     }
 }
