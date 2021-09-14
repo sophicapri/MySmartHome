@@ -47,6 +47,7 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         binding.toolbar.apply {
             setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
         }
+
         binding.changeTheme.setOnClickListener {
             //AppCompatDelegate.MODE_NIGHT_YES
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

@@ -28,7 +28,6 @@ class EditAddressAlertDialog(
     }
 
     fun updateAddress() {
-
         val address = User.Address()
         onAddressEditedListener.onAddressEdited()
     }

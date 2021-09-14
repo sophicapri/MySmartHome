@@ -2,6 +2,11 @@
     <string name="app_name">My Smart Home</string>
     <string name="profile">Profile</string>
     <string name="position_roller_shutter">Position:</string>
+    <string name="preferences">Preferences</string>
+    <string name="address">Address</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="name">Name</string>
+    <string name="dark_mode">Dark mode</string>
     <integer name="max_value_heater">28</integer>
     <integer name="min_value_heater">7</integer>
 

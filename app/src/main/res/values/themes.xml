@@ -21,4 +21,8 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="PreferencesTitleTextAppearance" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>

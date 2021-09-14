@@ -11,8 +11,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
-private const val USER_PREFERENCES_NAME = "user_preferences"
-
 class UserPreferences(var context: Context) {
     private val Context.dataStore by preferencesDataStore(name = USER_PREFERENCES_NAME)
 
@@ -40,5 +38,9 @@ class UserPreferences(var context: Context) {
     private object PreferencesKeys {
         val NIGHT_MODE_KEY = booleanPreferencesKey("dark_theme_enabled")
         val FIRST_CONNECTION_KEY = booleanPreferencesKey("first_user_connection")
+    }
+
+    companion object{
+        private const val USER_PREFERENCES_NAME = "user_preferences"
     }
 }

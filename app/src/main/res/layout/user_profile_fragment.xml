@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    android:background="@color/teal_200">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -21,30 +13,173 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleCentered="true"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         app:title="@string/profile"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
-    </LinearLayout>
+        app:titleCentered="true" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bkg_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-
-        <Button
-            android:id="@+id/change_theme"
+        <ImageView
+            android:id="@+id/ic_id_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Theme"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_id_card"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
 
+
+        <LinearLayout
+            android:id="@+id/name_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_text"
+            android:layout_marginEnd="@dimen/margin_text"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_id_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ic_id_card"
+            app:layout_constraintTop_toTopOf="@+id/ic_id_card"
+            app:layout_constraintVertical_bias="0.7">
+
+            <TextView
+                android:id="@+id/name_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="50"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="Jenna Doe" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ic_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_calendar"
+            app:layout_constraintStart_toStartOf="@+id/ic_id_card"
+            app:layout_constraintTop_toBottomOf="@+id/name_container" />
+
+        <LinearLayout
+            android:id="@+id/birthdate_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_calendar"
+            app:layout_constraintStart_toStartOf="@+id/name_container"
+            app:layout_constraintTop_toTopOf="@+id/ic_calendar"
+            app:layout_constraintVertical_bias="0.7">
+
+            <TextView
+                android:id="@+id/birthdate_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/birthdate"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+            <TextView
+                android:id="@+id/birthdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="13/10/1987" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ic_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_home"
+            app:layout_constraintStart_toStartOf="@+id/ic_calendar"
+            app:layout_constraintTop_toBottomOf="@+id/birthdate_container" />
+
+        <LinearLayout
+            android:id="@+id/address_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_text"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ic_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/birthdate_container"
+            app:layout_constraintTop_toBottomOf="@+id/birthdate_container"
+            app:layout_constraintVertical_bias="0">
+
+            <TextView
+                android:id="@+id/address_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="200"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                tools:text="2B rue Michelet 92130 Issy-Les-Moulineaux FRANCE" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/preferences_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/preferences"
+            android:textAppearance="@style/PreferencesTitleTextAppearance"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ic_address"
+            app:layout_constraintTop_toBottomOf="@+id/address_container"
+            app:layout_constraintVertical_bias="0.2" />
+
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/gradient_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/preferences_title" />
+
+        <TextView
+            android:id="@+id/dark_mode_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/dark_mode"
+            app:layout_constraintStart_toStartOf="@+id/preferences_title"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_dark_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/dark_mode_title"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/dark_mode_title" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

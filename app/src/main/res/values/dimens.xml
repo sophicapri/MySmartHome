@@ -5,4 +5,5 @@
     <dimen name="margin_text">20dp</dimen>
     <dimen name="margin_horizontal_slider">24dp</dimen>
     <dimen name="margin_profile_icon">16dp</dimen>
+    <dimen name="margin_switch">20dp</dimen>
 </resources>
