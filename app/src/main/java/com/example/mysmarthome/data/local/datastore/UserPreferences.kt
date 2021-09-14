@@ -25,15 +25,6 @@ class UserPreferences(var context: Context) {
         }
     }.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: true }
 
-    val currentTheme = context.dataStore.data.catch { exception ->
-        if (exception is IOException)
-            emit(emptyPreferences())
-        else {
-            Log.e("UserPreferences", "${exception.message}")
-            //throw exception
-        }
-    }.map { it: Preferences -> it[PreferencesKeys.NIGHT_MODE_KEY] ?: false }
-
     suspend fun changeConnectionValue(value: Boolean) {
         context.dataStore.edit {
             it[PreferencesKeys.FIRST_CONNECTION_KEY] = value

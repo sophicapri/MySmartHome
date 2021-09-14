@@ -3,13 +3,16 @@
     <string name="profile">Profile</string>
     <string name="position_roller_shutter">Position:</string>
     <string name="preferences">Preferences</string>
-    <string name="address">Address</string>
+    <string name="address_title">Address</string>
     <string name="birthdate">Birthdate</string>
     <string name="name">Name</string>
+    <string name="user_name">"%1$s %2$s"</string>
+    <string name="address">%1$s %2$s %3$s %4$s %5$s</string>
     <string name="dark_mode">Dark mode</string>
     <integer name="max_value_heater">28</integer>
     <integer name="min_value_heater">7</integer>
 
+    <string name="save">Save</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

@@ -15,7 +15,6 @@ class UserProfileVM @Inject constructor(
 ) : ViewModel() {
 
     val user = userRepository.getUser()
-    val currentTheme = userPreferences.currentTheme.asLiveData()
 
     fun updateUser(user: User) {
         viewModelScope.launch {

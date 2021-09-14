@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:tint="@color/icon_color"
             android:src="@drawable/ic_id_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +49,9 @@
             android:layout_marginStart="@dimen/margin_text"
             android:layout_marginEnd="@dimen/margin_text"
             android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:contextClickable="true"
             app:layout_constraintBottom_toBottomOf="@+id/ic_id_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ic_id_card"
@@ -75,6 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            app:tint="@color/icon_color"
             android:src="@drawable/ic_calendar"
             app:layout_constraintStart_toStartOf="@+id/ic_id_card"
             app:layout_constraintTop_toBottomOf="@+id/name_container" />
@@ -111,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            app:tint="@color/icon_color"
             android:src="@drawable/ic_home"
             app:layout_constraintStart_toStartOf="@+id/ic_calendar"
             app:layout_constraintTop_toBottomOf="@+id/birthdate_container" />
@@ -132,7 +138,7 @@
                 android:id="@+id/address_caption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/address"
+                android:text="@string/address_title"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
 
             <TextView
@@ -173,6 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/dark_mode"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintStart_toStartOf="@+id/preferences_title"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 

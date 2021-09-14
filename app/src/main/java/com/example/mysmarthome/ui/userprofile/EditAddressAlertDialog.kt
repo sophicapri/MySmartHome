@@ -1,37 +1,34 @@
 package com.example.mysmarthome.ui.userprofile
 
 import android.app.AlertDialog
-import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.widget.DatePicker
 import com.example.mysmarthome.databinding.EditAddressAlertDialogBinding
 import com.example.mysmarthome.model.User
 
 class EditAddressAlertDialog(
-    context: Context,
+    context: Context, address: User.Address,
     private var onAddressEditedListener: OnAddressEditedListener
 ) : AlertDialog(context),
     DialogInterface.OnShowListener,
     DialogInterface.OnDismissListener {
-    private var _bindingFilter: EditAddressAlertDialogBinding? = null
-    private val bindingFilter: EditAddressAlertDialogBinding
-        get() = _bindingFilter!!
-  /*  val dialog:AlertDialog
+    private var _binding: EditAddressAlertDialogBinding? = null
+    private val binding: EditAddressAlertDialogBinding
+        get() = _binding!!
+/*    val dialog:AlertDialog
 
     init {
         dialog = buildDialog()
     }
 
     private fun buildDialog(): AlertDialog {
-       // bindingFilter.
-    }
+       // binding.
+    }*/
 
-    fun updateAddress() {
+  /*  fun updateAddress() {
         val address = User.Address()
         onAddressEditedListener.onAddressEdited()
-    }
-*/
+    }*/
     override fun onShow(p0: DialogInterface?) {
         TODO("Not yet implemented")
     }

@@ -17,6 +17,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/background_color_item_list"
             android:layout_height="wrap_content">
 
             <TextView
@@ -37,6 +38,7 @@
                 android:layout_margin="20dp"
                 android:clickable="true"
                 android:focusable="true"
+                app:tint="@color/icon_color"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
