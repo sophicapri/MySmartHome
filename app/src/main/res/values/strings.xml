@@ -16,6 +16,13 @@
     <string name="first_name_title">First name</string>
     <string name="last_name_title">Last name</string>
     <string name="edit_name_title">Edit name</string>
+    <string name="edit_address_title">Edit address</string>
+    <string name="street_number_title">Street number</string>
+    <string name="street_title">Street</string>
+    <string name="postal_code_title">Postal code</string>
+    <string name="city_title">City</string>
+    <string name="country_title">Country</string>
+    <string name="empty_field">This field cannot be empty</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

@@ -6,6 +6,7 @@ import android.content.DialogInterface
 import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.EditNameAlertDialogBinding
 import com.example.mysmarthome.model.User
+import com.google.android.material.textfield.TextInputEditText
 
 class EditNameAlertDialog(
     context: Context, private var user: User,
@@ -17,6 +18,8 @@ class EditNameAlertDialog(
     private val binding: EditNameAlertDialogBinding
         get() = _binding!!
     val dialog: AlertDialog
+    private var validInput = true
+
 
     init {
         dialog = buildDialog()
@@ -52,23 +55,28 @@ class EditNameAlertDialog(
     }
 
     private fun updateName() {
+        validInput = true
         binding.apply {
-            var validInput = true
-            if (firstNameInput.text.toString().isEmpty()) {
-                firstNameInput.error = "This field cannot be empty"
-                validInput = false
+            if (firstNameInput.text.isNullOrEmpty() || lastNameInput.text.isNullOrEmpty()) {
+                if (firstNameInput.text.toString().isEmpty()) {
+                    showError(binding.firstNameInput)
+                }
+                if (lastNameInput.text.toString().isEmpty()) {
+                    showError(binding.lastNameInput)
+                }
             }
-            if (lastNameInput.text.toString().isEmpty()) {
-                lastNameInput.error = "This field cannot be empty"
-                validInput = false
-            }
-            if (validInput){
-                user.firstName = firstNameInput.text.toString()
-                user.lastName = lastNameInput.text.toString()
+            if (validInput) {
+                user.firstName = firstNameInput.text.toString().trim()
+                user.lastName = lastNameInput.text.toString().trim()
                 onNameEditedListener.onNameEdited(user)
                 dialog.dismiss()
             }
         }
+    }
+
+    private fun showError(editText: TextInputEditText) {
+        editText.error = context.getString(R.string.empty_field)
+        validInput = false
     }
 
     override fun onDismiss(p0: DialogInterface?) {

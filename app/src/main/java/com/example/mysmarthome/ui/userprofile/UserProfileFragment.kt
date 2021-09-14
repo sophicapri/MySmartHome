@@ -20,7 +20,8 @@ import java.text.DateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener, EditNameAlertDialog.OnNameEditedListener,
+class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener,
+    EditNameAlertDialog.OnNameEditedListener,
     DatePickerDialog.OnDateSetListener {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
@@ -62,8 +63,10 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             )
         }
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) binding.switchDarkMode.isChecked = false
-        else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) binding.switchDarkMode.isChecked = true
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) binding.switchDarkMode.isChecked =
+            false
+        else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) binding.switchDarkMode.isChecked =
+            true
     }
 
     private fun addListeners() {
@@ -79,13 +82,15 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             nameContainer.setOnClickListener {
                 EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()
             }
-            birthdateContainer.setOnClickListener {  }
-            addressContainer.setOnClickListener {  }
+            birthdateContainer.setOnClickListener { }
+            addressContainer.setOnClickListener {
+                EditAddressAlertDialog(requireContext(),
+                    user.address, this@UserProfileFragment).dialog.show()
+            }
         }
     }
 
-    override fun onAddressEdited(address: User.Address) {
-        user.address = address
+    override fun onNameEdited(user: User) {
         viewModel.updateUser(user)
     }
 
@@ -95,7 +100,8 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         viewModel.updateUser(user)
     }
 
-    override fun onNameEdited(user: User) {
+    override fun onAddressEdited(address: User.Address) {
+        user.address = address
         viewModel.updateUser(user)
     }
 
