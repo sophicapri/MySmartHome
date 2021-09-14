@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
@@ -107,8 +106,8 @@
         android:layout_marginStart="@dimen/margin_horizontal_slider"
         android:layout_marginEnd="@dimen/margin_horizontal_slider"
         android:stepSize="1"
-        android:valueFrom="0"
-        android:valueTo="100"
+        android:valueFrom="@integer/min_value_light"
+        android:valueTo="@integer/max_value_light"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

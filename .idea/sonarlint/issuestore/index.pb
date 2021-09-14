@@ -1,6 +1,4 @@
 
->
-app/.gitignore,5/1/51e1c5d383dfaa35e0e7e5873a0a99355a86880f
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
@@ -12,10 +10,6 @@ G
 config,d/f/dfba7aade0868074c2861c98e2a9a92f3178a51b
 ;
 description,c/b/cb329146a0dd0d566b0628744d67936558741ffa
-{
-Kapp/src/androidTest/java/com/example/mysmarthome/ExampleInstrumentedTest.kt,6/5/6593fb88d5181ca55d10e613ebc7dda3ff0bff28
-l
-<app/src/test/java/com/example/mysmarthome/ExampleUnitTest.kt,5/d/5d5833e51a87688a30df6902eef899178ed0adaa
 <
 info/exclude,8/6/86949161a7fbd768894d03c65d4333b90502afa5
 O
@@ -44,25 +38,7 @@ H
 hooks/pre-receive.sample,8/0/80a9d163679d14be2c662bf490222d7f3368693a
 O
 hooks/prepare-commit-msg.sample,e/9/e9138f8ca169171f345ea880acdc5e249ee569b1
-?
-settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 C
 hooks/update.sample,c/3/c32851975c5b371508b35e07e4c67ed30ddfae39
-J
-app/MySmartHomeArch.drawio,1/7/17ebccbcce09348729285009673ed114d6ed7764
-F
-app/proguard-rules.pro,9/e/9e08934d811afe28fbc77aaa3c0d747b94348db9
-s
-Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-p
-@app/src/main/java/com/example/mysmarthome/di/ApiServiceModule.kt,5/7/57aecd51c4466d2af143e58ac97f5731e292832f
-n
->app/src/main/java/com/example/mysmarthome/model/ProductType.kt,9/2/92e4e79a731204c9f2a82b4bb57f5128137e74dc
-n
->app/src/main/java/com/example/mysmarthome/di/DatabaseModule.kt,8/8/88f5647e5f518437a3b62621f47b6fb0d80327a5
-ˆ
-Xapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/MySmartHomeDatabase.kt,a/1/a186ffb6d559df2c586f5d0f5ce15067d080c43e
-|
-Lapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/UserDao.kt,5/b/5bdf6b42a5919eef30fcf8db7eff38e1c7e9a637
 X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e

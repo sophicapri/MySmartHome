@@ -1,9 +1,7 @@
 package com.example.mysmarthome.ui.device.rollershutter
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
-import com.example.mysmarthome.model.Heater
 import com.example.mysmarthome.model.RollerShutter
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

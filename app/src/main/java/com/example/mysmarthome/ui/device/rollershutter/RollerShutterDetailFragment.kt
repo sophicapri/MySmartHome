@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.example.mysmarthome.databinding.RollerShutterDetailFragmentBinding
-import com.example.mysmarthome.model.DeviceMode
 import com.example.mysmarthome.model.RollerShutter
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint

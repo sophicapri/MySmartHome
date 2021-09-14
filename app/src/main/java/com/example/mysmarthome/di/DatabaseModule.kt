@@ -1,7 +1,6 @@
 package com.example.mysmarthome.di
 
 import android.content.Context
-import androidx.room.Database
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase
 import com.example.mysmarthome.data.local.roomdatabase.UserDao

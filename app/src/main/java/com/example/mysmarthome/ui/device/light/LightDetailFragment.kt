@@ -1,15 +1,12 @@
 package com.example.mysmarthome.ui.device.light
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.LightDetailFragmentBinding
 import com.example.mysmarthome.model.DeviceMode
 import com.example.mysmarthome.model.Light

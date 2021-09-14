@@ -3,11 +3,6 @@ package com.example.mysmarthome.data.local.roomdatabase
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.mysmarthome.model.Device
-import com.example.mysmarthome.model.Heater
-import com.example.mysmarthome.model.Light
-import com.example.mysmarthome.model.RollerShutter
-import io.reactivex.rxjava3.core.Flowable
 
 @Dao
 interface DeviceDao {

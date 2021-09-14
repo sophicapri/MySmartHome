@@ -31,11 +31,6 @@
             android:exported="true"
             android:configChanges="uiMode">
         </activity>
-        <activity
-            android:name=".ui.userprofile.UserProfileActivity"
-            android:exported="true"
-            android:configChanges="uiMode">
-        </activity>
     </application>
 
 </manifest>

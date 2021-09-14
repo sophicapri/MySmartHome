@@ -11,6 +11,11 @@
     <string name="dark_mode">Dark mode</string>
     <integer name="max_value_heater">28</integer>
     <integer name="min_value_heater">7</integer>
+    <integer name="max_value_light">100</integer>
+    <integer name="min_value_light">0</integer>
+    <integer name="max_value_roller_shutter">100</integer>
+    <integer name="min_value_roller_shutter">1</integer>
+
 
     <string name="save">Save</string>
     <string name="first_name_title">First name</string>
@@ -39,6 +44,8 @@
     <string name="identity_card_icon">Identity card icon</string>
     <string name="calendar_icon">Calendar icon</string>
     <string name="location_home_icon">Location home icon</string>
+    <string name="profile_icon">Profile</string>
+    <string name="cancel_filter_button">Cancel filter button</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

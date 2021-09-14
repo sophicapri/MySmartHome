@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.DialogInterface
 import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.EditAddressAlertDialogBinding
-import com.example.mysmarthome.databinding.EditNameAlertDialogBinding
 import com.example.mysmarthome.model.User
 import com.google.android.material.textfield.TextInputEditText
 
