@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="detail_device_ic_size">150dp</dimen>
-    <dimen name="list_device_ic_size">100dp</dimen>
+    <dimen name="list_device_ic_size">80dp</dimen>
     <dimen name="margin_text">20dp</dimen>
     <dimen name="margin_horizontal_slider">24dp</dimen>
     <dimen name="margin_profile_icon">16dp</dimen>

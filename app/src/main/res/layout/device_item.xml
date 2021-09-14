@@ -20,24 +20,15 @@
             android:background="@color/background_color_item_list"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/deviceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_text"
-                tools:text="Light"
-                app:layout_constraintBottom_toBottomOf="@+id/artist_image"
-                app:layout_constraintStart_toEndOf="@id/artist_image"
-                app:layout_constraintTop_toTopOf="@+id/artist_image"
-                app:layout_constraintVertical_bias="0.3" />
 
             <ImageView
-                android:id="@+id/artist_image"
+                android:id="@+id/device_icon"
                 android:layout_width="@dimen/list_device_ic_size"
                 android:layout_height="@dimen/list_device_ic_size"
                 android:layout_margin="20dp"
                 android:clickable="true"
                 android:focusable="true"
+                android:contentDescription="@string/device_icon"
                 app:tint="@color/icon_color"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +36,71 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_smart_bulb" />
 
+            <TextView
+                android:id="@+id/deviceText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_text"
+                android:textAppearance="@style/PreferencesTitleTextAppearance"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toEndOf="@id/device_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.2"
+                tools:text="Light" />
+
+            <LinearLayout
+                android:id="@+id/device_mode_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@+id/deviceText"
+                app:layout_constraintTop_toBottomOf="@+id/deviceText">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:text="@string/device_mode_title" />
+
+                <TextView
+                    android:id="@+id/device_mode_value"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="OFF"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/position_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="@+id/deviceText"
+                app:layout_constraintTop_toBottomOf="@+id/deviceText">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:text="@string/position_roller_shutter" />
+
+                <TextView
+                    android:id="@+id/position_value"
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="70"/>
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="%"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

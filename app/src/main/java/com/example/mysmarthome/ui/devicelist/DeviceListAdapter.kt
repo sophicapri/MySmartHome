@@ -1,10 +1,13 @@
 package com.example.mysmarthome.ui.devicelist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceItemBinding
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.Heater
@@ -36,7 +39,8 @@ class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
             itemView.setOnClickListener {
                 onDeviceClickListener.onDeviceClick(device)
             }
-
+            binding.deviceModeContainer.visibility = View.GONE
+            binding.positionContainer.visibility = View.GONE
             when (device) {
                 is Light -> bindLight(device)
                 is Heater -> bindHeater(device)
@@ -45,16 +49,38 @@ class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
         }
 
         private fun bindLight(light: Light) {
-            binding.deviceText.text = light.deviceName
-
+            binding.apply {
+                deviceText.text = light.deviceName
+                deviceIcon.setImageDrawable(
+                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_smart_bulb)
+                )
+                deviceModeValue.text = light.mode.name
+                deviceModeContainer.visibility = View.VISIBLE
+            }
         }
 
         private fun bindHeater(heater: Heater) {
-            binding.deviceText.text = heater.deviceName
+            binding.apply {
+                deviceText.text = heater.deviceName
+                deviceIcon.setImageDrawable(
+                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_heater)
+                )
+                deviceModeContainer.visibility = View.VISIBLE
+                deviceModeValue.text = heater.mode.name
+            }
         }
 
+
         private fun bindRollerShutter(rollerShutter: RollerShutter) {
-            binding.deviceText.text = rollerShutter.deviceName
+            binding.apply {
+                deviceText.text = rollerShutter.deviceName
+                deviceIcon.setImageDrawable(
+                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_roller_shutter)
+                )
+                positionContainer.visibility = View.VISIBLE
+                positionValue.text = rollerShutter.position.toString()
+            }
+
         }
     }
 

@@ -56,8 +56,6 @@ n
 >app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-m
-=app/src/main/java/com/example/mysmarthome/model/DeviceMode.kt,a/6/a6875f0bb73dd32b17c6a35c6ba78be255fae339
 p
 @app/src/main/java/com/example/mysmarthome/di/ApiServiceModule.kt,5/7/57aecd51c4466d2af143e58ac97f5731e292832f
 n
