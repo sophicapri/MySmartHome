@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase.Companion.DATABASE_NAME
 import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -21,8 +22,8 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.setAppTheme()
-        Log.d("MySmartHome", "onCreate: ")
-        /*deleteDatabase(DATABASE_NAME)
+
+    /*    deleteDatabase(DATABASE_NAME)
         viewModel.changeConnectionValue(true)*/
 
         viewModel.userFirstConnection.observe(this) { firstConnection ->

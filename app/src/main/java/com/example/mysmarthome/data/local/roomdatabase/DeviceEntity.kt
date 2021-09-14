@@ -10,7 +10,7 @@ class DeviceEntity(
     val deviceName: String,
     var mode: DeviceMode?,
     var intensity: Int?,
-    var temperature: Int?,
+    var temperature: Float?,
     var position: Int?,
     var productType: ProductType
 ) {

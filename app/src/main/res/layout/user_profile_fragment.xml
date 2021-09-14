@@ -133,6 +133,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/margin_text"
             android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@+id/ic_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/birthdate_container"

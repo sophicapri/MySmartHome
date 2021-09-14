@@ -21,6 +21,7 @@ class RollerShutterDetailFragment : Fragment() {
     ): View {
         _binding = RollerShutterDetailFragmentBinding.inflate(inflater, container, false)
         bindViews()
+        addListeners()
         return binding.root
     }
 
@@ -32,6 +33,11 @@ class RollerShutterDetailFragment : Fragment() {
             title = rollerShutter.productType.value
         }
     }
+
+    private fun addListeners() {
+        TODO("Not yet implemented")
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
