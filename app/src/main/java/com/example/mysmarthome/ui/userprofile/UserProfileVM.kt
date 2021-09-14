@@ -22,11 +22,9 @@ class UserProfileVM @Inject constructor(
         }
     }
 
-    fun toggleNightMode(): LiveData<Boolean> {
-        val themeChanged = MutableLiveData(false)
+    fun updateUserPrefs(){
         viewModelScope.launch {
-            themeChanged.value = userPreferences.toggleNightMode()
+            userPreferences.toggleNightMode()
         }
-        return themeChanged
     }
 }

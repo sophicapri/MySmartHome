@@ -1,7 +1,6 @@
 package com.example.mysmarthome.ui.userprofile
 
 import android.app.DatePickerDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -70,11 +69,16 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         binding.apply {
             toolbar.setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
 
-            switchDarkMode.setOnCheckedChangeListener { compoundButton, b ->
-                viewModel.toggleNightMode().observe(viewLifecycleOwner) { themeChanged ->
-                    if (themeChanged)
-                        findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileFragment())
-                }
+            switchDarkMode.setOnCheckedChangeListener { _, _ ->
+                viewModel.updateUserPrefs()
+
+                if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+                findNavController().navigate(UserProfileFragmentDirections.actionUserProfileFragmentToUserProfileFragment())
+
             }
             nameContainer.setOnClickListener {
                 EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()

@@ -27,53 +27,31 @@ class UserPreferences(var context: Context) {
         }
     }.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: true }
 
+    val currentTheme: Flow<Boolean?> = context.dataStore.data.catch { exception ->
+        if (exception is IOException)
+            emit(emptyPreferences())
+        else {
+            Log.e("UserPreferences", "${exception.message}")
+            //throw exception
+        }
+    }.map { it: Preferences -> it[PreferencesKeys.NIGHT_MODE_KEY] }
+
     suspend fun changeConnectionValue(value: Boolean) {
         context.dataStore.edit {
             it[PreferencesKeys.FIRST_CONNECTION_KEY] = value
         }
     }
 
-    suspend fun toggleNightMode(): Boolean {
+    suspend fun toggleNightMode() {
         context.dataStore.edit {
             it[PreferencesKeys.NIGHT_MODE_KEY] = !(it[PreferencesKeys.NIGHT_MODE_KEY] ?: false)
         }
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO)
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        return true
-    }
-
-    suspend fun initAppTheme() {
-        context.dataStore.edit { it[PreferencesKeys.NIGHT_MODE_KEY] = false }
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     suspend fun setAppTheme() {
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED) {
-            Log.d("MySmartHome", "onCreate: default night mode unspecified ?")
             context.dataStore.edit { it[PreferencesKeys.NIGHT_MODE_KEY] = false }
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-
-        var nightModeOn = false
-        CoroutineScope(Dispatchers.IO).launch {
-            context.dataStore.data.catch { exception ->
-                if (exception is IOException)
-                    emit(emptyPreferences())
-                else {
-                    Log.e("UserPreferences", "${exception.message}")
-                    //throw exception
-                }
-            }.collect {
-                nightModeOn = it[PreferencesKeys.NIGHT_MODE_KEY] ?: false
-            }
-            withContext(Dispatchers.Main) {
-                if (!nightModeOn)
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                else
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }
         }
     }
 

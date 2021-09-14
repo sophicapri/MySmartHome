@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase.Companion.DATABASE_NAME
 import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,10 +22,16 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.setAppTheme()
+        /*    deleteDatabase(DATABASE_NAME)
+            viewModel.changeConnectionValue(true)*/
 
-    /*    deleteDatabase(DATABASE_NAME)
-        viewModel.changeConnectionValue(true)*/
+        viewModel.currentTheme.observe(this){ nightMode ->
+            when {
+                nightMode == null -> viewModel.setAppTheme()
+                nightMode -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         viewModel.userFirstConnection.observe(this) { firstConnection ->
             if (firstConnection) {
@@ -44,5 +51,4 @@ class SplashScreenActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-
 }

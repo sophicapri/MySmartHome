@@ -29,6 +29,7 @@ class SplashScreenVM @Inject constructor(
         get() = _dataRetrieved
     private var _dataRetrieved = MutableLiveData<Boolean>()
     private val compositeDisposable = CompositeDisposable()
+    val currentTheme = userPreferences.currentTheme.asLiveData()
 
     fun changeConnectionValue(value: Boolean) {
         viewModelScope.launch {
