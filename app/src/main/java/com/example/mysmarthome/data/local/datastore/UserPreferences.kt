@@ -3,14 +3,16 @@ package com.example.mysmarthome.data.local.datastore
 import android.content.Context
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.LiveData
-import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.IOException
 
 class UserPreferences(var context: Context) {
@@ -31,7 +33,7 @@ class UserPreferences(var context: Context) {
         }
     }
 
-    suspend fun toggleNightMode() : Boolean {
+    suspend fun toggleNightMode(): Boolean {
         context.dataStore.edit {
             it[PreferencesKeys.NIGHT_MODE_KEY] = !(it[PreferencesKeys.NIGHT_MODE_KEY] ?: false)
         }
@@ -42,9 +44,37 @@ class UserPreferences(var context: Context) {
         return true
     }
 
-    suspend fun setAppTheme() {
+    suspend fun initAppTheme() {
         context.dataStore.edit { it[PreferencesKeys.NIGHT_MODE_KEY] = false }
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    suspend fun setAppTheme() {
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_UNSPECIFIED) {
+            Log.d("MySmartHome", "onCreate: default night mode unspecified ?")
+            context.dataStore.edit { it[PreferencesKeys.NIGHT_MODE_KEY] = false }
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+        var nightModeOn = false
+        CoroutineScope(Dispatchers.IO).launch {
+            context.dataStore.data.catch { exception ->
+                if (exception is IOException)
+                    emit(emptyPreferences())
+                else {
+                    Log.e("UserPreferences", "${exception.message}")
+                    //throw exception
+                }
+            }.collect {
+                nightModeOn = it[PreferencesKeys.NIGHT_MODE_KEY] ?: false
+            }
+            withContext(Dispatchers.Main) {
+                if (!nightModeOn)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }
+        }
     }
 
     private object PreferencesKeys {

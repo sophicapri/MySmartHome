@@ -32,15 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:tint="@color/icon_color"
             android:src="@drawable/ic_id_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
-
+            app:layout_constraintVertical_bias="0.1"
+            app:tint="@color/icon_color" />
 
         <LinearLayout
             android:id="@+id/name_container"
@@ -48,10 +47,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_text"
             android:layout_marginEnd="@dimen/margin_text"
-            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:contextClickable="true"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/ic_id_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ic_id_card"
@@ -79,19 +78,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            app:tint="@color/icon_color"
             android:src="@drawable/ic_calendar"
             app:layout_constraintStart_toStartOf="@+id/ic_id_card"
-            app:layout_constraintTop_toBottomOf="@+id/name_container" />
+            app:layout_constraintTop_toBottomOf="@+id/name_container"
+            app:tint="@color/icon_color" />
 
         <LinearLayout
             android:id="@+id/birthdate_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_text"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@+id/ic_calendar"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="@dimen/margin_text"
             app:layout_constraintStart_toStartOf="@+id/name_container"
             app:layout_constraintTop_toTopOf="@+id/ic_calendar"
             app:layout_constraintVertical_bias="0.7">
@@ -116,18 +118,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            app:tint="@color/icon_color"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:src="@drawable/ic_home"
             app:layout_constraintStart_toStartOf="@+id/ic_calendar"
-            app:layout_constraintTop_toBottomOf="@+id/birthdate_container" />
+            app:layout_constraintTop_toBottomOf="@+id/birthdate_container"
+            app:tint="@color/icon_color" />
 
         <LinearLayout
             android:id="@+id/address_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="@dimen/margin_text"
             android:orientation="vertical"
-            android:layout_marginTop="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/ic_address"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/birthdate_container"

@@ -36,6 +36,12 @@ class SplashScreenVM @Inject constructor(
         }
     }
 
+    fun setAppTheme(){
+        viewModelScope.launch {
+            userPreferences.setAppTheme()
+        }
+    }
+
     fun loadDataFromRemote() {
         compositeDisposable.add(
             remoteDataRepository.getDataFromRemote()

@@ -3,10 +3,14 @@ package com.example.mysmarthome.ui.splashscreen
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 //OPTIONAL TODO : Use SplashScreen API instead of a custom one
 @SuppressLint("CustomSplashScreen")
@@ -16,23 +20,24 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        viewModel.setAppTheme()
+        Log.d("MySmartHome", "onCreate: ")
         /*deleteDatabase(DATABASE_NAME)
         viewModel.changeConnectionValue(true)*/
 
-        viewModel.userFirstConnection.observe(this){ firstConnection ->
+        viewModel.userFirstConnection.observe(this) { firstConnection ->
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.loadDataFromRemote()
-                viewModel.dataRetrieved.observe(this){ dataRetrieved ->
-                    if(dataRetrieved)
+                viewModel.dataRetrieved.observe(this) { dataRetrieved ->
+                    if (dataRetrieved)
                         startMainActivity()
                 }
             } else startMainActivity()
         }
     }
 
-    private fun startMainActivity(){
+    private fun startMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
         startActivity(intent)

@@ -13,6 +13,9 @@
     <integer name="min_value_heater">7</integer>
 
     <string name="save">Save</string>
+    <string name="first_name_title">First name</string>
+    <string name="last_name_title">Last name</string>
+    <string name="edit_name_title">Edit name</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

@@ -25,24 +25,50 @@ class EditNameAlertDialog(
     private fun buildDialog(): AlertDialog {
         val alertBuilder = Builder(context, R.style.Theme_MaterialComponents_Dialog_Alert)
         val inflater = layoutInflater
-        //val view = inflater.inflate(R.layout.title_filter_dialog, null)
+        val view = inflater.inflate(R.layout.title_edit_name_dialog, null)
         _binding = EditNameAlertDialogBinding.inflate(inflater)
-        //bindFilterViews()
-        val dialogBuilder = alertBuilder//.setCustomTitle(view)
+        bindViews()
+        val dialogBuilder = alertBuilder.setCustomTitle(view)
             .setView(binding.root)
             .setPositiveButton(context.getString(R.string.save), null)
-            .setNegativeButton(context.getString(android.R.string.cancel)) { dialog, _ -> dialog.dismiss() }
+            .setNegativeButton(context.getString(android.R.string.cancel), null)
             .setOnDismissListener(this)
         val dialog = dialogBuilder.create()
         dialog.setOnShowListener(this)
         return dialog
     }
 
-    fun updateName() {
-        //onNameEditedListener.onNameEdited()
+    private fun bindViews() {
+        binding.firstNameInput.setText(user.firstName)
+        binding.lastNameInput.setText(user.lastName)
     }
 
+
     override fun onShow(p0: DialogInterface?) {
+        val positiveButton = dialog.getButton(BUTTON_POSITIVE)
+        positiveButton.setOnClickListener { updateName() }
+        val negativeButton = dialog.getButton(BUTTON_NEGATIVE)
+        negativeButton.setOnClickListener { dialog.dismiss() }
+    }
+
+    private fun updateName() {
+        binding.apply {
+            var validInput = true
+            if (firstNameInput.text.toString().isEmpty()) {
+                firstNameInput.error = "This field cannot be empty"
+                validInput = false
+            }
+            if (lastNameInput.text.toString().isEmpty()) {
+                lastNameInput.error = "This field cannot be empty"
+                validInput = false
+            }
+            if (validInput){
+                user.firstName = firstNameInput.text.toString()
+                user.lastName = lastNameInput.text.toString()
+                onNameEditedListener.onNameEdited(user)
+                dialog.dismiss()
+            }
+        }
     }
 
     override fun onDismiss(p0: DialogInterface?) {
