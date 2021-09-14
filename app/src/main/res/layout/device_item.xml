@@ -9,8 +9,8 @@
         android:id="@+id/device_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="20dp"
+        android:layout_margin="@dimen/margin_icon_device_list"
+        app:cardCornerRadius="@dimen/corner_radius_cardview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/margin_subtext_device_list"
                 app:layout_constraintStart_toStartOf="@+id/deviceText"
                 app:layout_constraintTop_toBottomOf="@+id/deviceText">
             <TextView
@@ -66,7 +66,7 @@
 
                 <TextView
                     android:id="@+id/device_mode_value"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="OFF"/>
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="@dimen/margin_subtext_device_list"
                 app:layout_constraintStart_toStartOf="@+id/deviceText"
                 app:layout_constraintTop_toBottomOf="@+id/deviceText">
                 <TextView
@@ -88,16 +88,16 @@
 
                 <TextView
                     android:id="@+id/position_value"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="70"/>
 
                 <TextView
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="%"/>
+                    android:text="@string/percentage_symbol"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
