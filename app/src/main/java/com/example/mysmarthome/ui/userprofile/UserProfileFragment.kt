@@ -35,16 +35,12 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         savedInstanceState: Bundle?
     ): View {
         _binding = UserProfileFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onStart() {
-        super.onStart()
         viewModel.user.observe(viewLifecycleOwner) { userDb ->
             user = userDb
             bindData()
             addListeners()
         }
+        return binding.root
     }
 
     private fun bindData() {
@@ -64,10 +60,10 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             )
         }
 
-        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) binding.switchDarkMode.isChecked =
-            false
-        else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) binding.switchDarkMode.isChecked =
-            true
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO)
+            binding.switchDarkMode.isChecked = false
+        else if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+            binding.switchDarkMode.isChecked = true
     }
 
     private fun addListeners() {

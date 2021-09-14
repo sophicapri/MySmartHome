@@ -13,11 +13,11 @@ import javax.inject.Inject
 @HiltViewModel
 class LightDetailVM @Inject constructor(private var deviceRepository: DeviceRepository) : ViewModel() {
 
-   // fun getLightById(id: Int) = deviceRepository.getDeviceById(id).map { it as Light }
-
     fun updateLight(light: Light){
         viewModelScope.launch {
             deviceRepository.updateDevice(light)
         }
     }
+
+    // fun getLightById(id: Int) = deviceRepository.getDeviceById(id).map { it as Light }
 }
