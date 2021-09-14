@@ -28,6 +28,7 @@
     <string name="device_mode_title">Mode</string>
     <string name="temperature_title">"Temperature: "</string>
     <string name="degree_symbol">°</string>
+    <string name="device_icon">Device Icon</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>
