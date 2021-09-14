@@ -62,10 +62,10 @@ class LightDetailFragment : Fragment() {
                  viewModel.updateLight(light)
              }
          } )
-         sliderIntensity.addOnChangeListener { slider, value, fromUser ->
+         sliderIntensity.addOnChangeListener { _, value, _ ->
              intensityValue.text = value.toInt().toString()
          }
-         switchDeviceMode.setOnCheckedChangeListener { compoundButton, b ->
+         switchDeviceMode.setOnCheckedChangeListener { _, _ ->
              if(switchDeviceMode.isChecked)
                  light.mode = DeviceMode.ON
              else
