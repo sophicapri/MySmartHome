@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="@string/position_roller_shutter"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/slider"
+        app:layout_constraintBottom_toTopOf="@+id/position_slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -57,7 +57,7 @@
 
 
     <TextView
-        android:id="@+id/position_percentage"
+        android:id="@+id/position_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -74,13 +74,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/position_percentage"
+        app:layout_constraintStart_toEndOf="@+id/position_value"
         app:layout_constraintTop_toTopOf="@+id/textView"
         app:layout_constraintVertical_bias="0.1"
-        tools:text="%" />
+        android:text="@string/percentage_symbol" />
 
     <com.google.android.material.slider.Slider
-        android:id="@+id/slider"
+        android:id="@+id/position_slider"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_horizontal_slider"

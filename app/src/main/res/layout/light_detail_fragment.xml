@@ -41,19 +41,79 @@
             tools:text="Salon"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/device_mode_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/device_mode_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/slider_intensity"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/slider_intensity"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switch_device_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/device_mode_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/device_mode_title"
+        tools:text="OFF" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intensity_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/slider_intensity"
+        app:layout_constraintTop_toBottomOf="@+id/device_mode_title"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <TextView
+        android:id="@+id/intensity_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.1"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/intensity_value"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.1"
+        android:text="@string/percentage_symbol" />
+
     <com.google.android.material.slider.Slider
+        android:id="@+id/slider_intensity"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:valueFrom="0"
-        android:valueTo="100"
-        tools:value="10"
-        android:stepSize="1"
-        app:tickVisible="false"
         android:layout_marginStart="@dimen/margin_horizontal_slider"
         android:layout_marginEnd="@dimen/margin_horizontal_slider"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="100"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:tickVisible="false"
+        tools:value="10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
