@@ -2,7 +2,6 @@ package com.example.mysmarthome.repository
 
 import androidx.lifecycle.LiveData
 import androidx.sqlite.db.SupportSQLiteQuery
-import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.Heater
 import com.example.mysmarthome.model.Light

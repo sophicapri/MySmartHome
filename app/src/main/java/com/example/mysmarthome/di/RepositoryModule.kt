@@ -1,9 +1,6 @@
 package com.example.mysmarthome.di
 
 import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
 import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
@@ -17,7 +14,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import javax.inject.Singleton
 
 @Module

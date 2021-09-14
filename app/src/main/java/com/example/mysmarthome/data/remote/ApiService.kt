@@ -9,6 +9,6 @@ interface ApiService {
     fun queryData(): Flowable<ApiResponse>
 
     companion object{
-        val API_URL = "http://storage42.com"
+        const val API_URL = "http://storage42.com"
     }
 }

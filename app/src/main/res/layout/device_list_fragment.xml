@@ -23,6 +23,7 @@
         android:src="@drawable/ic_profile"
         android:layout_marginEnd="@dimen/margin_profile_icon"
         app:tint="@color/icon_color"
+        android:contentDescription="@string/profile_icon"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
@@ -56,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_cancel_filter"
+                android:contentDescription="@string/cancel_filter_button"
                 android:src="@drawable/ic_cancel_outlined"
                 android:visibility="gone"
                 app:tint="@color/icon_color"

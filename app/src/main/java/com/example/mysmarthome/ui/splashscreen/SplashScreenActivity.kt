@@ -3,20 +3,12 @@ package com.example.mysmarthome.ui.splashscreen
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase.Companion.DATABASE_NAME
-import com.example.mysmarthome.helper.Resource
 import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-//OPTIONAL TODO : Use SplashScreen API instead of a custom one
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
@@ -24,8 +16,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            deleteDatabase(DATABASE_NAME)
-            viewModel.changeConnectionValue(true)
+        /*    deleteDatabase(DATABASE_NAME)
+            viewModel.changeConnectionValue(true)*/
 
         viewModel.currentTheme.observe(this){ nightMode ->
             when {
@@ -35,7 +27,7 @@ class SplashScreenActivity : AppCompatActivity() {
             }
         }
 
-       /* viewModel.getUserFirstConnection().observe(this) { firstConnection ->
+        viewModel.userFirstConnection.observe(this) { firstConnection ->
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.loadDataFromRemote()
@@ -44,23 +36,6 @@ class SplashScreenActivity : AppCompatActivity() {
                         startMainActivity()
                 }
             } else startMainActivity()
-        }*/
-
-
-        viewModel.getUserFirstConnection().observe(this) { firstConnection ->
-            Log.d("SplashScreen", "onCreate: value =  ")
-            when(firstConnection){
-                is Resource.Success -> {
-                    if (firstConnection.data == true) {
-                    viewModel.changeConnectionValue(false)
-                    viewModel.loadDataFromRemote()
-                    viewModel.dataRetrieved.observe(this) { dataRetrieved ->
-                        if (dataRetrieved)
-                            startMainActivity()
-                    }
-                } else startMainActivity()}
-                else -> Log.d("SplashScreen", "onCreate: error = ")
-            }
         }
     }
 

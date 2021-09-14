@@ -1,7 +1,6 @@
 package com.example.mysmarthome.ui.device.heater
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import com.example.mysmarthome.model.DeviceMode
 import com.example.mysmarthome.model.Heater
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.math.absoluteValue
 
 @AndroidEntryPoint
 class HeaterDetailFragment : Fragment() {
