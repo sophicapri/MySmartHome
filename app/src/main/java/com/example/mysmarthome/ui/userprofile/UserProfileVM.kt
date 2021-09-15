@@ -1,7 +1,7 @@
 package com.example.mysmarthome.ui.userprofile
 
 import androidx.lifecycle.*
-import com.example.mysmarthome.data.local.datastore.UserPreferences
+import com.example.mysmarthome.datastore.UserPreferences
 import com.example.mysmarthome.model.User
 import com.example.mysmarthome.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

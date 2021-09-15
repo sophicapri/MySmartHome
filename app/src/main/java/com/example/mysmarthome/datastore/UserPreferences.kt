@@ -1,4 +1,4 @@
-package com.example.mysmarthome.data.local.datastore
+package com.example.mysmarthome.datastore
 
 import android.content.Context
 import android.util.Log

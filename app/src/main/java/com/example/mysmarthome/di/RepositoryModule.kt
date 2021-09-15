@@ -2,7 +2,7 @@ package com.example.mysmarthome.di
 
 import android.content.Context
 import com.example.mysmarthome.base.BaseSchedulerProvider
-import com.example.mysmarthome.data.local.datastore.UserPreferences
+import com.example.mysmarthome.datastore.UserPreferences
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
 import com.example.mysmarthome.data.remote.ApiService
@@ -17,7 +17,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainCoroutineDispatcher
 import javax.inject.Singleton
 
 @Module

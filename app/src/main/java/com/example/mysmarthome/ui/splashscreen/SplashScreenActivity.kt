@@ -1,6 +1,7 @@
 package com.example.mysmarthome.ui.splashscreen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.mysmarthome.ui.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.File
 
 @SuppressLint("CustomSplashScreen")
 @AndroidEntryPoint
@@ -19,10 +21,13 @@ class SplashScreenActivity : AppCompatActivity() {
         /*  deleteDatabase(DATABASE_NAME)
             viewModel.changeConnectionValue(true)*/
 
+       // removeDataStore()
+
+
         viewModel.currentTheme.observe(this){ nightMode ->
-            when {
-                nightMode == null -> viewModel.setAppTheme()
-                nightMode -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            when (nightMode) {
+                null -> viewModel.setAppTheme()
+                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
@@ -37,6 +42,10 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
             } else startMainActivity()
         }
+    }
+
+    private fun removeDataStore() {
+        File(applicationContext.filesDir, "datastore").deleteRecursively()
     }
 
     private fun startMainActivity() {

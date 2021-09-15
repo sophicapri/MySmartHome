@@ -1,7 +1,7 @@
 package com.example.mysmarthome.ui.splashscreen
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.mysmarthome.data.local.datastore.UserPreferences
+import com.example.mysmarthome.datastore.UserPreferences
 import com.example.mysmarthome.repository.DeviceRepository
 import com.example.mysmarthome.repository.RemoteDataRepository
 import com.example.mysmarthome.repository.UserRepository
@@ -15,31 +15,42 @@ import org.junit.Before
 import org.junit.Test
 
 
-class SplashScreenVMTest  {
+class SplashScreenVMTest {
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
     @MockK
     lateinit var userPrefs: UserPreferences
+
     @MockK
     lateinit var userRepo: UserRepository
+
     @MockK
     lateinit var deviceRepo: DeviceRepository
+
     @MockK
     lateinit var remoteDataRepo: RemoteDataRepository
     private val schedulerProvider = TestSchedulerProvider()
     private val dispatcher = Dispatchers.Unconfined
+    private lateinit var viewModel: SplashScreenVM
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        val viewModel :SplashScreenVM = SplashScreenVM(userPrefs,
-            userRepo, deviceRepo, remoteDataRepo, schedulerProvider, dispatcher)
+        viewModel = SplashScreenVM(
+            userPrefs,
+            userRepo,
+            deviceRepo,
+            remoteDataRepo,
+            schedulerProvider,
+            dispatcher
+        )
     }
 
     @After
-    fun tearDown() {}
+    fun tearDown() {
+    }
 
     @Test
     fun testGetUserFirstConnection() {
@@ -47,17 +58,22 @@ class SplashScreenVMTest  {
     }
 
     @Test
-    fun testGetCurrentTheme() {}
+    fun testGetCurrentTheme() {
+    }
 
     @Test
-    fun testGetDataRetrieved() {}
+    fun testGetDataRetrieved() {
+    }
 
     @Test
-    fun testChangeConnectionValue() {}
+    fun testChangeConnectionValue() {
+    }
 
     @Test
-    fun testSetAppTheme() {}
+    fun testSetAppTheme() {
+    }
 
     @Test
-    fun testLoadDataFromRemote() {}
+    fun testLoadDataFromRemote() {
+    }
 }
