@@ -51,6 +51,6 @@ class DeviceListVM @Inject constructor(
     }
 
     companion object {
-        private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
+       private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
     }
 }

@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'jacoco'
 }
 
 android {
@@ -25,6 +26,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug{
+            testCoverageEnabled true
+        }
     }
     hilt {
         enableExperimentalClasspathAggregation = true
@@ -36,6 +41,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    tasks.withType(Test) {
+        jacoco.includeNoLocationClasses = true
     }
 
     android.buildFeatures.viewBinding = true

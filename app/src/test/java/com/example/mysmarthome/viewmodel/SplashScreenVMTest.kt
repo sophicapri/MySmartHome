@@ -18,17 +18,9 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Rule
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
-import java.io.IOException
-import org.mockito.Mockito.`when`
-
-import android.text.SpannedString
-
-import android.text.Spanned
-import org.mockito.Mockito
-import java.lang.Exception
 
 
 @ExperimentalCoroutinesApi
@@ -73,21 +65,6 @@ class SplashScreenVMTest {
         }
     }
 
-  /*  @Test
-    fun testGetCurrentTheme() {
-    }*/
-
-
-   /* @Test
-    fun testChangeConnectionValue_Successful() {
-        coEvery { userPrefs.changeConnectionValue(true) } returns
-
-        viewModel.changeConnectionValue(true).observeForever {
-            assert(viewModel.userFirstConnection.value != null)
-            assert(viewModel.userFirstConnection.value == false)
-        }
-    }*/
-
     @Test
     fun testLoadDataFromRemote_Success() {
         coEvery { remoteDataRepo.getDataFromRemote() } returns Flowable.just(
@@ -99,4 +76,16 @@ class SplashScreenVMTest {
             assert(viewModel.loadDataFromRemote().value == true)
         }
     }
+
+    // TODO :
+    @Test
+    fun testGetCurrentTheme() {
+    }
+
+
+    @Test
+    fun testChangeConnectionValue_Successful() {
+
+    }
+
 }
