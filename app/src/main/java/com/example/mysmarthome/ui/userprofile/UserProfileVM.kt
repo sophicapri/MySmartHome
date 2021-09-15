@@ -28,7 +28,7 @@ class UserProfileVM @Inject constructor(
         }
     }
 
-    fun updateUserPrefs(){
+    fun updateUserPrefNightMode(){
         uiScope.launch {
             userPreferences.toggleNightMode()
         }

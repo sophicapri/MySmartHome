@@ -26,9 +26,6 @@ class SplashScreenVM @Inject constructor(
 ) : ViewModel() {
     val userFirstConnection = userPreferences.firstConnection.asLiveData()
     val currentTheme = userPreferences.currentTheme.asLiveData()
-    val dataRetrieved: LiveData<Boolean>
-        get() = _dataRetrieved
-    private var _dataRetrieved = MutableLiveData<Boolean>()
     private val compositeDisposable = CompositeDisposable()
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
@@ -45,19 +42,22 @@ class SplashScreenVM @Inject constructor(
         }
     }
 
-    fun loadDataFromRemote() {
+    fun loadDataFromRemote() : LiveData<Boolean> {
+        val dataIsRetrieved = MutableLiveData<Boolean>()
         compositeDisposable.add(
             remoteDataRepository.getDataFromRemote()
                 .subscribeOn(scheduler.io())
                 .observeOn(scheduler.ui())
                 .subscribe({ response ->
-                    _dataRetrieved.postValue(true)
+                    dataIsRetrieved.postValue(true)
                     insertUserIntoLocalDb(response.user)
                     insertDevicesToLocalDb(response.devices)
                 }, {
+                    dataIsRetrieved.postValue(false)
                     Log.e(TAG, "getDataFromRemote: Error = ${it.stackTraceToString()}")
                 })
         )
+        return dataIsRetrieved
     }
 
     private fun insertUserIntoLocalDb(user: User) {

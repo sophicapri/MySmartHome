@@ -70,7 +70,7 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
             toolbar.setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
 
             switchDarkMode.setOnCheckedChangeListener { _, _ ->
-                viewModel.updateUserPrefs()
+                viewModel.updateUserPrefNightMode()
 
                 if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)

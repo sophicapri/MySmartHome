@@ -2,7 +2,6 @@ package com.example.mysmarthome.ui.devicelist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
@@ -20,7 +19,7 @@ class DeviceListVM @Inject constructor(
 ) : ViewModel() {
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
-    val devices = deviceRepository.getDeviceListFromLocal()
+    val devices = deviceRepository.getDeviceList()
 
 
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {

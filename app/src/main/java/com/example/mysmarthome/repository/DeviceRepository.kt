@@ -20,7 +20,7 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         deviceDao.insertRollerShutters(rollerShutter.map { it.toDeviceEntity() })
     }
 
-    fun getDeviceListFromLocal(): LiveData<List<Device>> {
+    fun getDeviceList(): LiveData<List<Device>> {
         return Transformations.map(deviceDao.getDeviceList()) { list ->
             list.map { it.toDomainObj() }
         }

@@ -11,7 +11,6 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.After
 import org.junit.Before
-import org.junit.runner.manipulation.Ordering
 import java.io.File
 
 @ExperimentalCoroutinesApi
