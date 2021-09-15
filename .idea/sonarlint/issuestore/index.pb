@@ -126,8 +126,6 @@ Rapp/src/main/java/com/example/mysmarthome/ui/device/heater/HeaterDetailFragment
 Papp/src/main/java/com/example/mysmarthome/ui/device/light/LightDetailFragment.kt,a/7/a716d733805bd4594dba502ffcfec3d17b67ce50
 ê
 `app/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutterDetailFragment.kt,c/c/ccb578df813f312ab1db318cb9689f43408d6206
-?
-settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 l
 <app/src/main/java/com/example/mysmarthome/ui/MainActivity.kt,2/e/2ea305228cfbfb803a27c8016dd22bc802fc567b
 i
@@ -192,10 +190,6 @@ v
 Fapp/src/main/java/com/example/mysmarthome/repository/UserRepository.kt,9/6/96f1228d8aa6c90b15c8f7a3576853c09b218296
 y
 Iapp/src/test/java/com/example/mysmarthome/viewmodel/SplashScreenVMTest.kt,a/f/af30b2151cb919895329980658f293407eba4f97
-A
-gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
-X
-(gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 z
 Japp/src/test/java/com/example/mysmarthome/repository/UserRepositoryTest.kt,1/6/168a90088c5470d5898395b9bd45f93776680eb3
 ~
@@ -206,7 +200,5 @@ w
 Gapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListVM.kt,d/9/d935bb8536ca94d6cf71995e90101c36d4a7a367
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
