@@ -4,17 +4,17 @@ import androidx.lifecycle.LiveData
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
 import com.example.mysmarthome.model.User
 
-class UserRepository(private var userDao: UserDao): IUserRepository {
+class UserRepository(private var userDao: UserDao) {
 
-    override suspend fun insertUser(user: User) {
+    suspend fun insertUser(user: User) {
         userDao.insertUser(user)
     }
 
-    override fun getUser(): LiveData<User> {
+    fun getUser(): LiveData<User> {
        return userDao.getUser()
     }
 
-    override suspend fun updateUser(user: User) {
+    suspend fun updateUser(user: User) {
         userDao.updateUser(user)
     }
 }

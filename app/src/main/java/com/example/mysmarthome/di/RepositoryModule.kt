@@ -1,6 +1,7 @@
 package com.example.mysmarthome.di
 
 import android.content.Context
+import com.example.mysmarthome.base.BaseSchedulerProvider
 import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
@@ -14,6 +15,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainCoroutineDispatcher
 import javax.inject.Singleton
 
 @Module
@@ -38,5 +42,9 @@ object RepositoryModule {
     fun provideUserPreferences(@ApplicationContext context: Context) = UserPreferences(context)
 
     @Provides
-    fun provideScheduler() = SchedulerProvider()
+    fun provideScheduler() : BaseSchedulerProvider = SchedulerProvider()
+
+    @Singleton
+    @Provides
+    fun provideMainCoroutineDispatcher() : CoroutineDispatcher = Dispatchers.Main
 }

@@ -3,6 +3,7 @@ package com.example.mysmarthome.ui.splashscreen
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.mysmarthome.base.BaseSchedulerProvider
 import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.helper.SchedulerProvider
 import com.example.mysmarthome.model.*
@@ -11,7 +12,7 @@ import com.example.mysmarthome.repository.RemoteDataRepository
 import com.example.mysmarthome.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @SuppressLint("CustomSplashScreen")
@@ -21,23 +22,26 @@ class SplashScreenVM @Inject constructor(
     private var userRepository: UserRepository,
     private var deviceRepository: DeviceRepository,
     private var remoteDataRepository: RemoteDataRepository,
-    private var scheduler : SchedulerProvider
+    private var scheduler : BaseSchedulerProvider,
+    mainDispatcher : CoroutineDispatcher
 ) : ViewModel() {
     val userFirstConnection = userPreferences.firstConnection.asLiveData()
+    val currentTheme = userPreferences.currentTheme.asLiveData()
     val dataRetrieved: LiveData<Boolean>
         get() = _dataRetrieved
     private var _dataRetrieved = MutableLiveData<Boolean>()
     private val compositeDisposable = CompositeDisposable()
-    val currentTheme = userPreferences.currentTheme.asLiveData()
+    private val job = SupervisorJob()
+    private val uiScope = CoroutineScope(mainDispatcher + job)
 
     fun changeConnectionValue(value: Boolean) {
-        viewModelScope.launch {
+        uiScope.launch {
             userPreferences.changeConnectionValue(value)
         }
     }
 
     fun setAppTheme(){
-        viewModelScope.launch {
+        uiScope.launch {
             userPreferences.setAppTheme()
         }
     }
@@ -52,13 +56,13 @@ class SplashScreenVM @Inject constructor(
                     insertUserIntoLocalDb(response.user)
                     insertDevicesToLocalDb(response.devices)
                 }, {
-                    Log.e("MainViewModel", "getDataFromRemote: Error = ${it.stackTraceToString()}")
+                    Log.e(TAG, "getDataFromRemote: Error = ${it.stackTraceToString()}")
                 })
         )
     }
 
     private fun insertUserIntoLocalDb(user: User) {
-        viewModelScope.launch {
+        uiScope.launch {
             userRepository.insertUser(user)
         }
     }
@@ -73,19 +77,19 @@ class SplashScreenVM @Inject constructor(
     }
 
     private fun insertLights(lights: List<Light>) {
-        viewModelScope.launch {
+        uiScope.launch {
             deviceRepository.insertLights(lights)
         }
     }
 
     private fun insertHeaters(heaters: List<Heater>) {
-        viewModelScope.launch {
+        uiScope.launch {
             deviceRepository.insertHeaters(heaters)
         }
     }
 
     private fun insertRollerShutters(rollerShutters: List<RollerShutter>) {
-        viewModelScope.launch {
+        uiScope.launch {
             deviceRepository.insertRollerShutters(rollerShutters)
         }
     }
@@ -93,6 +97,10 @@ class SplashScreenVM @Inject constructor(
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
+        job.cancel()
     }
 
+    companion object{
+        private const val TAG = "SplashScreenVM"
+    }
 }

@@ -6,39 +6,33 @@ import androidx.sqlite.db.SupportSQLiteQuery
 import com.example.mysmarthome.data.local.roomdatabase.*
 import com.example.mysmarthome.model.*
 
-class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
+class DeviceRepository(val deviceDao: DeviceDao) {
 
-    override suspend fun insertLights(lights: List<Light>) {
+    suspend fun insertLights(lights: List<Light>) {
         deviceDao.insertLights(lights.map { it.toDeviceEntity() })
     }
 
-    override suspend fun insertHeaters(heater: List<Heater>) {
+    suspend fun insertHeaters(heater: List<Heater>) {
         deviceDao.insertHeaters(heater.map { it.toDeviceEntity() })
     }
 
-    override suspend fun insertRollerShutters(rollerShutter: List<RollerShutter>) {
+    suspend fun insertRollerShutters(rollerShutter: List<RollerShutter>) {
         deviceDao.insertRollerShutters(rollerShutter.map { it.toDeviceEntity() })
     }
 
-    override fun getDeviceListFromLocal(): LiveData<List<Device>> {
+    fun getDeviceListFromLocal(): LiveData<List<Device>> {
         return Transformations.map(deviceDao.getDeviceList()) { list ->
             list.map { it.toDomainObj() }
         }
     }
 
-    override fun getFilteredList(query: SupportSQLiteQuery): LiveData<List<Device>> {
+    fun getFilteredList(query: SupportSQLiteQuery): LiveData<List<Device>> {
         return Transformations.map(deviceDao.getFilteredList(query)) { list ->
             list.map { it.toDomainObj() }
         }
     }
 
-  /*  override fun getDeviceById(id: Int): LiveData<Device> {
-        return Transformations.map(deviceDao.getDeviceById(id)) { device ->
-            device.toDomainObj()
-        }
-    }*/
-
-    override suspend fun updateDevice(device: Device) {
+    suspend fun updateDevice(device: Device) {
         when (device) {
             is Light -> deviceDao.updateDevice(device.toDeviceEntity())
             is Heater -> deviceDao.updateDevice(device.toDeviceEntity())
@@ -46,7 +40,7 @@ class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
         }
     }
 
-    override suspend fun deleteDevices(devices: List<Device>) {
+    suspend fun deleteDevices(devices: List<Device>) {
         val deviceEntityList = devices.map { device ->
             when (device) {
                 is Light -> device.toDeviceEntity()
@@ -56,4 +50,10 @@ class DeviceRepository(val deviceDao: DeviceDao) : IDeviceRepository {
         }
         deviceDao.deleteDevices(deviceEntityList)
     }
+
+    /*  fun getDeviceById(id: Int): LiveData<Device> {
+      return Transformations.map(deviceDao.getDeviceById(id)) { device ->
+          device.toDomainObj()
+      }
+  }*/
 }

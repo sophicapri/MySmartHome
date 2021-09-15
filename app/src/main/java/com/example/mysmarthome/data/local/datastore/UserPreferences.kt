@@ -16,22 +16,22 @@ import java.io.IOException
 class UserPreferences(var context: Context) {
     private val Context.dataStore by preferencesDataStore(name = USER_PREFERENCES_NAME)
 
+    /* not the ideal way to handle exceptions */
     val firstConnection: Flow<Boolean> = context.dataStore.data.catch { exception ->
         if (exception is IOException)
             emit(emptyPreferences())
-        else {
-            Log.e("UserPreferences", "${exception.message}")
-            //throw exception
-        }
+        else
+            Log.e(TAG, "${exception.message}")
+        // throw exception
     }.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: true }
+
 
     val currentTheme: Flow<Boolean?> = context.dataStore.data.catch { exception ->
         if (exception is IOException)
             emit(emptyPreferences())
-        else {
-            Log.e("UserPreferences", "${exception.message}")
-            //throw exception
-        }
+        else
+            Log.e(TAG, "${exception.message}")
+        // throw exception
     }.map { it: Preferences -> it[PreferencesKeys.NIGHT_MODE_KEY] }
 
     suspend fun changeConnectionValue(value: Boolean) {
@@ -60,5 +60,6 @@ class UserPreferences(var context: Context) {
 
     companion object {
         private const val USER_PREFERENCES_NAME = "user_preferences"
+        private const val TAG = "UserPreferences"
     }
 }

@@ -21,7 +21,7 @@ class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepos
     }
 
     private fun makeQuery(productTypes: List<ProductType>): String {
-        var stringQuery = "SELECT * FROM deviceentity WHERE "
+        var stringQuery = BASE_QUERY
         var emptyQuery = true
 
         productTypes.forEach {
@@ -36,5 +36,9 @@ class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepos
 
     fun deleteDevices(device: List<Device>) {
         viewModelScope.launch {  deviceRepository.deleteDevices(device) }
+    }
+
+    companion object{
+        private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
     }
 }
