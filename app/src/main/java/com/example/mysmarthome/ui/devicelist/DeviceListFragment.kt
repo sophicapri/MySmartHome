@@ -1,7 +1,7 @@
 package com.example.mysmarthome.ui.devicelist
 
-import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +16,9 @@ import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceListFragmentBinding
 import com.example.mysmarthome.model.*
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.BaseTransientBottomBar.BaseCallback
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,13 +70,23 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
             val position = viewHolder.adapterPosition
             val device: Device = adapter.currentList[position]
-            val builder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
-            builder.setMessage(getString(R.string.confirm_deletion))
-            builder.setPositiveButton(getString(R.string.delete)) { _, _ ->
-                viewModel.deleteDevices(listOf(device))
-            }.setNegativeButton(requireContext().getString(android.R.string.cancel)) { _, _ ->
-                adapter.notifyItemChanged(position)
-            }.show()
+            viewModel.deleteDevices(listOf(device))
+            val snackBar =
+                Snackbar.make(binding.root, getString(R.string.deleting_device), Snackbar.LENGTH_LONG)
+                    .addCallback(object : BaseCallback<Snackbar>() {
+                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                            super.onDismissed(transientBottomBar, event)
+                            if (event == DISMISS_EVENT_TIMEOUT) {
+                                viewModel.deleteDevices(listOf(device))
+                            }
+                        }
+                    }).setAction(getString(R.string.undo_delete)) {
+                        viewModel.insertDevice(device).observe(viewLifecycleOwner) { rowId ->
+                            if (rowId != 1L)
+                                adapter.notifyItemChanged(position)
+                        }
+                    }
+            snackBar.show()
         }
     }
 
@@ -96,7 +109,11 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
             }
         }
         binding.cancelFilterBtn.setOnClickListener { cancelFilter() }
-        binding.profileBtn.setOnClickListener { findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToUserProfileFragment()) }
+        binding.profileBtn.setOnClickListener {
+            findNavController().navigate(
+                DeviceListFragmentDirections.actionDeviceListFragmentToUserProfileFragment()
+            )
+        }
     }
 
     private fun displayFilteredList() {
@@ -131,10 +148,22 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
     }
 
     override fun onDeviceClick(device: Device) {
-        when(device){
-            is Light -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToLightDetailFragment(device))
-            is Heater -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToHeaterDetailFragment(device))
-            is RollerShutter -> findNavController().navigate(DeviceListFragmentDirections.actionDeviceListFragmentToRollerShutterDetailFragment(device))
+        when (device) {
+            is Light -> findNavController().navigate(
+                DeviceListFragmentDirections.actionDeviceListFragmentToLightDetailFragment(
+                    device
+                )
+            )
+            is Heater -> findNavController().navigate(
+                DeviceListFragmentDirections.actionDeviceListFragmentToHeaterDetailFragment(
+                    device
+                )
+            )
+            is RollerShutter -> findNavController().navigate(
+                DeviceListFragmentDirections.actionDeviceListFragmentToRollerShutterDetailFragment(
+                    device
+                )
+            )
         }
     }
 

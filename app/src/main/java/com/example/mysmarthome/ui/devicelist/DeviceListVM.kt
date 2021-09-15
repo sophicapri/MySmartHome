@@ -1,6 +1,7 @@
 package com.example.mysmarthome.ui.devicelist
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.mysmarthome.model.Device
@@ -50,7 +51,15 @@ class DeviceListVM @Inject constructor(
         job.cancel()
     }
 
+    fun insertDevice(device: Device): LiveData<Long> {
+        val rowId = MutableLiveData<Long>()
+        uiScope.launch {
+            rowId.value = deviceRepository.insertDevice(device)
+        }
+        return rowId
+    }
+
     companion object {
-       private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
+        private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
     }
 }

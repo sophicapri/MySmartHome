@@ -51,6 +51,14 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         deviceDao.deleteDevices(deviceEntityList)
     }
 
+    suspend fun insertDevice(device: Device): Long {
+        return when (device){
+            is Light -> deviceDao.insertDevice(device.toDeviceEntity())
+            is Heater -> deviceDao.insertDevice(device.toDeviceEntity())
+            is RollerShutter -> deviceDao.insertDevice(device.toDeviceEntity())
+        }
+    }
+
     /*  fun getDeviceById(id: Int): LiveData<Device> {
       return Transformations.map(deviceDao.getDeviceById(id)) { device ->
           device.toDomainObj()

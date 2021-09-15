@@ -154,8 +154,6 @@ Happ/src/test/java/com/example/mysmarthome/viewmodel/LightDetailVMTest.kt,3/6/3
 Papp/src/test/java/com/example/mysmarthome/viewmodel/RollerShutterDetailVMTest.kt,1/d/1dc73da48329aaa0080073012744c352ccb65d87
 Å
 Qapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenActivity.kt,6/f/6f69217cf3c6217be6df72f71599041b8734827c
-{
-Kapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenVM.kt,1/4/149f15152e3c58ac3b965fc4f92851770aff8c15
 v
 Fapp/src/main/java/com/example/mysmarthome/datastore/UserPreferences.kt,b/4/b4a7e7377bfeaf1fe83abfcfa720e7d07f2de336
 

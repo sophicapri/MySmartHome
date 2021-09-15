@@ -41,4 +41,6 @@
     <string name="light_title">Lampe</string>
     <string name="roller_shutter_title">Volets roulants</string>
     <string name="heater_title">Radiateur</string>
+    <string name="undo_delete">Annuler</string>
+    <string name="deleting_device">Suppression…</string>
 </resources>
