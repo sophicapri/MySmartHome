@@ -15,7 +15,7 @@ android:
     - sys-img-armeabi-v7a-android-$EMULATOR_API_LEVEL
 
 before_install:
-  - yes | sdkmanager "platforms;android-31"
+  - yes | sdkmanager "platform-tools" "platforms;android-31"
 
 before_script:
   - chmod +x gradlew
