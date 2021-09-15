@@ -14,8 +14,6 @@ G
 info/exclude,8/6/86949161a7fbd768894d03c65d4333b90502afa5
 O
 hooks/fsmonitor-watchman.sample,d/5/d55fe97b41472d2713e3b0a019633ce5c797bc08
-A
-gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 7
 gradlew,5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ;
@@ -40,5 +38,3 @@ O
 hooks/prepare-commit-msg.sample,e/9/e9138f8ca169171f345ea880acdc5e249ee569b1
 C
 hooks/update.sample,c/3/c32851975c5b371508b35e07e4c67ed30ddfae39
-X
-(gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
