@@ -44,6 +44,7 @@ android {
         unitTests.all {
             jacoco {
                 excludes = ['jdk.internal.*']
+                includeNoLocationClasses = true
             }
         }
         unitTests.returnDefaultValues = true
@@ -59,9 +60,6 @@ android {
             testCoverageEnabled true
         }
     }
-    hilt {
-        enableExperimentalClasspathAggregation = true
-    }
 
     android.lintOptions.checkReleaseBuilds = false
 
@@ -71,11 +69,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-    buildToolsVersion '30.0.3'
-
-    tasks.withType(Test) {
-        jacoco.includeNoLocationClasses = true
     }
 
     android.buildFeatures.viewBinding = true
@@ -101,7 +94,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
 
     //Kotlin
-    //implementation "org.jetbrains.kotlinx:kotlinx-stdlib:$kotlinVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
@@ -159,9 +151,4 @@ dependencies {
     // MockK
     androidTestImplementation 'io.mockk:mockk-android:1.12.0'
     testImplementation 'io.mockk:mockk:1.12.0'
-
-
-    /* implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
-     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"*/
-
 }

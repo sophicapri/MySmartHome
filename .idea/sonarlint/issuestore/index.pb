@@ -198,3 +198,7 @@ A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
+z
+Japp/src/test/java/com/example/mysmarthome/repository/UserRepositoryTest.kt,1/6/168a90088c5470d5898395b9bd45f93776680eb3
+;
+.travis.yml,d/e/dea01dd89a3b602828e630677fde5d77c06441c8
