@@ -9,7 +9,7 @@
     <color name="background_color_item_list">#FFFFFFFF</color>
     <color name="background_color">#FFFFFFFF</color>
     <color name="icon_color">#FF000000</color>
-
+    <color name="color_alert_dialog_button">#FF03DAC5</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

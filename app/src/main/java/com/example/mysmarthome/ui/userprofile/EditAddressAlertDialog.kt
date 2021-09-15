@@ -25,7 +25,7 @@ class EditAddressAlertDialog(
     }
 
     private fun buildDialog(): AlertDialog {
-        val alertBuilder = Builder(context, R.style.Theme_MaterialComponents_Dialog_Alert)
+        val alertBuilder = Builder(context, R.style.AlertDialogTheme)
         val inflater = layoutInflater
         val view = inflater.inflate(R.layout.title_edit_address_dialog, null)
         _binding = EditAddressAlertDialogBinding.inflate(inflater)

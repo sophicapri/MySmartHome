@@ -27,7 +27,7 @@
     <string name="my_devices">Mes appareils</string>
     <string name="lights_title">LAMPES</string>
     <string name="heaters_title">RADIATEURS</string>
-    <string name="roller_shutters_title">VOLETS ROULANTS</string>
+    <string name="roller_shutters_title_filter">VOLETS ROULANTS</string>
     <string name="heater_icon">Icone radiateur</string>
     <string name="bulb_icon">Icone ampoule</string>
     <string name="roller_shutter_icon">Icone volet roulant</string>
@@ -38,4 +38,7 @@
     <string name="delete">Supprimer</string>
     <string name="confirm_deletion">Confirmer la suppression ?</string>
     <string name="cancel_filter_button">Bouton annuler filtre</string>
+    <string name="light_title">Lampe</string>
+    <string name="roller_shutter_title">Volets roulants</string>
+    <string name="heater_title">Radiateur</string>
 </resources>

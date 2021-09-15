@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.RollerShutterDetailFragmentBinding
 import com.example.mysmarthome.model.RollerShutter
 import com.google.android.material.slider.Slider
@@ -38,7 +39,7 @@ class RollerShutterDetailFragment : Fragment() {
             positionSlider.value = rollerShutter.position.toFloat()
             toolbar.apply {
                 setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
-                title = rollerShutter.productType.value
+                title = getString(R.string.roller_shutter_title)
             }
         }
     }

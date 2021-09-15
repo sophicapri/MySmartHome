@@ -67,7 +67,7 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
             val position = viewHolder.adapterPosition
             val device: Device = adapter.currentList[position]
-            val builder = AlertDialog.Builder(context)
+            val builder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
             builder.setMessage(getString(R.string.confirm_deletion))
             builder.setPositiveButton(getString(R.string.delete)) { _, _ ->
                 viewModel.deleteDevices(listOf(device))
