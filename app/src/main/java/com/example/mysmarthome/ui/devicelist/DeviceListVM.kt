@@ -8,12 +8,20 @@ import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepository): ViewModel() {
+class DeviceListVM @Inject constructor(
+    private var deviceRepository: DeviceRepository, mainDispatcher: CoroutineDispatcher
+) : ViewModel() {
+    private val job = SupervisorJob()
+    private val uiScope = CoroutineScope(mainDispatcher + job)
     val devices = deviceRepository.getDeviceListFromLocal()
+
 
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {
         val query = SimpleSQLiteQuery(makeQuery(productTypes))
@@ -35,10 +43,15 @@ class DeviceListVM @Inject constructor(private var deviceRepository: DeviceRepos
     }
 
     fun deleteDevices(device: List<Device>) {
-        viewModelScope.launch {  deviceRepository.deleteDevices(device) }
+        uiScope.launch { deviceRepository.deleteDevices(device) }
     }
 
-    companion object{
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
+
+    companion object {
         private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
     }
 }

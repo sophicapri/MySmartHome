@@ -5,17 +5,32 @@ import androidx.lifecycle.viewModelScope
 import com.example.mysmarthome.model.RollerShutter
 import com.example.mysmarthome.repository.DeviceRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RollerShutterDetailVM @Inject constructor(private var deviceRepository: DeviceRepository) : ViewModel() {
+class RollerShutterDetailVM @Inject constructor(
+    private var deviceRepository: DeviceRepository,
+    mainDispatcher: CoroutineDispatcher
+) :
+    ViewModel() {
+    private val job = SupervisorJob()
+    private val uiScope = CoroutineScope(mainDispatcher + job)
 
-    //fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
 
-    fun updateRollerShutter(rollerShutter: RollerShutter){
-        viewModelScope.launch {
+    fun updateRollerShutter(rollerShutter: RollerShutter) {
+        uiScope.launch {
             deviceRepository.updateDevice(rollerShutter)
         }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        job.cancel()
+    }
+
+    //fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
 }

@@ -46,6 +46,8 @@
     <string name="location_home_icon">Location home icon</string>
     <string name="profile_icon">Profil icon</string>
     <string name="cancel_filter_button">Cancel filter button</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_deletion">Confirm deletion?</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

@@ -35,5 +35,7 @@
     <string name="calendar_icon">Icone calendrier</string>
     <string name="location_home_icon">Icone maison</string>
     <string name="profile_icon">Icone profil</string>
+    <string name="delete">Supprimer</string>
+    <string name="confirm_deletion">Confirmer la suppression ?</string>
     <string name="cancel_filter_button">Bouton annuler filtre</string>
 </resources>

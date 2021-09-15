@@ -68,10 +68,10 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
             val position = viewHolder.adapterPosition
             val device: Device = adapter.currentList[position]
             val builder = AlertDialog.Builder(context)
-            builder.setMessage("Confirm deletion?")
-            builder.setPositiveButton("DELETE") { _, _ ->
+            builder.setMessage(getString(R.string.confirm_deletion))
+            builder.setPositiveButton(getString(R.string.delete)) { _, _ ->
                 viewModel.deleteDevices(listOf(device))
-            }.setNegativeButton("CANCEL") { _, _ ->
+            }.setNegativeButton(requireContext().getString(android.R.string.cancel)) { _, _ ->
                 adapter.notifyItemChanged(position)
             }.show()
         }
