@@ -55,7 +55,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        debug{
+        debug {
             testCoverageEnabled true
         }
     }
@@ -79,6 +79,11 @@ android {
     }
 
     android.buildFeatures.viewBinding = true
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+
 }
 
 dependencies {
@@ -125,7 +130,6 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
     // Room
@@ -152,12 +156,12 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
     androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 
-        // MockK
+    // MockK
     androidTestImplementation 'io.mockk:mockk-android:1.12.0'
     testImplementation 'io.mockk:mockk:1.12.0'
 
 
-   /* implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
-    implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"*/
+    /* implementation "jakarta.xml.bind:jakarta.xml.bind-api:2.3.2"
+     implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"*/
 
 }
