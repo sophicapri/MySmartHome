@@ -32,8 +32,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun setAppTheme() {
         viewModel.currentPrefTheme.observe(this) { nightMode ->
-            Log.d("SplashScreen", "nightmode On ? =null ? ${nightMode == null}")
-            Log.d("SplashScreen", "nightmode On ? = $nightMode")
             when (nightMode) {
                 null -> viewModel.setAppTheme()
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -44,7 +42,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private fun retrieveDataFromRemote() {
         viewModel.userFirstConnection.observe(this) { firstConnection ->
-            Log.d("SplashScreen", "retrieveDataFromRemote: first $firstConnection")
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.retrieveDataFromRemote().observe(this) { result ->
@@ -63,7 +60,9 @@ class SplashScreenActivity : AppCompatActivity() {
 
             override fun onAnimationEnd(p0: Animator?) {
                 dataRetrieved.observe(this@SplashScreenActivity) {
-                    if (it) { startMainActivity() }
+                    if (it) {
+                        startMainActivity()
+                    }
                 }
             }
 

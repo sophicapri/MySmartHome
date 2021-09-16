@@ -58,10 +58,4 @@ class DeviceRepository(val deviceDao: DeviceDao) {
             is RollerShutter -> deviceDao.insertDevice(device.toDeviceEntity())
         }
     }
-
-    /*  fun getDeviceById(id: Int): LiveData<Device> {
-      return Transformations.map(deviceDao.getDeviceById(id)) { device ->
-          device.toDomainObj()
-      }
-  }*/
 }

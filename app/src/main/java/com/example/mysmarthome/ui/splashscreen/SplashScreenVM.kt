@@ -97,8 +97,4 @@ class SplashScreenVM @Inject constructor(
         compositeDisposable.dispose()
         job.cancel()
     }
-
-    companion object{
-        private const val TAG = "SplashScreenVM"
-    }
 }

@@ -177,9 +177,4 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
         super.onDestroyView()
         _binding = null
     }
-
-
-    companion object {
-        private const val TAG = "MainActivity"
-    }
 }

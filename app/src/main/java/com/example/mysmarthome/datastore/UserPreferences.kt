@@ -19,7 +19,6 @@ class UserPreferences(var context: Context) {
     val currentTheme: Flow<Boolean?> = context.dataStore.data.map { it: Preferences -> it[PreferencesKeys.NIGHT_MODE_KEY] }
 
     suspend fun changeConnectionValue(value: Boolean) {
-
         context.dataStore.edit {
             it[PreferencesKeys.FIRST_CONNECTION_KEY] = value
 

@@ -93,8 +93,7 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
         }
     }
 
-    // It would be best to show the birthdate in the datePickerDialog. Didn't have time to find out
-    // know how to do it
+    // It would be best to show the birthdate in the datePickerDialog.
     private fun showDatePickerDialog() {
         Locale.getDefault()
         val datePickerDialog = DatePickerDialog(
