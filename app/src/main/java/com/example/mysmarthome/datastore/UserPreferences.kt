@@ -27,7 +27,7 @@ class UserPreferences(var context: Context) {
 
     suspend fun toggleNightMode() {
         context.dataStore.edit {
-            it[PreferencesKeys.NIGHT_MODE_KEY] = !(it[PreferencesKeys.NIGHT_MODE_KEY] ?: false)
+            it[PreferencesKeys.NIGHT_MODE_KEY] = it[PreferencesKeys.NIGHT_MODE_KEY] == false
         }
     }
 
