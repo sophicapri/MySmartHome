@@ -9,6 +9,8 @@ An app that lets the user control their connected devices.
 
 Screenshots
 -----------
+
+<img src="https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif.gif" height="48" width="48">
 ![](https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif.gif)
 
 Technical Stack and Libraries Used
