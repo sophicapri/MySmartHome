@@ -143,9 +143,9 @@ dependencies {
     androidTestImplementation 'io.mockk:mockk-android:1.12.0'
     testImplementation 'io.mockk:mockk:1.12.0'
 
-    // Robolectric
-    testImplementation "org.robolectric:robolectric:4.6.1"
-
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.30"
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 
 }

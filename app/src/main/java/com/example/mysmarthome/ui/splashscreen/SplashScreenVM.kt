@@ -25,7 +25,7 @@ class SplashScreenVM @Inject constructor(
     mainDispatcher : CoroutineDispatcher
 ) : ViewModel() {
     val userFirstConnection = userPreferences.firstConnection.asLiveData()
-    val currentTheme = userPreferences.currentTheme.asLiveData()
+    val currentPrefTheme = userPreferences.currentTheme.asLiveData()
     private val compositeDisposable = CompositeDisposable()
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
@@ -42,7 +42,7 @@ class SplashScreenVM @Inject constructor(
         }
     }
 
-    fun loadDataFromRemote() : LiveData<Result<ApiResponse>> {
+    fun retrieveDataFromRemote() : LiveData<Result<ApiResponse>> {
         val result = MutableLiveData<Result<ApiResponse>>()
         compositeDisposable.add(
             remoteDataRepository.getDataFromRemote()
