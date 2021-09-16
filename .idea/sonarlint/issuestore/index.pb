@@ -122,8 +122,6 @@ x
 Happ/src/test/java/com/example/mysmarthome/viewmodel/UserProfileVMTest.kt,7/7/773d18ab7ba779b2761ad9560050cce1ddcd626d
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
 y
@@ -170,5 +168,3 @@ Fapp/src/main/java/com/example/mysmarthome/datastore/UserPreferences.kt,b/4/b4a
 Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,7/f/7f834fdd5813b6b36be8a06d6fc7eda7b16b8e7a
 {
 Kapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenVM.kt,1/4/149f15152e3c58ac3b965fc4f92851770aff8c15
-
-Qapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenActivity.kt,6/f/6f69217cf3c6217be6df72f71599041b8734827c
