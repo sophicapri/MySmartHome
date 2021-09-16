@@ -32,7 +32,7 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         }
     }
 
-    suspend fun updateDevice(device: Device) {
+    suspend fun updateDevice(device: Device)  {
         when (device) {
             is Light -> deviceDao.updateDevice(device.toDeviceEntity())
             is Heater -> deviceDao.updateDevice(device.toDeviceEntity())

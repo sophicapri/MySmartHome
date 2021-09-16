@@ -109,6 +109,7 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
 
     override fun onNameEdited(user: User) {
         viewModel.updateUser(user)
+
     }
 
     override fun onDateSet(datePicker: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

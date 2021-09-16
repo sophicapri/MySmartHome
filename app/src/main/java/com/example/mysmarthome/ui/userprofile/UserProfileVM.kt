@@ -19,13 +19,13 @@ class UserProfileVM @Inject constructor(
 ) : ViewModel() {
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
-
     val user = userRepository.getUser()
 
-    fun updateUser(user: User) {
-        uiScope.launch {
-            userRepository.updateUser(user)
-        }
+    // Returns Int to eventually manage errors
+    fun updateUser(user: User) : MutableLiveData<Int> {
+        val rowId = MutableLiveData(-1)
+        uiScope.launch { rowId.value =  userRepository.updateUser(user) }
+        return rowId
     }
 
     fun updateUserPrefNightMode(){

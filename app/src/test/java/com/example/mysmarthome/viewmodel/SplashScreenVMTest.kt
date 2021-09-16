@@ -76,17 +76,4 @@ class SplashScreenVMTest {
             assert(viewModel.loadDataFromRemote().value == true)
         }
     }
-
-    // TODO :
-    @Test
-    fun testGetCurrentTheme() {
-    }
-
-
-    //  TODO:
-    @Test
-    fun testChangeConnectionValue_Successful() {
-
-    }
-
 }

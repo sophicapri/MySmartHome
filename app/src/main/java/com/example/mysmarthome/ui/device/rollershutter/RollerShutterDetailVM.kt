@@ -22,15 +22,11 @@ class RollerShutterDetailVM @Inject constructor(
 
 
     fun updateRollerShutter(rollerShutter: RollerShutter) {
-        uiScope.launch {
-            deviceRepository.updateDevice(rollerShutter)
-        }
+        uiScope.launch { deviceRepository.updateDevice(rollerShutter) }
     }
 
     override fun onCleared() {
         super.onCleared()
         job.cancel()
     }
-
-    //fun getRollerShutterById(id: Int) = deviceRepository.getDeviceById(id).map { it as RollerShutter }
 }
