@@ -11,8 +11,9 @@ Screenshots
 -----------
 
 
-Libraries Used
+Technical Stack and Libraries Used
 --------------
+  * MVVM Architecture
   * AndroidX 
   * [Android KTX][2] 
   * [Navigation][14] 
