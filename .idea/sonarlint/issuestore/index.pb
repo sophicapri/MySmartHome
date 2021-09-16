@@ -138,17 +138,11 @@ p
 Qapp/src/androidTest/java/com/example/mysmarthome/datastore/UserPreferencesTest.kt,f/a/fa35112e7f59250b8b6861940b34e1cabcf66eff
 n
 >app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
-|
-Lapp/src/main/java/com/example/mysmarthome/ui/device/heater/HeaterDetailVM.kt,1/8/18a5360ea53ad6253daf8b5cae1d96be552d6013
 w
 Gapp/src/test/java/com/example/mysmarthome/util/TestSchedulerProvider.kt,6/3/63089e206d8681817a0244e6aa7164cfe2618ee0
 {
 Kapp/src/androidTest/java/com/example/mysmarthome/datastore/DataStoreTest.kt,8/6/86de527c5933ffe546d1ac63d21857ee357dd9ab
-s
-Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 ?
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
-|
-Lapp/src/main/java/com/example/mysmarthome/repository/RemoteDataRepository.kt,c/0/c02e4987250239368f9ef4c78b914463c9dbba65
