@@ -10,7 +10,7 @@ An app that lets the user control their connected devices.
 Screenshots
 -----------
 
-<img src="https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif.gif" height="688" width="387">
+<img src="https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif.gif" align="right" height="688" width="387">
 
 Technical Stack and Libraries Used
 --------------
