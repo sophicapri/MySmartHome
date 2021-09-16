@@ -9,16 +9,20 @@
         android:id="@+id/device_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_icon_device_list"
+        android:layout_marginStart="@dimen/margin_item_device_list"
+        android:layout_marginBottom="@dimen/margin_icon_bottom"
+        android:layout_marginEnd="@dimen/margin_item_device_list"
+        android:layout_marginTop="@dimen/margin_item_device_list"
         app:cardCornerRadius="@dimen/corner_radius_cardview"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@color/background_color_item_list"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/background_color_item_list">
 
 
             <ImageView
@@ -27,11 +31,11 @@
                 android:layout_height="@dimen/list_device_ic_size"
                 android:layout_margin="20dp"
                 android:contentDescription="@string/device_icon"
-                app:tint="@color/icon_color"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/icon_color"
                 tools:src="@drawable/ic_smart_bulb" />
 
             <TextView
@@ -52,50 +56,52 @@
                 android:id="@+id/device_mode_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
                 android:layout_marginTop="@dimen/margin_subtext_device_list"
+                android:visibility="visible"
                 app:layout_constraintStart_toStartOf="@+id/deviceText"
                 app:layout_constraintTop_toBottomOf="@+id/deviceText">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:text="@string/device_mode_title" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/device_mode_title"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
                 <TextView
                     android:id="@+id/device_mode_value"
-                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="OFF"/>
+                    android:layout_marginStart="@dimen/subtext_value"
+                    tools:text="OFF" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/position_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
                 android:layout_marginTop="@dimen/margin_subtext_device_list"
+                android:visibility="invisible"
                 app:layout_constraintStart_toStartOf="@+id/deviceText"
                 app:layout_constraintTop_toBottomOf="@+id/deviceText">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    android:text="@string/position_roller_shutter" />
+                    android:text="@string/position_roller_shutter"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
 
                 <TextView
                     android:id="@+id/position_value"
-                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="70"/>
+                    android:layout_marginStart="@dimen/subtext_value"
+                    tools:text="70" />
 
                 <TextView
-                    android:layout_marginStart="@dimen/subtext_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/percentage_symbol"/>
+                    android:layout_marginStart="@dimen/subtext_value"
+                    android:text="@string/percentage_symbol" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
