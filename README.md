@@ -6,7 +6,7 @@ My Smart Home
 
 An app that lets the user control their connected devices.
 
-<img src="https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif.gif" align="right" height="688" width="387">
+<img src="https://github.com/sophicapri/MySmartHome/blob/main/screenshots/full_circle_gif2.gif" align="right" height="688" width="387">
 
 Technical Stack and Libraries Used
 --------------
