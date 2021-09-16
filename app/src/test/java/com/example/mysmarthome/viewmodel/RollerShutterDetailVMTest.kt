@@ -5,6 +5,7 @@ import org.junit.Test
 
 class RollerShutterDetailVMTest {
 
+    // TODO:
     @Test
     fun testUpdateRollerShutter() {}
 }

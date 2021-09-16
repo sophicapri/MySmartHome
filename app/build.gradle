@@ -5,7 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
-    id 'jacoco'
+    //id 'com.dicedmelon.gradle.jacoco-android'
 }
 
 android {
@@ -21,35 +21,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
-
-        reports {
-            xml.enabled = true
-            html.enabled = true
-        }
-
-        def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-        def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-        def mainSrc = "${project.projectDir}/src/main/java"
-
-        sourceDirectories.setFrom(files([mainSrc]))
-        classDirectories.setFrom(files([debugTree]))
-        executionData.setFrom(fileTree(dir: "$buildDir", includes: [
-                "jacoco/testDebugUnitTest.exec",
-                "outputs/code-coverage/connected/*coverage.ec"
-        ]))
-    }
-
-    testOptions {
-        unitTests.all {
-            jacoco {
-                excludes = ['jdk.internal.*']
-                includeNoLocationClasses = true
-            }
-        }
-        unitTests.returnDefaultValues = true
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -57,22 +28,32 @@ android {
         }
 
         debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
             testCoverageEnabled true
         }
     }
 
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
+
+  /*  tasks.withType(Test) {
+        //jacoco.includeNoLocationClasses = true
+        jacoco.excludes = ['jdk.internal.reflect.*']
+    }*/
+
     android.lintOptions.checkReleaseBuilds = false
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+    /*  compileOptions {
+          sourceCompatibility VERSION_1_8
+          targetCompatibility VERSION_1_8
+      }*/
     kotlinOptions {
         jvmTarget = '1.8'
     }
 
     android.buildFeatures.viewBinding = true
-
     packagingOptions {
         resources.excludes.add("META-INF/*")
     }

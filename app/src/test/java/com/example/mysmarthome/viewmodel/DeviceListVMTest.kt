@@ -2,14 +2,14 @@ package com.example.mysmarthome.viewmodel
 
 import junit.framework.TestCase
 
-class DeviceListVMTest : TestCase() {
+class DeviceListVMTest {
 
-    public override fun setUp() {
+  /*  public override fun setUp() {
         super.setUp()
     }
 
     public override fun tearDown() {}
-
+*/
     fun testGetDevices() {}
 
     fun testGetFilteredList() {}

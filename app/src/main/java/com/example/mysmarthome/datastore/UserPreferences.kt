@@ -15,16 +15,14 @@ import java.io.IOException
 
 class UserPreferences(var context: Context) {
     private val Context.dataStore by preferencesDataStore(name = USER_PREFERENCES_NAME)
-
-    /* not the ideal way to handle exceptions */
     val firstConnection: Flow<Boolean> = context.dataStore.data.map { it: Preferences -> it[PreferencesKeys.FIRST_CONNECTION_KEY] ?: true }
-
-
     val currentTheme: Flow<Boolean?> = context.dataStore.data.map { it: Preferences -> it[PreferencesKeys.NIGHT_MODE_KEY] }
 
     suspend fun changeConnectionValue(value: Boolean) {
+
         context.dataStore.edit {
             it[PreferencesKeys.FIRST_CONNECTION_KEY] = value
+
         }
     }
 
