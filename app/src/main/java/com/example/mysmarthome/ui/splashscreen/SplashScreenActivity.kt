@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -18,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashScreenActivity : AppCompatActivity() {
     private val viewModel by viewModels<SplashScreenVM>()
     private lateinit var binding: SplashScreenActivityBinding
-    private val dataRetrieved = MutableLiveData<Boolean>()
+    private val appThemeIsApplied = MutableLiveData(false)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +36,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 else -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+            appThemeIsApplied.postValue(true)
         }
     }
 
@@ -47,10 +47,9 @@ class SplashScreenActivity : AppCompatActivity() {
                 viewModel.retrieveDataFromRemote().observe(this) { result ->
                     if (result.isSuccess) {
                         viewModel.insertDataIntoLocalDb(result.getOrThrow())
-                        dataRetrieved.postValue(true)
                     }
                 }
-            } else dataRetrieved.postValue(true)
+            }
         }
     }
 
@@ -59,7 +58,7 @@ class SplashScreenActivity : AppCompatActivity() {
             override fun onAnimationStart(p0: Animator?) {}
 
             override fun onAnimationEnd(p0: Animator?) {
-                dataRetrieved.observe(this@SplashScreenActivity) {
+                appThemeIsApplied.observe(this@SplashScreenActivity) {
                     if (it) {
                         startMainActivity()
                     }
