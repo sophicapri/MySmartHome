@@ -70,9 +70,9 @@ class SplashScreenVMTest {
         coEvery { remoteDataRepo.getDataFromRemote() } returns Flowable.just(
             apiResponse
         )
-        viewModel.loadDataFromRemote().observeForever {
-            assert(viewModel.loadDataFromRemote().value != null)
-            assert(viewModel.loadDataFromRemote().value?.getOrNull() == apiResponse)
+        viewModel.retrieveDataFromRemote().observeForever {
+            assert(viewModel.retrieveDataFromRemote().value != null)
+            assert(viewModel.retrieveDataFromRemote().value?.getOrNull() == apiResponse)
         }
     }
 }

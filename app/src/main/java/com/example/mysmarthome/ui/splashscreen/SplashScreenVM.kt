@@ -42,7 +42,7 @@ class SplashScreenVM @Inject constructor(
         }
     }
 
-    fun loadDataFromRemote() : LiveData<Result<ApiResponse>> {
+    fun retrieveDataFromRemote() : LiveData<Result<ApiResponse>> {
         val result = MutableLiveData<Result<ApiResponse>>()
         compositeDisposable.add(
             remoteDataRepository.getDataFromRemote()
