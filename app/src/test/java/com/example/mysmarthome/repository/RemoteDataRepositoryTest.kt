@@ -1,7 +1,6 @@
 package com.example.mysmarthome.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.mysmarthome.DummyData
 import com.example.mysmarthome.data.remote.ApiService
 import com.example.mysmarthome.model.ApiResponse
 import io.mockk.coEvery

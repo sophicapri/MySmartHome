@@ -30,34 +30,35 @@ class SplashScreenVM @Inject constructor(
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
 
-    fun changeConnectionValue(value: Boolean) {
-        uiScope.launch {
-            userPreferences.changeConnectionValue(value)
-        }
-    }
-
     fun setAppTheme(){
         uiScope.launch {
             userPreferences.setAppTheme()
         }
     }
 
-    fun loadDataFromRemote() : LiveData<Boolean> {
-        val dataIsRetrieved = MutableLiveData<Boolean>()
+    fun changeConnectionValue(value: Boolean) {
+        uiScope.launch {
+            userPreferences.changeConnectionValue(value)
+        }
+    }
+
+    fun loadDataFromRemote() : LiveData<Result<ApiResponse>> {
+        val result = MutableLiveData<Result<ApiResponse>>()
         compositeDisposable.add(
             remoteDataRepository.getDataFromRemote()
                 .subscribeOn(scheduler.io())
                 .observeOn(scheduler.ui())
-                .subscribe({ response ->
-                    dataIsRetrieved.postValue(true)
-                    insertUserIntoLocalDb(response.user)
-                    insertDevicesToLocalDb(response.devices)
+                .subscribe ({ response ->
+                    result.value = Result.success(response)
                 }, {
-                    dataIsRetrieved.postValue(false)
-                    Log.e(TAG, "getDataFromRemote: Error = ${it.stackTraceToString()}")
-                })
-        )
-        return dataIsRetrieved
+                    result.value = Result.failure(it)
+                }))
+        return result
+    }
+
+    fun insertDataIntoLocalDb(response : ApiResponse){
+        insertUserIntoLocalDb(response.user)
+        insertDevicesToLocalDb(response.devices)
     }
 
     private fun insertUserIntoLocalDb(user: User) {

@@ -2,7 +2,7 @@ package com.example.mysmarthome.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.mysmarthome.DummyData
+import com.example.mysmarthome.util.DummyData
 import com.example.mysmarthome.model.Heater
 import com.example.mysmarthome.model.Light
 import com.example.mysmarthome.model.ProductType

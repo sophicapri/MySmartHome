@@ -35,7 +35,6 @@ object RepositoryModule {
     @Provides
     fun provideUserRepository(userDao: UserDao) = UserRepository(userDao)
 
-
     @Singleton
     @Provides
     fun provideUserPreferences(@ApplicationContext context: Context) = UserPreferences(context)

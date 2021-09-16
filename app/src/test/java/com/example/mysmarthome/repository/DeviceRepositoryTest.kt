@@ -2,7 +2,7 @@ package com.example.mysmarthome.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.mysmarthome.DummyData
+import com.example.mysmarthome.util.DummyData
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import io.mockk.coEvery
 import io.mockk.mockk

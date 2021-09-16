@@ -62,8 +62,6 @@ Y
 0app/src/main/res/drawable/ic_cancel_outlined.xml,0/3/03bae0f04303ae1390cf7a84d156173da8025302
 X
 (app/src/main/res/drawable/bkg_device.xml,0/e/0ef446190a31c32856b4a5e4216f3796a5383ba4
-W
-'app/src/main/res/layout/device_item.xml,8/7/8759bae9f48aa7cd959441fd3b485245edd9b547
 R
 "app/src/main/res/values/dimens.xml,c/3/c3c1811dec2dbad2deeafb9aad505ca9631da740
 e
@@ -72,8 +70,6 @@ e
 5app/src/main/res/layout/edit_address_alert_dialog.xml,a/8/a8f0a327a3ea999cc426a711700223ad4350aeec
 b
 2app/src/main/res/layout/title_edit_name_dialog.xml,3/0/3092c5bc4d6aafec017802613d210c4a2d309bfd
-Y
-)app/src/main/res/layout/main_activity.xml,a/2/a2184837f19e15dc19a40190b62237fab1af7b4b
 b
 2app/src/main/res/layout/edit_name_alert_dialog.xml,a/1/a14bb86b506af0700a9616ca32ae252516beb65f
 h
@@ -116,12 +112,6 @@ P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 n
 >app/src/main/java/com/example/mysmarthome/di/DatabaseModule.kt,8/8/88f5647e5f518437a3b62621f47b6fb0d80327a5
-Ç
-Rapp/src/main/java/com/example/mysmarthome/ui/device/heater/HeaterDetailFragment.kt,b/3/b34a88c098637d44b659910df15a832ca5bf21fe
-ê
-`app/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutterDetailFragment.kt,c/c/ccb578df813f312ab1db318cb9689f43408d6206
-l
-<app/src/main/java/com/example/mysmarthome/ui/MainActivity.kt,2/e/2ea305228cfbfb803a27c8016dd22bc802fc567b
 i
 9app/src/main/java/com/example/mysmarthome/model/Device.kt,3/6/36c0ad09d1bd81979600277c3ecb4f01b977bdee
 u
@@ -132,16 +122,10 @@ Gapp/src/main/java/com/example/mysmarthome/base/BaseSchedulerProvider.kt,b/e/be
 Rapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditAddressAlertDialog.kt,8/3/83c71fc9fcf4de376f9ff7837e158e53cb2466b6
 k
 ;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
-p
-@app/src/main/java/com/example/mysmarthome/di/RepositoryModule.kt,b/0/b0e95324e8190a0633085834244b98db45ae4404
-Å
-Qapp/src/androidTest/java/com/example/mysmarthome/datastore/UserPreferencesTest.kt,f/a/fa35112e7f59250b8b6861940b34e1cabcf66eff
 n
 >app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
 w
 Gapp/src/test/java/com/example/mysmarthome/util/TestSchedulerProvider.kt,6/3/63089e206d8681817a0244e6aa7164cfe2618ee0
-{
-Kapp/src/androidTest/java/com/example/mysmarthome/datastore/DataStoreTest.kt,8/6/86de527c5933ffe546d1ac63d21857ee357dd9ab
 A
 gradle.properties,2/a/2afbb999f001938c88fa43fc2ef52abf0f8213e4
 ?

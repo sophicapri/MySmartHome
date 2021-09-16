@@ -33,8 +33,8 @@ class SplashScreenVMTest {
     private val userRepo = mockk<UserRepository>(relaxed = true)
     private val deviceRepo = mockk<DeviceRepository>(relaxed = true)
     private val remoteDataRepo = mockk<RemoteDataRepository>(relaxed = true)
-    private val schedulerProvider = TestSchedulerProvider()
     private val dispatcher = TestCoroutineDispatcher()
+    private val schedulerProvider = TestSchedulerProvider()
     private lateinit var viewModel: SplashScreenVM
 
     @Before
@@ -58,7 +58,6 @@ class SplashScreenVMTest {
     @Test
     fun testGetUserFirstConnection() {
         coEvery { userPrefs.firstConnection } returns MutableStateFlow(false)
-
         viewModel.userFirstConnection.observeForever {
             assert(viewModel.userFirstConnection.value != null)
             assert(viewModel.userFirstConnection.value == false)
@@ -67,13 +66,13 @@ class SplashScreenVMTest {
 
     @Test
     fun testLoadDataFromRemote_Success() {
+        val apiResponse = ApiResponse(listOf(mockk()), mockk())
         coEvery { remoteDataRepo.getDataFromRemote() } returns Flowable.just(
-            ApiResponse(listOf(mockk()), mockk())
+            apiResponse
         )
-
         viewModel.loadDataFromRemote().observeForever {
             assert(viewModel.loadDataFromRemote().value != null)
-            assert(viewModel.loadDataFromRemote().value == true)
+            assert(viewModel.loadDataFromRemote().value?.getOrNull() == apiResponse)
         }
     }
 }

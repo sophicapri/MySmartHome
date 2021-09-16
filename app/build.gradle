@@ -34,21 +34,25 @@ android {
         }
     }
 
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
     hilt {
         enableExperimentalClasspathAggregation = true
     }
 
-  /*  tasks.withType(Test) {
-        //jacoco.includeNoLocationClasses = true
-        jacoco.excludes = ['jdk.internal.reflect.*']
-    }*/
+    /*  tasks.withType(Test) {
+          //jacoco.includeNoLocationClasses = true
+          jacoco.excludes = ['jdk.internal.reflect.*']
+      }*/
 
     android.lintOptions.checkReleaseBuilds = false
 
-    /*  compileOptions {
-          sourceCompatibility VERSION_1_8
-          targetCompatibility VERSION_1_8
-      }*/
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -56,6 +60,10 @@ android {
     android.buildFeatures.viewBinding = true
     packagingOptions {
         resources.excludes.add("META-INF/*")
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
 }
@@ -119,6 +127,8 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
 
     androidTestImplementation 'androidx.test:runner:1.4.0'
 
@@ -135,4 +145,7 @@ dependencies {
 
     // Robolectric
     testImplementation "org.robolectric:robolectric:4.6.1"
+
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.30"
+
 }

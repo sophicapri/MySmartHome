@@ -22,25 +22,10 @@ class DeviceListVM @Inject constructor(
     private val uiScope = CoroutineScope(mainDispatcher + job)
     val devices = deviceRepository.getDeviceList()
 
-
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {
         val query = ProductType.queryBuilder(productTypes)
         return deviceRepository.getFilteredList(query)
     }
-
-  /*  private fun makeQuery(productTypes: List<ProductType>): String {
-        var stringQuery = BASE_QUERY
-        var emptyQuery = true
-
-        productTypes.forEach {
-            if (emptyQuery) {
-                stringQuery += "productType LIKE '%${it.name}%'"
-                emptyQuery = false
-            } else
-                stringQuery += "OR productType LIKE '%${it.name}%'"
-        }
-        return stringQuery
-    }*/
 
     fun deleteDevices(device: List<Device>) {
         uiScope.launch { deviceRepository.deleteDevices(device) }

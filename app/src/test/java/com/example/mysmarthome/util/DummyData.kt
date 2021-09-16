@@ -1,4 +1,4 @@
-package com.example.mysmarthome
+package com.example.mysmarthome.util
 
 import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
 import com.example.mysmarthome.model.DeviceMode

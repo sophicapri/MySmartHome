@@ -26,8 +26,6 @@
                 android:layout_width="@dimen/list_device_ic_size"
                 android:layout_height="@dimen/list_device_ic_size"
                 android:layout_margin="20dp"
-                android:clickable="true"
-                android:focusable="true"
                 android:contentDescription="@string/device_icon"
                 app:tint="@color/icon_color"
                 android:visibility="visible"

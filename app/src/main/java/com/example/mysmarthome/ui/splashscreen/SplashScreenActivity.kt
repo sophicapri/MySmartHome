@@ -21,9 +21,6 @@ class SplashScreenActivity : AppCompatActivity() {
         /*  deleteDatabase(DATABASE_NAME)
             viewModel.changeConnectionValue(true)*/
 
-       // removeDataStore()
-
-
         viewModel.currentTheme.observe(this){ nightMode ->
             when (nightMode) {
                 null -> viewModel.setAppTheme()
@@ -32,20 +29,17 @@ class SplashScreenActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.userFirstConnection.observe(this) { firstConnection ->
+         viewModel.userFirstConnection.observe(this) { firstConnection ->
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
-                viewModel.loadDataFromRemote().observe(this) { dataRetrieved ->
-                    if (dataRetrieved) {
+                viewModel.loadDataFromRemote().observe(this) { result ->
+                    if (result.isSuccess) {
+                        viewModel.insertDataIntoLocalDb(result.getOrThrow())
                         startMainActivity()
                     }
                 }
             } else startMainActivity()
         }
-    }
-
-    private fun removeDataStore() {
-        File(applicationContext.filesDir, "datastore").deleteRecursively()
     }
 
     private fun startMainActivity() {
