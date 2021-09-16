@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.example.mysmarthome.DummyData
 import com.example.mysmarthome.model.Device
+import com.example.mysmarthome.model.Heater
 import com.example.mysmarthome.model.Light
 import com.example.mysmarthome.model.ProductType
 import com.example.mysmarthome.repository.DeviceRepository
@@ -49,14 +50,14 @@ class DeviceListVMTest {
             assert(viewModel.devices.value == devicesList)
         }
     }
-/*
     @Test
     fun testGetFilteredList() {
-        val query = listOf(ProductType.LIGHT)
-        coEvery { deviceRepo.getFilteredList(query) } returns MutableLiveData(listOf(mockk<Light>()))
+        val listTypes = listOf(ProductType.LIGHT)
+        val query = ProductType.queryBuilder(listTypes)
+        coEvery { deviceRepo.getFilteredList(query)} returns MutableLiveData(listOf(mockk<Light>()))
 
-        viewModel.getFilteredList(query).observeForever {
-            assert(viewModel.getFilteredList(query).value == listOf<Light>())
+        viewModel.getFilteredList(listTypes).observeForever {
+            assert(viewModel.getFilteredList(listTypes).value == listOf<Heater>())
         }
-    }*/
+    }
 }

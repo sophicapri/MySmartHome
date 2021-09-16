@@ -24,11 +24,11 @@ class DeviceListVM @Inject constructor(
 
 
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {
-        val query = SimpleSQLiteQuery(makeQuery(productTypes))
+        val query = ProductType.queryBuilder(productTypes)
         return deviceRepository.getFilteredList(query)
     }
 
-    private fun makeQuery(productTypes: List<ProductType>): String {
+  /*  private fun makeQuery(productTypes: List<ProductType>): String {
         var stringQuery = BASE_QUERY
         var emptyQuery = true
 
@@ -40,7 +40,7 @@ class DeviceListVM @Inject constructor(
                 stringQuery += "OR productType LIKE '%${it.name}%'"
         }
         return stringQuery
-    }
+    }*/
 
     fun deleteDevices(device: List<Device>) {
         uiScope.launch { deviceRepository.deleteDevices(device) }
@@ -55,9 +55,5 @@ class DeviceListVM @Inject constructor(
         val rowId = MutableLiveData<Long>()
         uiScope.launch { rowId.value = deviceRepository.insertDevice(device) }
         return rowId
-    }
-
-    companion object {
-        private const val BASE_QUERY = "SELECT * FROM deviceentity WHERE "
     }
 }
