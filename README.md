@@ -9,7 +9,7 @@ An app that lets the user control their connected devices.
 
 Screenshots
 -----------
-
+![](screenshots/full_circle_gif.gif)
 
 Technical Stack and Libraries Used
 --------------
