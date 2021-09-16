@@ -12,16 +12,34 @@
         tools:layout="@layout/device_list_fragment">
         <action
             android:id="@+id/action_deviceListFragment_to_heaterDetailFragment"
-            app:destination="@id/heaterDetailFragment" />
+            app:destination="@id/heaterDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_deviceListFragment_to_rollerShutterDetailFragment"
-            app:destination="@id/rollerShutterDetailFragment" />
+            app:destination="@id/rollerShutterDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
         <action
             android:id="@+id/action_deviceListFragment_to_lightDetailFragment"
-            app:destination="@id/lightDetailFragment" />
+            app:destination="@id/lightDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+
         <action
             android:id="@+id/action_deviceListFragment_to_userProfileFragment"
-            app:destination="@id/userProfileFragment" />
+            app:destination="@id/userProfileFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment

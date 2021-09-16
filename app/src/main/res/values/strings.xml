@@ -45,7 +45,7 @@
     <string name="identity_card_icon">Identity card icon</string>
     <string name="calendar_icon">Calendar icon</string>
     <string name="location_home_icon">Location home icon</string>
-    <string name="profile_icon">Profil icon</string>
+    <string name="profile_icon">Profile icon</string>
     <string name="cancel_filter_button">Cancel filter button</string>
     <string name="delete">Delete</string>
     <string name="confirm_deletion">Confirm deletion?</string>
