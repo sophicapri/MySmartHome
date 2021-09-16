@@ -1,8 +1,12 @@
 package com.example.mysmarthome.repository
 
 import junit.framework.TestCase
+import org.junit.Test
 
-class RemoteDataRepositoryTest : TestCase() {
+class RemoteDataRepositoryTest {
 
-    fun testGetDataFromRemote() {}
+    @Test
+    fun testGetDataFromRemote() {
+
+    }
 }

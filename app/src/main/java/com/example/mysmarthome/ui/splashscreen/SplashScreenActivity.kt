@@ -36,8 +36,9 @@ class SplashScreenActivity : AppCompatActivity() {
             if (firstConnection) {
                 viewModel.changeConnectionValue(false)
                 viewModel.loadDataFromRemote().observe(this) { dataRetrieved ->
-                    if (dataRetrieved)
+                    if (dataRetrieved) {
                         startMainActivity()
+                    }
                 }
             } else startMainActivity()
         }

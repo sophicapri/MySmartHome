@@ -18,7 +18,7 @@ interface DeviceDao {
     suspend fun insertRollerShutters(rollerShutters: List<DeviceEntity>)
 
     @Update
-    suspend fun updateDevice(device: DeviceEntity)
+    suspend fun updateDevice(device: DeviceEntity) : Int
 
     @Query("SELECT * FROM deviceentity")
     fun getDeviceList() : LiveData<List<DeviceEntity>>

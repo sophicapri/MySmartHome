@@ -1,13 +1,13 @@
 package com.example.mysmarthome.ui.devicelist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +16,6 @@ import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.DeviceListFragmentBinding
 import com.example.mysmarthome.model.*
 import com.google.android.material.chip.Chip
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.BaseTransientBottomBar.BaseCallback
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,23 +70,30 @@ class DeviceListFragment : Fragment(), DeviceListAdapter.OnDeviceClickListener {
             val position = viewHolder.adapterPosition
             val device: Device = adapter.currentList[position]
             viewModel.deleteDevices(listOf(device))
-            val snackBar =
-                Snackbar.make(binding.root, getString(R.string.deleting_device), Snackbar.LENGTH_LONG)
-                    .addCallback(object : BaseCallback<Snackbar>() {
-                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                            super.onDismissed(transientBottomBar, event)
-                            if (event == DISMISS_EVENT_TIMEOUT) {
-                                viewModel.deleteDevices(listOf(device))
-                            }
+            showSnackBar(position, device)
+        }
+    }
+
+    private fun showSnackBar(position: Int, device: Device) {
+        val snackBar =
+            Snackbar.make(binding.root, getString(R.string.deleting_device), Snackbar.LENGTH_LONG)
+                .addCallback(object : BaseCallback<Snackbar>() {
+                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                        super.onDismissed(transientBottomBar, event)
+                        if (event == DISMISS_EVENT_TIMEOUT) {
+                            viewModel.deleteDevices(listOf(device))
                         }
-                    }).setAction(getString(R.string.undo_delete)) {
+                    }
+                })
+                .setAction(getString(R.string.undo_delete)) {
+                    lifecycleScope.launchWhenStarted {
                         viewModel.insertDevice(device).observe(viewLifecycleOwner) { rowId ->
                             if (rowId != 1L)
                                 adapter.notifyItemChanged(position)
                         }
                     }
-            snackBar.show()
-        }
+                }
+        snackBar.show()
     }
 
     private fun displayDevices() {

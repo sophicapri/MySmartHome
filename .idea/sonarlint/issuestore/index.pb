@@ -108,8 +108,6 @@ i
 9app/src/main/java/com/example/mysmarthome/model/Heater.kt,d/1/d1ef6a714726f072960de71225b9fc26fc0187f1
 p
 @app/src/main/java/com/example/mysmarthome/di/ApiServiceModule.kt,5/7/57aecd51c4466d2af143e58ac97f5731e292832f
-|
-Lapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/UserDao.kt,5/b/5bdf6b42a5919eef30fcf8db7eff38e1c7e9a637
 Ç
 Rapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/TypeConverter.kt,2/0/203dff741d4c531c64c54bdcba89a13bb4025993
 à
@@ -158,8 +156,6 @@ Gapp/src/test/java/com/example/mysmarthome/util/TestSchedulerProvider.kt,6/3/63
 Qapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/DeviceEntity.kt,3/a/3a8a5f6ee9c4a9246e38f40be5d97ee8b3e12ab3
 {
 Kapp/src/androidTest/java/com/example/mysmarthome/datastore/DataStoreTest.kt,8/6/86de527c5933ffe546d1ac63d21857ee357dd9ab
-Å
-Qapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenActivity.kt,6/f/6f69217cf3c6217be6df72f71599041b8734827c
 
 Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileFragment.kt,5/1/51fca70ad41c788e39d41b337e15179f4b9792de
 y
@@ -172,11 +168,5 @@ A
 settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
 |
 Lapp/src/main/java/com/example/mysmarthome/repository/RemoteDataRepository.kt,c/0/c02e4987250239368f9ef4c78b914463c9dbba65
-v
-Fapp/src/main/java/com/example/mysmarthome/repository/UserRepository.kt,9/6/96f1228d8aa6c90b15c8f7a3576853c09b218296
-Ä
-Papp/src/test/java/com/example/mysmarthome/repository/RemoteDataRepositoryTest.kt,b/e/bea99260e82e2744e509aa4e2513f6480606a687
-x
-Happ/src/main/java/com/example/mysmarthome/repository/DeviceRepository.kt,0/1/01cb495205d67bd2d811a5d5c40ec8a590548803
 |
 Lapp/src/test/java/com/example/mysmarthome/repository/DeviceRepositoryTest.kt,f/4/f4e27140d381291676ffc6821e12be9a16f1fd73

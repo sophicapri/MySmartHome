@@ -61,9 +61,7 @@ class SplashScreenVM @Inject constructor(
     }
 
     private fun insertUserIntoLocalDb(user: User) {
-        uiScope.launch {
-            userRepository.insertUser(user)
-        }
+        uiScope.launch {userRepository.insertUser(user) }
     }
 
     private fun insertDevicesToLocalDb(devices: List<Device>) {

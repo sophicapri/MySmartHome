@@ -53,9 +53,7 @@ class DeviceListVM @Inject constructor(
 
     fun insertDevice(device: Device): LiveData<Long> {
         val rowId = MutableLiveData<Long>()
-        uiScope.launch {
-            rowId.value = deviceRepository.insertDevice(device)
-        }
+        uiScope.launch { rowId.value = deviceRepository.insertDevice(device) }
         return rowId
     }
 
