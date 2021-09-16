@@ -49,11 +49,13 @@ class UserProfileVMTest {
         }
     }
 
+    // TODO :
     @Test
     fun testUpdateUser() {
 
     }
 
+    // TODO :
     @Test
     fun testUpdateUserPrefs() {
         viewModel.updateUserPrefNightMode()

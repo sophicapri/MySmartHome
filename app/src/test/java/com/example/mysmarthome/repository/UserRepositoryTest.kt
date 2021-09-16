@@ -4,45 +4,47 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
+import com.example.mysmarthome.data.local.roomdatabase.UserDao
+import com.example.mysmarthome.datastore.UserPreferences
 import com.example.mysmarthome.model.DeviceMode
 import com.example.mysmarthome.model.ProductType
+import com.example.mysmarthome.model.User
 import io.mockk.coEvery
 import io.mockk.mockk
 import junit.framework.TestCase
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class UserRepositoryTest{
+class UserRepositoryTest {
 
-    private val deviceDao = mockk<DeviceDao>(relaxed = true)
-    private lateinit var deviceRepo: DeviceRepository
-    val deviceLight = DeviceEntity(1, "", DeviceMode.OFF,
-        0, null, null, ProductType.LIGHT)
-    val deviceRollerShutter = DeviceEntity(2, "", DeviceMode.ON,
-        0, null, 0, ProductType.ROLLER_SHUTTER)
+    private val userDao = mockk<UserDao>(relaxed = true)
+    private lateinit var userRepository: UserRepository
+    private val user = mockk<User>()
 
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
-        deviceRepo = DeviceRepository(deviceDao)
-    }
-
-    @Test
-    fun testInsertUser() {
-        coEvery { deviceDao.getDeviceList() } returns MutableLiveData(listOf(deviceLight))
-        deviceRepo.getDeviceList().observeForever {
-            assert(it[0] == deviceLight.toDomainObj())
-        }
+        userRepository = UserRepository(userDao)
     }
 
     @Test
     fun testGetUser() {
-
+        coEvery { userDao.getUser() } returns MutableLiveData(user)
+        userRepository.getUser().observeForever {
+            assert(userRepository.getUser().value == user)
+        }
     }
 
     @Test
-    fun testUpdateUser() {}
+    fun testUpdateUser() = runBlocking{
+        val rowId = 1
+        coEvery { userDao.updateUser(user) } returns rowId
+        val rowIdReceived = userRepository.updateUser(user)
+        assert(rowIdReceived == rowId)
+    }
 }

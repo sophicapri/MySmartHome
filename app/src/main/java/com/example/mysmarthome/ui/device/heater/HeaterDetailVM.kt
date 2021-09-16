@@ -19,8 +19,6 @@ class HeaterDetailVM @Inject constructor(
     private val job = SupervisorJob()
     private val uiScope = CoroutineScope(mainDispatcher + job)
 
-    // fun getHeaterById(id: Int) = deviceRepository.getDeviceById(id).map { it as Heater }
-
     fun updateHeater(heater: Heater) {
         uiScope.launch {
             deviceRepository.updateDevice(heater)

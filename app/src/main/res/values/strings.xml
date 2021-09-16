@@ -37,8 +37,9 @@
     <string name="my_devices">My devices</string>
     <string name="lights_title">LIGHTS</string>
     <string name="heaters_title">HEATERS</string>
-    <string name="roller_shutters_title">ROLLER SHUTTERS</string>
+    <string name="roller_shutters_title_filter">ROLLER SHUTTERS</string>
     <string name="heater_icon">Heater icon</string>
+    <string name="roller_shutter_title">Roller shutter</string>
     <string name="bulb_icon">Bulb icon</string>
     <string name="roller_shutter_icon">Roller shutter icon</string>
     <string name="identity_card_icon">Identity card icon</string>
@@ -48,6 +49,10 @@
     <string name="cancel_filter_button">Cancel filter button</string>
     <string name="delete">Delete</string>
     <string name="confirm_deletion">Confirm deletion?</string>
+    <string name="light_title">Light</string>
+    <string name="heater_title">Heater</string>
+    <string name="undo_delete">Undo</string>
+    <string name="deleting_device">Deleting…</string>
     <integer name="max_value_rollershutter">100</integer>
     <integer name="min_value_rollershutter">0</integer>
 </resources>

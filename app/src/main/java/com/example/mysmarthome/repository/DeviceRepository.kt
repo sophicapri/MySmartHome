@@ -32,7 +32,7 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         }
     }
 
-    suspend fun updateDevice(device: Device) {
+    suspend fun updateDevice(device: Device)  {
         when (device) {
             is Light -> deviceDao.updateDevice(device.toDeviceEntity())
             is Heater -> deviceDao.updateDevice(device.toDeviceEntity())
@@ -51,9 +51,11 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         deviceDao.deleteDevices(deviceEntityList)
     }
 
-    /*  fun getDeviceById(id: Int): LiveData<Device> {
-      return Transformations.map(deviceDao.getDeviceById(id)) { device ->
-          device.toDomainObj()
-      }
-  }*/
+    suspend fun insertDevice(device: Device): Long {
+        return when (device){
+            is Light -> deviceDao.insertDevice(device.toDeviceEntity())
+            is Heater -> deviceDao.insertDevice(device.toDeviceEntity())
+            is RollerShutter -> deviceDao.insertDevice(device.toDeviceEntity())
+        }
+    }
 }

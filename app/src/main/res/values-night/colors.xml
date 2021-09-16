@@ -2,7 +2,11 @@
 <resources>
     <color name="teal_200">#029A8B</color>
     <color name="teal_700">#015151</color>
+    <color name="purple_200">#92469F</color>
+
     <color name="icon_color">#FFFFFFFF</color>
-    <color name="background_color">#3A3A3A</color>
-    <color name="background_color_item_list">#757575</color>
+<!--    <color name="background_color">#DD034343</color>-->
+
+    <color name="background_color">#DD082525</color>
+    <color name="background_color_item_list">#7A7A7A</color>
 </resources>

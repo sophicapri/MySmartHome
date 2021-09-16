@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.HeaterDetailFragmentBinding
 import com.example.mysmarthome.model.DeviceMode
 import com.example.mysmarthome.model.Heater
@@ -42,7 +43,7 @@ class HeaterDetailFragment : Fragment() {
             }
             toolbar.apply {
                 setNavigationOnClickListener { view -> view.findNavController().navigateUp() }
-                title = heater.productType.value
+                title = getString(R.string.heater_title)
             }
         }
     }

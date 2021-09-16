@@ -11,7 +11,7 @@ interface UserDao {
     suspend fun insertUser(user: User)
 
     @Update
-    suspend fun updateUser(user: User)
+    suspend fun updateUser(user: User): Int
 
     //In a real world situation it would be better to query the user by its id.
     @Query("SELECT * FROM user")

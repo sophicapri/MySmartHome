@@ -29,6 +29,4 @@ class LightDetailVM @Inject constructor(
         super.onCleared()
         job.cancel()
     }
-
-    // fun getLightById(id: Int) = deviceRepository.getDeviceById(id).map { it as Light }
 }

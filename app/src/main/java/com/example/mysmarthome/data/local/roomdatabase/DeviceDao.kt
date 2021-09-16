@@ -3,6 +3,7 @@ package com.example.mysmarthome.data.local.roomdatabase
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteQuery
+import com.example.mysmarthome.model.Device
 
 @Dao
 interface DeviceDao {
@@ -28,7 +29,6 @@ interface DeviceDao {
     @Delete
     suspend fun deleteDevices(devices: List<DeviceEntity>)
 
-    /* @Query("SELECT * FROM deviceentity WHERE id = :id")
-  fun getDeviceById(id: Int): LiveData<DeviceEntity>
-*/
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertDevice(device: DeviceEntity): Long
 }
