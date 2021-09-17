@@ -5,6 +5,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
+    id 'jacoco'
 }
 
 android {
@@ -34,6 +35,8 @@ android {
     }
 
     testOptions {
+        animationsDisabled true
+
         unitTests {
             includeAndroidResources = true
             returnDefaultValues = true
