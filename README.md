@@ -19,8 +19,8 @@ Technical Stack and Libraries Used
   * [LiveData][13] - Build data objects that notify views when the underlying database changes.
   * [ViewModel][17] - To store UI-related data that isn't destroyed on app configuration changes.
   * [Room][16] - Local database.
-  * [Hilt][92]: - for dependency injection
-  * [Kotlin Coroutines][91] for managing background threads with simplified code and reducing needs for callbacks
+  * [Hilt][92]: - For dependency injection
+  * [Kotlin Coroutines][91] - For managing background threads with simplified code and reducing needs for callbacks
   * [Preferences DataStore][8] - To store simple data. "DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally."
   * [RxKotlin/RxJava][7] - In this project I've used it to make the call to the remote data. But I could've(should've?) used Coroutines Flow for more consistency in the entire project.
   * [Retrofit][5] - REST client for web services calls.
