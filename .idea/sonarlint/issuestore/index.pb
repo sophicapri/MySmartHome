@@ -152,15 +152,9 @@ Rapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditAddressAlertDialog
 Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditNameAlertDialog.kt,c/c/ccd42dfc478a1b8e4b622723013d63c616b4ed30
 y
 Iapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileVM.kt,b/0/b05d835053cf395844e643ed29f1c3a6523a4eaf
-k
-;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
 x
 Happ/src/main/java/com/example/mysmarthome/repository/DeviceRepository.kt,0/1/01cb495205d67bd2d811a5d5c40ec8a590548803
-
-Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileFragment.kt,5/1/51fca70ad41c788e39d41b337e15179f4b9792de
 v
 Fapp/src/main/java/com/example/mysmarthome/datastore/UserPreferences.kt,b/4/b4a7e7377bfeaf1fe83abfcfa720e7d07f2de336
-}
-Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,7/f/7f834fdd5813b6b36be8a06d6fc7eda7b16b8e7a
 {
 Kapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenVM.kt,1/4/149f15152e3c58ac3b965fc4f92851770aff8c15

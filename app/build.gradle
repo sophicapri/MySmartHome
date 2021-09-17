@@ -147,4 +147,5 @@ dependencies {
     // Lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }
