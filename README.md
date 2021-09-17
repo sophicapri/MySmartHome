@@ -27,7 +27,8 @@ Technical Stack and Libraries Used
   * [Moshi][9] - JSON library to parse remote data.
   * [Gson][10] - JSON library. Less verbose than Moshi when it comes to converting objects for Room.
   * [MockK][20] - Mocking library for easier and more readable tests.
-  * [Lottie][21] - Animation library
+  * [Lottie][21] - Animations library.
+  * [LeakCanary][33] - A memory leak detection library.
 
 [0]: https://developer.android.com/jetpack/components
 [2]: https://developer.android.com/kotlin/ktx
@@ -49,3 +50,4 @@ Technical Stack and Libraries Used
 [10]: https://github.com/google/gson
 [20]: https://github.com/mockk/mockk
 [21]: https://github.com/airbnb/lottie-android
+[33]: https://square.github.io/leakcanary/
