@@ -1,4 +1,4 @@
-name: Android CI
+ame: Android CI
 
 on:
   push:
@@ -8,12 +8,16 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
-  test:
-    runs-on: macOS-latest
 
     steps:
     - uses: actions/checkout@v2
+    - name: Codecov
+      uses: codecov/codecov-action@v2
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        flags: unittests
     - uses: gradle/gradle-build-action@v1
     - name: set up JDK 11
       uses: actions/setup-java@v2
@@ -29,10 +33,3 @@ jobs:
       run: |
         rm -f ~/.gradle/caches/modules-2/modules-2.lock
         rm -f ~/.gradle/caches/modules-2/gc.properties
-    - name: Upload coverage to Codecov
-      run: |
-          curl -Os https://uploader.codecov.io/latest/macos/codecov
-          chmod +x codecov
-          ./codecov
-        
-        
