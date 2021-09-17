@@ -98,8 +98,6 @@ i
 9app/src/main/java/com/example/mysmarthome/model/Heater.kt,d/1/d1ef6a714726f072960de71225b9fc26fc0187f1
 p
 @app/src/main/java/com/example/mysmarthome/di/ApiServiceModule.kt,5/7/57aecd51c4466d2af143e58ac97f5731e292832f
-|
-Lapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/UserDao.kt,5/b/5bdf6b42a5919eef30fcf8db7eff38e1c7e9a637
 ‚
 Rapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/TypeConverter.kt,2/0/203dff741d4c531c64c54bdcba89a13bb4025993
 ˆ
@@ -142,17 +140,21 @@ Zapp/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutter
 `app/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutterDetailFragment.kt,c/c/ccb578df813f312ab1db318cb9689f43408d6206
 |
 Lapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListAdapter.kt,0/a/0a7f5f08f7a03dd2f08609c44872a2e8db6b961e
-w
-Gapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListVM.kt,d/9/d935bb8536ca94d6cf71995e90101c36d4a7a367
 ‚
 Rapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditAddressAlertDialog.kt,8/3/83c71fc9fcf4de376f9ff7837e158e53cb2466b6
 
 Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditNameAlertDialog.kt,c/c/ccd42dfc478a1b8e4b622723013d63c616b4ed30
 y
 Iapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileVM.kt,b/0/b05d835053cf395844e643ed29f1c3a6523a4eaf
-x
-Happ/src/main/java/com/example/mysmarthome/repository/DeviceRepository.kt,0/1/01cb495205d67bd2d811a5d5c40ec8a590548803
 v
 Fapp/src/main/java/com/example/mysmarthome/datastore/UserPreferences.kt,b/4/b4a7e7377bfeaf1fe83abfcfa720e7d07f2de336
-{
-Kapp/src/main/java/com/example/mysmarthome/ui/splashscreen/SplashScreenVM.kt,1/4/149f15152e3c58ac3b965fc4f92851770aff8c15
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+k
+;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
+}
+Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,7/f/7f834fdd5813b6b36be8a06d6fc7eda7b16b8e7a
+
+Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileFragment.kt,5/1/51fca70ad41c788e39d41b337e15179f4b9792de
+M
+.github/workflows/android.yml,3/f/3f3614b660c98ad2ec2ec3066dba56ad2e3556ca

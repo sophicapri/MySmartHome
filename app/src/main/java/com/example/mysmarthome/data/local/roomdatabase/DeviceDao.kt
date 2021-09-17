@@ -9,13 +9,13 @@ import com.example.mysmarthome.model.Device
 interface DeviceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLights(lights: List<DeviceEntity>)
+    suspend fun insertLightList(lights: List<DeviceEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertHeaters(heaters: List<DeviceEntity>)
+    suspend fun insertHeaterList(heaters: List<DeviceEntity>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRollerShutters(rollerShutters: List<DeviceEntity>)
+    suspend fun insertRollerShutterList(rollerShutters: List<DeviceEntity>)
 
     @Update
     suspend fun updateDevice(device: DeviceEntity)
@@ -24,10 +24,10 @@ interface DeviceDao {
     fun getDeviceList() : LiveData<List<DeviceEntity>>
 
     @RawQuery(observedEntities = [DeviceEntity::class])
-    fun getFilteredList(query: SupportSQLiteQuery) : LiveData<List<DeviceEntity>>
+    fun getFilteredDeviceList(query: SupportSQLiteQuery) : LiveData<List<DeviceEntity>>
 
     @Delete
-    suspend fun deleteDevices(devices: List<DeviceEntity>)
+    suspend fun deleteDeviceList(devices: List<DeviceEntity>)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertDevice(device: DeviceEntity): Long

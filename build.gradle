@@ -41,9 +41,12 @@ ext {
     gsonVersion = "2.8.8"
     coreTestingVersion = "2.1.0"
     lottieVersion = "4.1.0"
+    mockkVersion = "1.12.0"
+    leakCanaryVersion = "2.7"
 
 
     junitVersion = "4.13.2"
+    androidTestRunnerVersion = "1.4.0"
     androidJunitVersion = "1.1.3"
     espressoVersion = "3.4.0"
     mockitoVersion = "3.11.1"

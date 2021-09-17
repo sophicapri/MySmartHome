@@ -53,7 +53,7 @@ class DeviceListVMTest {
     fun testGetFilteredList() {
         val listTypes = listOf(ProductType.LIGHT)
         val query = ProductType.queryBuilder(listTypes)
-        coEvery { deviceRepo.getFilteredList(query)} returns MutableLiveData(listOf(mockk<Light>()))
+        coEvery { deviceRepo.getFilteredDeviceList(query)} returns MutableLiveData(listOf(mockk<Light>()))
 
         viewModel.getFilteredList(listTypes).observeForever {
             assert(viewModel.getFilteredList(listTypes).value == listOf<Heater>())

@@ -8,16 +8,16 @@ import com.example.mysmarthome.model.*
 
 class DeviceRepository(val deviceDao: DeviceDao) {
 
-    suspend fun insertLights(lights: List<Light>) {
-        deviceDao.insertLights(lights.map { it.toDeviceEntity() })
+    suspend fun insertLightList(lights: List<Light>) {
+        deviceDao.insertLightList(lights.map { it.toDeviceEntity() })
     }
 
-    suspend fun insertHeaters(heater: List<Heater>) {
-        deviceDao.insertHeaters(heater.map { it.toDeviceEntity() })
+    suspend fun insertHeaterList(heater: List<Heater>) {
+        deviceDao.insertHeaterList(heater.map { it.toDeviceEntity() })
     }
 
-    suspend fun insertRollerShutters(rollerShutter: List<RollerShutter>) {
-        deviceDao.insertRollerShutters(rollerShutter.map { it.toDeviceEntity() })
+    suspend fun insertRollerShutterList(rollerShutter: List<RollerShutter>) {
+        deviceDao.insertRollerShutterList(rollerShutter.map { it.toDeviceEntity() })
     }
 
     fun getDeviceList(): LiveData<List<Device>> {
@@ -26,8 +26,8 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         }
     }
 
-    fun getFilteredList(query: SupportSQLiteQuery): LiveData<List<Device>> {
-        return Transformations.map(deviceDao.getFilteredList(query)) { list ->
+    fun getFilteredDeviceList(query: SupportSQLiteQuery): LiveData<List<Device>> {
+        return Transformations.map(deviceDao.getFilteredDeviceList(query)) { list ->
             list.map { it.toDomainObj() }
         }
     }
@@ -40,7 +40,7 @@ class DeviceRepository(val deviceDao: DeviceDao) {
         }
     }
 
-    suspend fun deleteDevices(devices: List<Device>) {
+    suspend fun deleteDeviceList(devices: List<Device>) {
         val deviceEntityList = devices.map { device ->
             when (device) {
                 is Light -> device.toDeviceEntity()
@@ -48,7 +48,7 @@ class DeviceRepository(val deviceDao: DeviceDao) {
                 else -> (device as RollerShutter).toDeviceEntity()
             }
         }
-        deviceDao.deleteDevices(deviceEntityList)
+        deviceDao.deleteDeviceList(deviceEntityList)
     }
 
     suspend fun insertDevice(device: Device): Long {

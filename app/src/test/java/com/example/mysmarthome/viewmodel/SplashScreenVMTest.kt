@@ -65,7 +65,7 @@ class SplashScreenVMTest {
     }
 
     @Test
-    fun testLoadDataFromRemote_Success() {
+    fun testRetrieveDataFromRemote_Success() {
         val apiResponse = ApiResponse(listOf(mockk()), mockk())
         coEvery { remoteDataRepo.getDataFromRemote() } returns Flowable.just(
             apiResponse

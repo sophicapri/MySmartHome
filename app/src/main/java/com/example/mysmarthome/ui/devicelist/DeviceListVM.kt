@@ -3,7 +3,6 @@ package com.example.mysmarthome.ui.devicelist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.sqlite.db.SimpleSQLiteQuery
 import com.example.mysmarthome.model.Device
 import com.example.mysmarthome.model.ProductType
 import com.example.mysmarthome.repository.DeviceRepository
@@ -24,11 +23,11 @@ class DeviceListVM @Inject constructor(
 
     fun getFilteredList(productTypes: List<ProductType>): LiveData<List<Device>> {
         val query = ProductType.queryBuilder(productTypes)
-        return deviceRepository.getFilteredList(query)
+        return deviceRepository.getFilteredDeviceList(query)
     }
 
     fun deleteDevices(device: List<Device>) {
-        uiScope.launch { deviceRepository.deleteDevices(device) }
+        uiScope.launch { deviceRepository.deleteDeviceList(device) }
     }
 
     override fun onCleared() {

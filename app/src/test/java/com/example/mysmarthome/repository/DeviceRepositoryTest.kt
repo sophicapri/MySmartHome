@@ -33,7 +33,7 @@ class DeviceRepositoryTest {
     @Test
     fun testGetFilteredList() {
         val deviceList = listOf(DummyData.lightEntity, DummyData.rollerShutterEntity)
-        coEvery { deviceDao.getFilteredList(mockk()) } returns MutableLiveData(
+        coEvery { deviceDao.getFilteredDeviceList(mockk()) } returns MutableLiveData(
             listOf(DummyData.rollerShutterEntity))
         deviceRepo.getDeviceList().observeForever {
             assert(it.size == 1)

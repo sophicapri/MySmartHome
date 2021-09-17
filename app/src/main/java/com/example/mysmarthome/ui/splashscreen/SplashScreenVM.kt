@@ -1,7 +1,6 @@
 package com.example.mysmarthome.ui.splashscreen
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.mysmarthome.base.BaseSchedulerProvider
 import com.example.mysmarthome.datastore.UserPreferences
@@ -58,37 +57,37 @@ class SplashScreenVM @Inject constructor(
 
     fun insertDataIntoLocalDb(response : ApiResponse){
         insertUserIntoLocalDb(response.user)
-        insertDevicesToLocalDb(response.devices)
+        insertDeviceListIntoLocalDb(response.devices)
     }
 
     private fun insertUserIntoLocalDb(user: User) {
         uiScope.launch {userRepository.insertUser(user) }
     }
 
-    private fun insertDevicesToLocalDb(devices: List<Device>) {
+    private fun insertDeviceListIntoLocalDb(devices: List<Device>) {
         val lights = devices.filterIsInstance<Light>()
         val heaters = devices.filterIsInstance<Heater>()
         val rollerShutters = devices.filterIsInstance<RollerShutter>()
-        insertLights(lights)
-        insertHeaters(heaters)
-        insertRollerShutters(rollerShutters)
+        insertLightList(lights)
+        insertHeaterList(heaters)
+        insertRollerShutterList(rollerShutters)
     }
 
-    private fun insertLights(lights: List<Light>) {
+    private fun insertLightList(lights: List<Light>) {
         uiScope.launch {
-            deviceRepository.insertLights(lights)
+            deviceRepository.insertLightList(lights)
         }
     }
 
-    private fun insertHeaters(heaters: List<Heater>) {
+    private fun insertHeaterList(heaters: List<Heater>) {
         uiScope.launch {
-            deviceRepository.insertHeaters(heaters)
+            deviceRepository.insertHeaterList(heaters)
         }
     }
 
-    private fun insertRollerShutters(rollerShutters: List<RollerShutter>) {
+    private fun insertRollerShutterList(rollerShutters: List<RollerShutter>) {
         uiScope.launch {
-            deviceRepository.insertRollerShutters(rollerShutters)
+            deviceRepository.insertRollerShutterList(rollerShutters)
         }
     }
 

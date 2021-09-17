@@ -69,6 +69,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$supportLibVersion"
     implementation "com.google.android.material:material:$materialVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    androidTestImplementation "androidx.test:runner:$androidTestRunnerVersion"
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 
     // Architecture components
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
@@ -78,6 +81,10 @@ dependencies {
     //Kotlin Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+
+    // To fix a bug with testing tasks
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+
 
     // DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"
@@ -116,30 +123,27 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
 
-    // TESTING
+    // JUnit
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidJunitVersion"
+
+    // Espresso
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
 
-    androidTestImplementation 'androidx.test:runner:1.4.0'
-
+    // Coroutines Test
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
 
-    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
-
     // MockK
-    androidTestImplementation 'io.mockk:mockk-android:1.12.0'
-    testImplementation 'io.mockk:mockk:1.12.0'
-
-    implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.30"
+    androidTestImplementation "io.mockk:mockk-android:$mockkVersion"
+    testImplementation "io.mockk:mockk:$mockkVersion"
 
     // Lottie
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+    // LeakCanary
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion"
 }
