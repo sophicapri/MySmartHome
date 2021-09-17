@@ -26,7 +26,7 @@ Technical Stack and Libraries Used
   * [Retrofit][5] - REST client for web services calls.
   * [Moshi][9] - JSON library to parse remote data.
   * [Gson][10] - JSON library. Less verbose than Moshi when it comes to converting objects for Room.
-  * [MockK][20] - Mocking library for easier and more readable testing.
+  * [MockK][20] - Mocking library for easier and more readable tests.
   * [Lottie][21] - Animation library
 
 [0]: https://developer.android.com/jetpack/components
