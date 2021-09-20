@@ -158,3 +158,13 @@ Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,
 Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileFragment.kt,5/1/51fca70ad41c788e39d41b337e15179f4b9792de
 M
 .github/workflows/android.yml,3/f/3f3614b660c98ad2ec2ec3066dba56ad2e3556ca
+|
+Lapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/UserDao.kt,5/b/5bdf6b42a5919eef30fcf8db7eff38e1c7e9a637
+€
+Papp/src/test/java/com/example/mysmarthome/repository/RemoteDataRepositoryTest.kt,b/e/bea99260e82e2744e509aa4e2513f6480606a687
+|
+Lapp/src/test/java/com/example/mysmarthome/repository/DeviceRepositoryTest.kt,f/4/f4e27140d381291676ffc6821e12be9a16f1fd73
+w
+Gapp/src/test/java/com/example/mysmarthome/viewmodel/DeviceListVMTest.kt,e/f/ef3d44d2c27b48cbd9744781ff7ac3098fdb807c
+w
+Gapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListVM.kt,d/9/d935bb8536ca94d6cf71995e90101c36d4a7a367
