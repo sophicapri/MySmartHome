@@ -146,8 +146,6 @@ Fapp/src/main/java/com/example/mysmarthome/datastore/UserPreferences.kt,b/4/b4a
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 k
 ;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
-}
-Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,7/f/7f834fdd5813b6b36be8a06d6fc7eda7b16b8e7a
 M
 .github/workflows/android.yml,3/f/3f3614b660c98ad2ec2ec3066dba56ad2e3556ca
 |
