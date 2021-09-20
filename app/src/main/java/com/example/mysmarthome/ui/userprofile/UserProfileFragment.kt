@@ -20,8 +20,8 @@ import java.text.DateFormat
 import java.util.*
 
 @AndroidEntryPoint
-class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedListener,
-    EditNameAlertDialog.OnNameEditedListener,
+class UserProfileFragment : Fragment(), EditAddressDialogFragment.OnAddressEditedListener,
+    EditNameDialogFragment.OnNameEditedListener,
     DatePickerDialog.OnDateSetListener {
     private var _binding: UserProfileFragmentBinding? = null
     private val binding get() = _binding!!
@@ -81,15 +81,11 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
 
             }
             nameContainer.setOnClickListener {
-                //EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()
+                EditNameDialogFragment(user, this@UserProfileFragment)
+                    .show(childFragmentManager, EditNameDialogFragment.TAG)
             }
             birthdateContainer.setOnClickListener { showDatePickerDialog() }
             addressContainer.setOnClickListener {
-             /*   EditAddressAlertDialog(
-                    requireContext(),
-                    user.address, this@UserProfileFragment
-                ).dialog.show()*/
-
                 EditAddressDialogFragment(user.address, this@UserProfileFragment)
                     .show(childFragmentManager, EditAddressDialogFragment.TAG)
             }

@@ -70,8 +70,6 @@ b
 2app/src/main/res/layout/title_edit_name_dialog.xml,3/0/3092c5bc4d6aafec017802613d210c4a2d309bfd
 Y
 )app/src/main/res/layout/main_activity.xml,a/2/a2184837f19e15dc19a40190b62237fab1af7b4b
-b
-2app/src/main/res/layout/edit_name_alert_dialog.xml,a/1/a14bb86b506af0700a9616ca32ae252516beb65f
 h
 8app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml,6/e/6ec7d34b130497a10dc92abcde9b313d370a89df
 b
@@ -140,8 +138,6 @@ Zapp/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutter
 `app/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutterDetailFragment.kt,c/c/ccb578df813f312ab1db318cb9689f43408d6206
 |
 Lapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListAdapter.kt,0/a/0a7f5f08f7a03dd2f08609c44872a2e8db6b961e
-
-Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditNameAlertDialog.kt,c/c/ccd42dfc478a1b8e4b622723013d63c616b4ed30
 y
 Iapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileVM.kt,b/0/b05d835053cf395844e643ed29f1c3a6523a4eaf
 v

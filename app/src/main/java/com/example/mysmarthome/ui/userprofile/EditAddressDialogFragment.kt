@@ -7,31 +7,30 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import com.example.mysmarthome.R
-import com.example.mysmarthome.databinding.EditAddressAlertDialogBinding
+import com.example.mysmarthome.databinding.EditAddressDialogBinding
 import com.example.mysmarthome.model.User
 import com.google.android.material.textfield.TextInputEditText
 
 class EditAddressDialogFragment(
     private var address: User.Address,
-    private var onAddressEditedListener: EditAddressAlertDialog.OnAddressEditedListener
+    private var onAddressEditedListener: OnAddressEditedListener
 ) : DialogFragment(){
-    private var _binding: EditAddressAlertDialogBinding? = null
-    private val binding: EditAddressAlertDialogBinding
+    private var _binding: EditAddressDialogBinding? = null
+    private val binding: EditAddressDialogBinding
         get() = _binding!!
     private var validInput = true
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val alertBuilder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
         val inflater = layoutInflater
-        val view = inflater.inflate(R.layout.title_edit_address_dialog, null)
-        _binding = EditAddressAlertDialogBinding.inflate(inflater)
+        _binding = EditAddressDialogBinding.inflate(inflater)
         bindViews()
+        val view = inflater.inflate(R.layout.title_edit_address_dialog, null)
         val dialogBuilder = alertBuilder.setCustomTitle(view)
             .setView(binding.root)
             .setPositiveButton(getString(R.string.save)) { _, _ -> updateAddress() }
             .setNegativeButton(getString(android.R.string.cancel)) { _, _ ->  this.dismiss() }
             .setOnDismissListener(this)
-        //dialog.setOnShowListener(this)
         return dialogBuilder.create()
     }
 
@@ -86,4 +85,7 @@ class EditAddressDialogFragment(
         const val TAG = "EditAddressDialog"
     }
 
+    interface OnAddressEditedListener {
+        fun onAddressEdited(address: User.Address)
+    }
 }

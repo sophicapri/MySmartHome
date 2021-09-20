@@ -1,57 +1,42 @@
 package com.example.mysmarthome.ui.userprofile
 
 import android.app.AlertDialog
-import android.content.Context
+import android.app.Dialog
 import android.content.DialogInterface
+import android.os.Bundle
+import androidx.fragment.app.DialogFragment
 import com.example.mysmarthome.R
-import com.example.mysmarthome.databinding.EditNameAlertDialogBinding
+import com.example.mysmarthome.databinding.EditNameDialogBinding
 import com.example.mysmarthome.model.User
 import com.google.android.material.textfield.TextInputEditText
 
-class EditNameAlertDialog(
-    context: Context, private var user: User,
+class EditNameDialogFragment(
+    private var user: User,
     private var onNameEditedListener: OnNameEditedListener
-) : AlertDialog(context),
-    DialogInterface.OnShowListener,
-    DialogInterface.OnDismissListener {
-    private var _binding: EditNameAlertDialogBinding? = null
-    private val binding: EditNameAlertDialogBinding
+) : DialogFragment() {
+    private var _binding: EditNameDialogBinding? = null
+    private val binding: EditNameDialogBinding
         get() = _binding!!
-    val dialog: AlertDialog
     private var validInput = true
 
 
-    init {
-        dialog = buildDialog()
-    }
-
-    private fun buildDialog(): AlertDialog {
-        val alertBuilder = Builder(context, R.style.AlertDialogTheme)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val alertBuilder = AlertDialog.Builder(context, R.style.AlertDialogTheme)
         val inflater = layoutInflater
-        val view = inflater.inflate(R.layout.title_edit_name_dialog, null)
-        _binding = EditNameAlertDialogBinding.inflate(inflater)
+        _binding = EditNameDialogBinding.inflate(inflater)
         bindViews()
+        val view = inflater.inflate(R.layout.title_edit_name_dialog, null)
         val dialogBuilder = alertBuilder.setCustomTitle(view)
             .setView(binding.root)
-            .setPositiveButton(context.getString(R.string.save), null)
-            .setNegativeButton(context.getString(android.R.string.cancel), null)
+            .setPositiveButton(getString(R.string.save)) { _, _ -> updateName() }
+            .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> this.dismiss() }
             .setOnDismissListener(this)
-        val dialog = dialogBuilder.create()
-        dialog.setOnShowListener(this)
-        return dialog
+        return dialogBuilder.create()
     }
 
     private fun bindViews() {
         binding.firstNameInput.setText(user.firstName)
         binding.lastNameInput.setText(user.lastName)
-    }
-
-
-    override fun onShow(p0: DialogInterface?) {
-        val positiveButton = dialog.getButton(BUTTON_POSITIVE)
-        positiveButton.setOnClickListener { updateName() }
-        val negativeButton = dialog.getButton(BUTTON_NEGATIVE)
-        negativeButton.setOnClickListener { dialog.dismiss() }
     }
 
     private fun updateName() {
@@ -69,18 +54,23 @@ class EditNameAlertDialog(
                 user.firstName = firstNameInput.text.toString().trim()
                 user.lastName = lastNameInput.text.toString().trim()
                 onNameEditedListener.onNameEdited(user)
-                dialog.dismiss()
+                this@EditNameDialogFragment.dismiss()
             }
         }
     }
 
     private fun showError(editText: TextInputEditText) {
-        editText.error = context.getString(R.string.empty_field)
+        editText.error = getString(R.string.empty_field)
         validInput = false
     }
 
-    override fun onDismiss(p0: DialogInterface?) {
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
         _binding = null
+    }
+
+    companion object{
+        const val TAG = "EditNameDialog"
     }
 
     interface OnNameEditedListener {
