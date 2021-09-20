@@ -81,14 +81,17 @@ class UserProfileFragment : Fragment(), EditAddressAlertDialog.OnAddressEditedLi
 
             }
             nameContainer.setOnClickListener {
-                EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()
+                //EditNameAlertDialog(requireContext(), user, this@UserProfileFragment).dialog.show()
             }
             birthdateContainer.setOnClickListener { showDatePickerDialog() }
             addressContainer.setOnClickListener {
-                EditAddressAlertDialog(
+             /*   EditAddressAlertDialog(
                     requireContext(),
                     user.address, this@UserProfileFragment
-                ).dialog.show()
+                ).dialog.show()*/
+
+                EditAddressDialogFragment(user.address, this@UserProfileFragment)
+                    .show(childFragmentManager, EditAddressDialogFragment.TAG)
             }
         }
     }

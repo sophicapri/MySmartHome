@@ -140,8 +140,6 @@ Zapp/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutter
 `app/src/main/java/com/example/mysmarthome/ui/device/rollershutter/RollerShutterDetailFragment.kt,c/c/ccb578df813f312ab1db318cb9689f43408d6206
 |
 Lapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListAdapter.kt,0/a/0a7f5f08f7a03dd2f08609c44872a2e8db6b961e
-‚
-Rapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditAddressAlertDialog.kt,8/3/83c71fc9fcf4de376f9ff7837e158e53cb2466b6
 
 Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/EditNameAlertDialog.kt,c/c/ccd42dfc478a1b8e4b622723013d63c616b4ed30
 y
@@ -154,8 +152,6 @@ k
 ;app/src/main/java/com/example/mysmarthome/MySmartHomeApp.kt,7/9/79280d02a7bcf94f7847e2e125aee9d5f21e6c23
 }
 Mapp/src/main/java/com/example/mysmarthome/ui/devicelist/DeviceListFragment.kt,7/f/7f834fdd5813b6b36be8a06d6fc7eda7b16b8e7a
-
-Oapp/src/main/java/com/example/mysmarthome/ui/userprofile/UserProfileFragment.kt,5/1/51fca70ad41c788e39d41b337e15179f4b9792de
 M
 .github/workflows/android.yml,3/f/3f3614b660c98ad2ec2ec3066dba56ad2e3556ca
 |
