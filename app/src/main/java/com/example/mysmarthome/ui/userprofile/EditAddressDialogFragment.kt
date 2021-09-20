@@ -34,7 +34,9 @@ class EditAddressDialogFragment(
             .setPositiveButton(getString(R.string.save), null)
             .setNegativeButton(getString(android.R.string.cancel), null)
             .setOnDismissListener(this)
-        return dialogBuilder.create()
+        val dialog = dialogBuilder.create()
+        dialog.setOnShowListener(this)
+        return dialog
     }
 
     private fun updateAddress() {
@@ -63,13 +65,6 @@ class EditAddressDialogFragment(
         }
     }
 
-    override fun onShow(p0: DialogInterface?) {
-        val positiveButton = (dialog as AlertDialog).getButton(BUTTON_POSITIVE)
-        positiveButton.setOnClickListener { updateAddress() }
-        val negativeButton = (dialog as AlertDialog).getButton(BUTTON_NEGATIVE)
-        negativeButton.setOnClickListener { this.dismiss() }
-    }
-
     private fun bindViews() {
         binding.apply {
             streetInput.setText(address.street)
@@ -78,6 +73,13 @@ class EditAddressDialogFragment(
             cityInput.setText(address.city)
             countryInput.setText(address.country)
         }
+    }
+
+    override fun onShow(dialogInterface: DialogInterface?) {
+        val positiveButton = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+        positiveButton.setOnClickListener { updateAddress() }
+        val negativeButton = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_NEGATIVE)
+        negativeButton.setOnClickListener { this.dismiss() }
     }
 
     private fun showError(editText: TextInputEditText) {

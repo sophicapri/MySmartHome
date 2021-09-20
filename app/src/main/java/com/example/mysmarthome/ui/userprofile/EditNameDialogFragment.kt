@@ -7,13 +7,14 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.example.mysmarthome.R
 import com.example.mysmarthome.databinding.EditNameDialogBinding
+import com.example.mysmarthome.databinding.TitleEditNameDialogBinding
 import com.example.mysmarthome.model.User
 import com.google.android.material.textfield.TextInputEditText
 
 class EditNameDialogFragment(
     private var user: User,
     private var onNameEditedListener: OnNameEditedListener
-) : DialogFragment() {
+) : DialogFragment(), DialogInterface.OnShowListener {
     private var _binding: EditNameDialogBinding? = null
     private val binding: EditNameDialogBinding
         get() = _binding!!
@@ -25,13 +26,15 @@ class EditNameDialogFragment(
         val inflater = layoutInflater
         _binding = EditNameDialogBinding.inflate(inflater)
         bindViews()
-        val view = inflater.inflate(R.layout.title_edit_name_dialog, null)
-        val dialogBuilder = alertBuilder.setCustomTitle(view)
+        val titleBinding = TitleEditNameDialogBinding.inflate(layoutInflater)
+        val dialogBuilder = alertBuilder.setCustomTitle(titleBinding.root)
             .setView(binding.root)
-            .setPositiveButton(getString(R.string.save)) { _, _ -> updateName() }
-            .setNegativeButton(getString(android.R.string.cancel)) { _, _ -> this.dismiss() }
+            .setPositiveButton(getString(R.string.save), null)
+            .setNegativeButton(getString(android.R.string.cancel), null)
             .setOnDismissListener(this)
-        return dialogBuilder.create()
+        val dialog = dialogBuilder.create()
+        dialog.setOnShowListener(this)
+        return dialog
     }
 
     private fun bindViews() {
@@ -57,6 +60,13 @@ class EditNameDialogFragment(
                 this@EditNameDialogFragment.dismiss()
             }
         }
+    }
+
+    override fun onShow(dialogInterface: DialogInterface?) {
+        val positiveButton = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_POSITIVE)
+        positiveButton.setOnClickListener { updateName() }
+        val negativeButton = (dialog as AlertDialog).getButton(AlertDialog.BUTTON_NEGATIVE)
+        negativeButton.setOnClickListener { this.dismiss() }
     }
 
     private fun showError(editText: TextInputEditText) {
