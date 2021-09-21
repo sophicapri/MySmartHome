@@ -93,7 +93,7 @@ class SplashScreenVM @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        compositeDisposable.dispose()
+        compositeDisposable.clear()
         job.cancel()
     }
 }
