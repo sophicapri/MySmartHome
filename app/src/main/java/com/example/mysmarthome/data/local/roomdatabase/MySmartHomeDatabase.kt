@@ -18,7 +18,7 @@ abstract class MySmartHomeDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var instance: MySmartHomeDatabase? = null
-        const val DATABASE_NAME = "MySmartHomeDatabase.db"
+        private const val DATABASE_NAME = "MySmartHomeDatabase.db"
 
         fun getInstance(context: Context): MySmartHomeDatabase {
             return instance ?: synchronized(this) {

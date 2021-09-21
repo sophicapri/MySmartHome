@@ -98,8 +98,6 @@ p
 @app/src/main/java/com/example/mysmarthome/di/ApiServiceModule.kt,5/7/57aecd51c4466d2af143e58ac97f5731e292832f
 ‚
 Rapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/TypeConverter.kt,2/0/203dff741d4c531c64c54bdcba89a13bb4025993
-ˆ
-Xapp/src/main/java/com/example/mysmarthome/data/local/roomdatabase/MySmartHomeDatabase.kt,a/1/a186ffb6d559df2c586f5d0f5ce15067d080c43e
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 n
@@ -118,8 +116,6 @@ x
 Happ/src/test/java/com/example/mysmarthome/viewmodel/UserProfileVMTest.kt,7/7/773d18ab7ba779b2761ad9560050cce1ddcd626d
 s
 Capp/src/main/java/com/example/mysmarthome/data/remote/ApiService.kt,4/7/473ea91a962b6ef9b321dd7075acc098d9326b6d
-n
->app/src/main/java/com/example/mysmarthome/model/ApiResponse.kt,1/8/184b3d6635b9b84374e09edd515bd0358ae56e3f
 |
 Lapp/src/main/java/com/example/mysmarthome/repository/RemoteDataRepository.kt,c/0/c02e4987250239368f9ef4c78b914463c9dbba65
 v
