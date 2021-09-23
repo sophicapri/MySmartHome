@@ -48,16 +48,4 @@ class UserProfileVMTest {
             assert(viewModel.user.value is User)
         }
     }
-
-    // TODO :
-    @Test
-    fun testUpdateUser() {
-
-    }
-
-    // TODO :
-    @Test
-    fun testUpdateUserPrefs() {
-        viewModel.updateUserPrefNightMode()
-    }
 }
