@@ -41,46 +41,12 @@ class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
             }
             binding.deviceModeContainer.visibility = View.GONE
             binding.positionContainer.visibility = View.GONE
+
             when (device) {
-                is Light -> bindLight(device)
-                is Heater -> bindHeater(device)
-                is RollerShutter -> bindRollerShutter(device)
+                is Light -> device.bindDevice(binding)
+                is Heater -> device.bindDevice(binding)
+                is RollerShutter -> device.bindDevice(binding)
             }
-        }
-
-        private fun bindLight(light: Light) {
-            binding.apply {
-                deviceText.text = light.deviceName
-                deviceIcon.setImageDrawable(
-                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_smart_bulb)
-                )
-                deviceModeValue.text = light.mode.name
-                deviceModeContainer.visibility = View.VISIBLE
-            }
-        }
-
-        private fun bindHeater(heater: Heater) {
-            binding.apply {
-                deviceText.text = heater.deviceName
-                deviceIcon.setImageDrawable(
-                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_heater)
-                )
-                deviceModeContainer.visibility = View.VISIBLE
-                deviceModeValue.text = heater.mode.name
-            }
-        }
-
-
-        private fun bindRollerShutter(rollerShutter: RollerShutter) {
-            binding.apply {
-                deviceText.text = rollerShutter.deviceName
-                deviceIcon.setImageDrawable(
-                    ContextCompat.getDrawable(binding.root.context, R.drawable.ic_roller_shutter)
-                )
-                positionContainer.visibility = View.VISIBLE
-                positionValue.text = rollerShutter.position.toString()
-            }
-
         }
     }
 

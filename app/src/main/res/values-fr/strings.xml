@@ -20,7 +20,7 @@
     <string name="city_title">Ville</string>
     <string name="country_title">Pays</string>
     <string name="empty_field">Veuillez remplir ce champ</string>
-    <string name="intensity_title">Intensité</string>
+    <string name="intensity_title">"Intensité: "</string>
     <string name="device_mode_title">Mode</string>
     <string name="temperature_title">"Température: "</string>
     <string name="device_icon">Icone appareil</string>
