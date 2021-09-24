@@ -15,7 +15,7 @@ data class Heater(
     val deviceName: String,
     var mode: DeviceMode,
     var temperature: Float
-) : Device(id, ProductType.HEATER), EntityMaker, Device.DeviceBinder, Parcelable {
+) : Device(id, ProductType.HEATER), EntityMaker, Parcelable {
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName,

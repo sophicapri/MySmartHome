@@ -14,7 +14,7 @@ data class RollerShutter(
     override val id: Int,
     val deviceName: String,
     var position: Int
-) : Device(id, ProductType.ROLLER_SHUTTER), EntityMaker, Device.DeviceBinder, Parcelable {
+) : Device(id, ProductType.ROLLER_SHUTTER), EntityMaker, Parcelable {
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName, productType = productType,

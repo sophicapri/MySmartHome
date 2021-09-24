@@ -42,11 +42,7 @@ class DeviceListAdapter(var onDeviceClickListener: OnDeviceClickListener) :
             binding.deviceModeContainer.visibility = View.GONE
             binding.positionContainer.visibility = View.GONE
 
-            when (device) {
-                is Light -> device.bindDevice(binding)
-                is Heater -> device.bindDevice(binding)
-                is RollerShutter -> device.bindDevice(binding)
-            }
+            device.bindDevice(binding)
         }
     }
 

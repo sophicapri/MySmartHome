@@ -15,7 +15,7 @@ data class Light(
     val deviceName: String,
     var mode: DeviceMode,
     var intensity: Int
-) : Device(id, ProductType.LIGHT), EntityMaker, Device.DeviceBinder, Parcelable{
+) : Device(id, ProductType.LIGHT), EntityMaker, Parcelable{
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName,
