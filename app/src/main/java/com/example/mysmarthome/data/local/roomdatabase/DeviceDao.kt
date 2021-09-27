@@ -9,13 +9,7 @@ import com.example.mysmarthome.model.Device
 interface DeviceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLightList(lights: List<DeviceEntity>)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertHeaterList(heaters: List<DeviceEntity>)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRollerShutterList(rollerShutters: List<DeviceEntity>)
+    suspend fun insertDeviceList(devices: List<DeviceEntity>)
 
     @Update
     suspend fun updateDevice(device: DeviceEntity)

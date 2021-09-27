@@ -30,7 +30,3 @@ class DeviceEntity(
 
     private fun toRollerShutter() = RollerShutter(id, deviceName, position!!)
 }
-
-interface EntityMaker{
-    fun toDeviceEntity(): DeviceEntity
-}

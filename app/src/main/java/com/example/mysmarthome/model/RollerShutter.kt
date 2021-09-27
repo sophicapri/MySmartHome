@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.mysmarthome.R
 import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
-import com.example.mysmarthome.data.local.roomdatabase.EntityMaker
 import com.example.mysmarthome.databinding.DeviceItemBinding
 import kotlinx.parcelize.Parcelize
 
@@ -14,7 +13,7 @@ data class RollerShutter(
     override val id: Int,
     val deviceName: String,
     var position: Int
-) : Device(id, ProductType.ROLLER_SHUTTER), EntityMaker, Parcelable {
+) : Device(id, ProductType.ROLLER_SHUTTER), Parcelable {
 
     override fun toDeviceEntity() = DeviceEntity(
         id = id, deviceName = deviceName, productType = productType,

@@ -65,30 +65,7 @@ class SplashScreenVM @Inject constructor(
     }
 
     private fun insertDeviceListIntoLocalDb(devices: List<Device>) {
-        val lights = devices.filterIsInstance<Light>()
-        val heaters = devices.filterIsInstance<Heater>()
-        val rollerShutters = devices.filterIsInstance<RollerShutter>()
-        insertLightList(lights)
-        insertHeaterList(heaters)
-        insertRollerShutterList(rollerShutters)
-    }
-
-    private fun insertLightList(lights: List<Light>) {
-        uiScope.launch {
-            deviceRepository.insertLightList(lights)
-        }
-    }
-
-    private fun insertHeaterList(heaters: List<Heater>) {
-        uiScope.launch {
-            deviceRepository.insertHeaterList(heaters)
-        }
-    }
-
-    private fun insertRollerShutterList(rollerShutters: List<RollerShutter>) {
-        uiScope.launch {
-            deviceRepository.insertRollerShutterList(rollerShutters)
-        }
+        uiScope.launch { deviceRepository.insertDeviceList(devices) }
     }
 
     override fun onCleared() {
