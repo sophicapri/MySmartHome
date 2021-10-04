@@ -33,7 +33,7 @@ Technical Stack and Libraries Used
 [0]: https://developer.android.com/jetpack/components
 [2]: https://developer.android.com/kotlin/ktx
 [4]: https://developer.android.com/training/testing/
-[11]: https://developer.android.com/topic/libraries/data-binding/
+[11]: https://developer.android.com/topic/libraries/view-binding/
 [12]: https://developer.android.com/topic/libraries/architecture/lifecycle
 [13]: https://developer.android.com/topic/libraries/architecture/livedata
 [14]: https://developer.android.com/topic/libraries/architecture/navigation/
