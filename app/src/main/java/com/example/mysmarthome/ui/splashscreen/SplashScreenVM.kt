@@ -3,7 +3,7 @@ package com.example.mysmarthome.ui.splashscreen
 import android.annotation.SuppressLint
 import androidx.lifecycle.*
 import com.example.mysmarthome.base.BaseSchedulerProvider
-import com.example.mysmarthome.datastore.UserPreferences
+import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.model.*
 import com.example.mysmarthome.repository.DeviceRepository
 import com.example.mysmarthome.repository.RemoteDataRepository

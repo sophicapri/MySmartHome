@@ -25,7 +25,6 @@ Technical Stack and Libraries Used
   * [RxKotlin/RxJava][7] - In this project I've used it to handle the call to the remote data. But I could've used Coroutines Flow for more consistency in the entire project.
   * [Retrofit][5] - REST client for web services calls.
   * [Moshi][9] - JSON library to parse remote data.
-  * [Gson][10] - JSON library. Less verbose than Moshi when it comes to converting objects for Room.
   * [MockK][20] - Mocking library for easier and more readable tests.
   * [Lottie][21] - Animations library.
   * [LeakCanary][33] - A memory leak detection library.
@@ -47,7 +46,6 @@ Technical Stack and Libraries Used
 [7]: https://github.com/ReactiveX/RxKotlin
 [8]: https://developer.android.com/topic/libraries/architecture/datastore
 [9]: https://github.com/square/moshi
-[10]: https://github.com/google/gson
 [20]: https://github.com/mockk/mockk
 [21]: https://github.com/airbnb/lottie-android
 [33]: https://square.github.io/leakcanary/

@@ -2,7 +2,7 @@ package com.example.mysmarthome.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.mysmarthome.datastore.UserPreferences
+import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.model.User
 import com.example.mysmarthome.repository.UserRepository
 import com.example.mysmarthome.ui.userprofile.UserProfileVM

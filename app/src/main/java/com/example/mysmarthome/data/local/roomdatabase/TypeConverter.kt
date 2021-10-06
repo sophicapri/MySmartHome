@@ -1,27 +1,28 @@
 package com.example.mysmarthome.data.local.roomdatabase
 
+import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.example.mysmarthome.model.*
-import com.google.gson.Gson
+import com.squareup.moshi.Moshi
 
-class TypeConverter {
-
-    @TypeConverter
-    fun addressToJson(address: User.Address?): String = Gson().toJson(address)
+@ProvidedTypeConverter
+class TypeConverter(private val moshi: Moshi) {
 
     @TypeConverter
-    fun jsonToAddress(json: String): User.Address = Gson().fromJson(json, User.Address::class.java)
+    fun addressToJson(address: User.Address?): String = moshi.adapter(User.Address::class.java).toJson(address)
 
     @TypeConverter
-    fun deviceModeToJson(deviceMode: DeviceMode?): String = Gson().toJson(deviceMode)
+    fun jsonToAddress(json: String) =  moshi.adapter(User.Address::class.java).fromJson(json)
 
     @TypeConverter
-    fun jsonToDeviceMode(json: String): DeviceMode? = Gson().fromJson(json, DeviceMode::class.java)
+    fun deviceModeToJson(deviceMode: DeviceMode?): String = moshi.adapter(DeviceMode::class.java).toJson(deviceMode)
 
     @TypeConverter
-    fun productTypeToJson(productType: ProductType?): String = Gson().toJson(productType)
+    fun jsonToDeviceMode(json: String): DeviceMode? = moshi.adapter(DeviceMode::class.java).fromJson(json)
 
     @TypeConverter
-    fun jsonToProductType(json: String): ProductType =
-        Gson().fromJson(json, ProductType::class.java)
+    fun productTypeToJson(productType: ProductType?): String = moshi.adapter(ProductType::class.java).toJson(productType)
+
+    @TypeConverter
+    fun jsonToProductType(json: String) = moshi.adapter(ProductType::class.java).fromJson(json)
 }

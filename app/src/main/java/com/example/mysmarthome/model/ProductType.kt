@@ -1,7 +1,6 @@
 package com.example.mysmarthome.model
 
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.example.mysmarthome.ui.devicelist.DeviceListVM
 import com.squareup.moshi.Json
 
 enum class ProductType(val value: String) {

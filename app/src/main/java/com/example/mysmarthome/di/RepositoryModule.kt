@@ -2,7 +2,7 @@ package com.example.mysmarthome.di
 
 import android.content.Context
 import com.example.mysmarthome.base.BaseSchedulerProvider
-import com.example.mysmarthome.datastore.UserPreferences
+import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
 import com.example.mysmarthome.data.remote.ApiService
@@ -44,5 +44,5 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideMainCoroutineDispatcher() : CoroutineDispatcher = Dispatchers.Main
+    fun provideMainCoroutineDispatcher() : CoroutineDispatcher = Dispatchers.Default
 }

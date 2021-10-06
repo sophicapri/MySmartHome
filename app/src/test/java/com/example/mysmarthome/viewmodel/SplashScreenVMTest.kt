@@ -1,7 +1,7 @@
 package com.example.mysmarthome.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.mysmarthome.datastore.UserPreferences
+import com.example.mysmarthome.data.local.datastore.UserPreferences
 import com.example.mysmarthome.model.ApiResponse
 import com.example.mysmarthome.repository.DeviceRepository
 import com.example.mysmarthome.repository.RemoteDataRepository

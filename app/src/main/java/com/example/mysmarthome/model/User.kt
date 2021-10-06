@@ -2,8 +2,10 @@ package com.example.mysmarthome.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.JsonClass
 
 @Entity
+@JsonClass(generateAdapter = true)
 data class User(
     @PrimaryKey(autoGenerate = true)var id: Int = 0,
     var firstName: String,

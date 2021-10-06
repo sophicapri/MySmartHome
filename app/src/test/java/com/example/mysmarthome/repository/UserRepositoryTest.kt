@@ -2,18 +2,11 @@ package com.example.mysmarthome.repository
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
-import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
-import com.example.mysmarthome.data.local.roomdatabase.DeviceEntity
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
-import com.example.mysmarthome.datastore.UserPreferences
-import com.example.mysmarthome.model.DeviceMode
-import com.example.mysmarthome.model.ProductType
 import com.example.mysmarthome.model.User
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.TestCase
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

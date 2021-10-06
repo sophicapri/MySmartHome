@@ -1,9 +1,14 @@
 package com.example.mysmarthome.di
 
+import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.example.mysmarthome.data.local.roomdatabase.DeviceDao
 import com.example.mysmarthome.data.local.roomdatabase.MySmartHomeDatabase
+import com.example.mysmarthome.data.local.roomdatabase.TypeConverter
 import com.example.mysmarthome.data.local.roomdatabase.UserDao
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +21,12 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext context: Context): MySmartHomeDatabase {
-        return MySmartHomeDatabase.getInstance(context)
+    fun provideDatabase(context: Application): MySmartHomeDatabase {
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+        return Room.databaseBuilder(context, MySmartHomeDatabase::class.java, MySmartHomeDatabase.DATABASE_NAME)
+            .addTypeConverter(TypeConverter(moshi))
+            .fallbackToDestructiveMigration()
+            .build()
     }
 
     @Singleton
